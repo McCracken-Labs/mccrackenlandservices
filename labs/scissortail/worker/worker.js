@@ -15,6 +15,8 @@
  * The visitor hash rotates every day and cannot be reversed to a person.
  */
 
+import { reportSites, sendNow, runReports, magicLink } from "./reports.js";
+
 var BOT = /bot|crawl|spider|slurp|preview|monitor|lighthouse|headless|curl|wget|python-requests|axios|okhttp/i;
 var CTRL = new RegExp("[\\x00-\\x1f\\x7f]", "g");
 
@@ -35,11 +37,19 @@ export default {
       if (url.pathname === "/api/stats") return await stats(request, url, env, cors);
       if (url.pathname === "/api/reset") return await reset(request, url, env, cors);
       if (url.pathname === "/wti") return await wti(cors);
+      if (url.pathname === "/api/report-sites") return await reportSites(request, url, env, cors, { json: json, safeJson: safeJson, clean: clean });
+      if (url.pathname === "/api/send-now") return await sendNow(request, url, env, cors, { json: json, safeJson: safeJson, clean: clean });
+      if (url.pathname.indexOf("/r/") === 0) return await magicLink(url, env);
       if (url.pathname === "/") return text("Scissortail is running.", 200, cors);
       return text("Not found", 404, cors);
     } catch (err) {
       return json({ error: String((err && err.message) || err) }, 500, cors);
     }
+  },
+
+  // Daily cron: send any reports that are due (see wrangler.toml [triggers]).
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(runReports(env));
   },
 };
 

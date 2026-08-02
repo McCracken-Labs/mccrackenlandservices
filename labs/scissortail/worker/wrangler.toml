@@ -13,5 +13,18 @@ database_name = "scissortail"
 database_id = "PASTE-YOUR-D1-DATABASE-ID-HERE"
 
 # Secrets are NOT stored here. Set them once from the terminal:
-#   wrangler secret put SALT         (any long random string)
-#   wrangler secret put DASH_TOKEN   (the read password for your dashboard)
+#   wrangler secret put SALT           (any long random string)
+#   wrangler secret put DASH_TOKEN     (the read password for your dashboard)
+#   wrangler secret put RESEND_API_KEY (the re_... key from resend.com, for reports)
+
+# ---- Scissortail Reports ----
+# Daily cron. It checks each registered site and sends the ones that are due:
+# daily every day, weekly on Mondays, monthly on the 1st (all times UTC).
+# 13:00 UTC is ~8am Central.
+[triggers]
+crons = ["0 13 * * *"]
+
+# Plain (non-secret) settings for the report emails:
+[vars]
+MAIL_FROM = "Scissortail Reports <reports@mccrackenlabs.com>"
+REPORT_BASE = "https://scissortail.mccrackenlabs.workers.dev"
