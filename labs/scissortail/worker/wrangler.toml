@@ -28,3 +28,5 @@ crons = ["0 13 * * *"]
 [vars]
 MAIL_FROM = "Scissortail Reports <reports@mccrackenlabs.com>"
 REPORT_BASE = "https://scissortail.mccrackenlabs.workers.dev"
+# Replies to a report land here (Resend receiving is off on the sending domain):
+REPLY_TO = "mccrackenlabs@proton.me"
