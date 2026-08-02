@@ -10,7 +10,7 @@ compatibility_date = "2025-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "scissortail"
-database_id = "PASTE-YOUR-D1-DATABASE-ID-HERE"
+database_id = "f48b38dd-236e-4047-9fce-176ecfee6c8f"
 
 # Secrets are NOT stored here. Set them once from the terminal:
 #   wrangler secret put SALT           (any long random string)
