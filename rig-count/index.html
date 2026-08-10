@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>U.S. Rig Count (Weekly) | McCracken Land Services</title>
+  <meta name="description" content="Weekly U.S. drilling rig count by state and basin from the public Baker Hughes North America Rig Count, with oil and gas prices and a plain-English read for landowners and operators. By McCracken Land Services, Oklahoma City." />
+  <meta name="theme-color" content="#0b2233" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="alternate" type="application/rss+xml" title="McCracken Rig Count (weekly)" href="feed.xml" />
+  <link rel="canonical" href="https://www.mccrackenlandservices.com/rig-count/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="U.S. Rig Count (Weekly) | McCracken Land Services" />
+  <meta property="og:url" content="https://www.mccrackenlandservices.com/rig-count/" />
+  <meta property="og:site_name" content="McCracken Land Services" />
+  <meta property="og:image" content="https://www.mccrackenlandservices.com/assets/og-image.png" />
+  <style>
+    .rc-hero{background:var(--navy-800);color:#fff;padding:52px 0 38px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .rc-hero .eyebrow{color:var(--gold-400);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin:0 0 12px}
+    .rc-hero h1{font-family:var(--head);font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.1;margin:0 0 12px;color:#fff}
+    .rc-hero p.lead{color:rgba(255,255,255,.85);max-width:720px;margin:0 0 22px;font-size:1.05rem}
+    .rc-hero p.lead a{color:#fff}
+    .rc-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .rc-btn{display:inline-block;padding:11px 18px;border-radius:8px;font-weight:600;font-size:.92rem;text-decoration:none}
+    .rc-btn-gold{background:var(--gold-500);color:#0b2233}
+    .rc-btn-ghost{border:1px solid rgba(255,255,255,.5);color:#fff}
+    .rc-report{padding:38px 0 10px}
+    .rc-foot-links{padding:14px 0 60px}
+    .rc-foot-links .container{border-top:1px solid var(--line);padding-top:20px;color:var(--ink-500);font-size:.9rem;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center;text-align:center}
+    .rc-foot-links a{color:var(--navy-800);font-weight:600}
+    .arch-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:8px}
+    .arch-table th{text-align:left;padding:11px 16px;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:#6c7885;background:#f7f5ef}
+    .arch-table td{padding:13px 16px;border-top:1px solid var(--line)}
+    .arch-table td.wk{font-family:"Source Serif 4",Georgia,serif;font-weight:600;color:#0f2a3f}
+    .arch-table td.dl{text-align:right}
+    .arch-table td.dl a{color:#0f2a3f;font-weight:600}
+</style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html#top" aria-label="McCracken Land Services home">
+        <img src="../assets/logo-full-trans.svg" class="brand-full" alt="McCracken Land Services" />
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#process">Projects</a></li>
+          <li><a href="../tools/index.html">Tools</a></li>
+          <li><a href="index.html" aria-current="page">Rig Count</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../index.html#expertise">Expertise</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a class="nav-cta" href="../index.html#contact">Get in touch</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="rc-hero">
+    <div class="container">
+      <p class="eyebrow">Weekly report</p>
+      <h1>U.S. Rig Count</h1>
+      <p class="lead">Drilling activity by state and basin from the public Baker Hughes count, with oil and gas prices and a plain-English read for landowners and operators. Refreshed every week after the Friday release.</p>
+      <div class="rc-actions">
+        <a class="rc-btn rc-btn-gold" href="downloads/McCracken-Rig-Count-Weekly.pdf">Download this week&rsquo;s PDF</a>
+        <a class="rc-btn rc-btn-ghost" href="feed.xml">Subscribe (RSS)</a>
+      </div>
+    </div>
+  </section>
+  <main class="rc-report"><div class="wrap">
+
+
+  <!-- DISCLAIMER FIRST -->
+  <section class="disclaimer" id="disclaimer">
+    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg> Data and confidentiality notice</h2>
+    <p>Protecting our clients' confidential information comes first, so this page is built from published data only.</p>
+    <ul>
+      <li><b>Sources.</b> The rig figures come from the <b>Baker Hughes North America Rig Count</b>, a public dataset Baker Hughes publishes every week at <a href="https://rigcount.bakerhughes.com" target="_blank" rel="noopener">rigcount.bakerhughes.com</a>. Prices, production, and the frac-spread count come from the U.S. Energy Information Administration and Primary Vision. Each provider is the source of its own numbers.</li>
+      <li><b>The analysis is ours.</b> The counts belong to the providers above. The reading of what they mean is McCracken Land Services' own view, and it does not represent Baker Hughes, the EIA, or anyone else.</li>
+      <li><b>No client or private data.</b> This page reports only activity that is already published at the state and basin level. It names no operator, well, lease, or client, and nothing here is drawn from our client work or any private source.</li>
+      <li><b>Not advice.</b> This is general industry information. It is not legal, investment, title, or drilling advice.</li>
+    </ul>
+    <p class="fine" id="sampleNote"></p>
+  </section>
+
+  <p class="updated">Baker Hughes release week ending <b id="wkEnding">&hellip;</b> &middot; last updated <b id="updated">&hellip;</b></p>
+
+  <!-- PRICES FIRST -->
+  <h2 class="sec-title" style="margin-top:22px">Oil and gas prices</h2>
+  <p class="sec-sub">The market backdrop, from the EIA and NYMEX. Week of Aug 7, 2026.</p>
+  <div class="stats" id="prices"></div>
+
+  <!-- HEADLINE STATS -->
+  <div class="stats" id="headline"></div>
+
+  <!-- BY STATE -->
+  <h2 class="sec-title">By state</h2>
+  <p class="sec-sub">Main drilling states, with the change from the prior week.</p>
+  <div class="states" id="states"></div>
+
+  <!-- BY BASIN -->
+  <h2 class="sec-title">By basin</h2>
+  <p class="sec-sub">Active rigs by major play.</p>
+  <div class="bars" id="basins"></div>
+
+  <!-- OIL / GAS -->
+  <h2 class="sec-title">Oil vs. gas</h2>
+  <p class="sec-sub">Directional split of the national fleet.</p>
+  <div class="split" id="split"></div>
+
+  <!-- PRODUCTION / CONTEXT -->
+  <h2 class="sec-title">Production and the wider picture</h2>
+  <p class="sec-sub">Output and the North America context, alongside the prices up top.</p>
+  <div class="inds" id="inds"></div>
+
+  <!-- ANALYSIS -->
+  <h2 class="sec-title">The landman read</h2>
+  <div class="analysis" id="analysis"></div>
+
+
+  </div></main>
+  <section class="rc-foot-links">
+    <div class="container">
+      <a href="archive/index.html">Past weeks &rarr;</a><span>&middot;</span>
+      <a href="feed.xml">RSS feed</a><span>&middot;</span>
+      <a href="downloads/McCracken-Rig-Count-Weekly.pdf">This week&rsquo;s PDF</a><span>&middot;</span>
+      <span>Rig data: Baker Hughes. Not affiliated with or endorsed by Baker Hughes.</span>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="../assets/logo-full-trans.svg" class="footer-full" alt="McCracken Land Services" />
+        <p class="footer-tag">Title &bull; Research &bull; Leasing &bull; Due Diligence &bull; GIS</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#process">Projects</a>
+        <a href="../tools/index.html">Tools</a>
+        <a href="index.html">Rig Count</a>
+        <a href="../blog/index.html">Blog</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/michaeltmccracken/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+      <p class="footer-legal">&copy; <span id="year"></span> McCracken Land Services. All rights reserved.<br />
+        <span class="footer-credit">Design &amp; Development by <a href="https://mccrackenlabs.com" target="_blank" rel="noopener">McCracken Labs</a></span></p>
+    </div>
+  </footer>
+  <span id="yr" hidden></span>
+  <style>.rc-report{
+    --navy:#0f2a3f; --navy-2:#173a52; --gold:#c79a3b; --gold-2:#e0b657;
+    --ink:#1c2733; --body:#3d4a57; --muted:#6c7885; --line:#e4e0d6; --line-2:#d6d1c4;
+    --paper:#f7f5ef; --card:#ffffff; --up:#1f8a4c; --down:#c0392b; --flat:#8a8a8a;
+    --head:"Source Serif 4",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  }
+.rc-report *{margin:0;padding:0;box-sizing:border-box}
+.rc-report{font-family:var(--sans);background:var(--paper);color:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+.rc-report .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.rc-report h1,.rc-report h2,.rc-report h3,.rc-report h4{font-family:var(--head);color:var(--navy);line-height:1.15;font-weight:600}
+.rc-report a{color:var(--navy)}
+.rc-report .mast{background:var(--navy);color:#fff;padding:26px 0}
+.rc-report .mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.rc-report .mast h1{color:#fff;font-size:1.7rem;font-weight:700;letter-spacing:-.01em}
+.rc-report .mast .sub{color:var(--gold-2);font-family:var(--sans);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;margin-top:4px}
+.rc-report .mast .who{font-family:var(--sans);font-size:.86rem;color:rgba(255,255,255,.8);text-align:right}
+.rc-report .mast .who b{color:#fff;display:block;font-weight:600}
+.rc-report .rule{height:4px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-2) 100%)}
+.rc-report .disclaimer{background:#fffdf6;border:1px solid var(--line-2);border-left:5px solid var(--gold);border-radius:8px;padding:22px 24px;margin-top:28px}
+.rc-report .disclaimer h2{font-size:1.06rem;display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.rc-report .disclaimer h2 svg{width:20px;height:20px;color:var(--gold);flex:none}
+.rc-report .disclaimer p{font-size:.92rem;color:var(--ink);margin-bottom:9px}
+.rc-report .disclaimer ul{list-style:none;display:grid;gap:8px;margin:4px 0 2px}
+.rc-report .disclaimer li{font-size:.9rem;color:var(--body);padding-left:20px;position:relative}
+.rc-report .disclaimer li::before{content:"\25C6";color:var(--gold);position:absolute;left:0;font-size:.7rem;top:4px}
+.rc-report .disclaimer .fine{font-size:.8rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+.rc-report .updated{font-size:.85rem;color:var(--muted);margin:26px 0 12px}
+.rc-report .updated b{color:var(--navy)}
+.rc-report .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rc-report .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.rc-report .stat.dk{background:var(--navy);border-color:var(--navy)}
+.rc-report .stat.dk .lab{color:rgba(255,255,255,.6)}
+.rc-report .stat.dk .num{color:#fff}
+.rc-report .stat .lab{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.rc-report .stat .num{font-family:var(--head);font-size:2.1rem;font-weight:700;color:var(--navy);line-height:1.1;margin-top:4px}
+.rc-report .stat .chg{font-size:.86rem;font-weight:600;margin-top:2px;display:inline-flex;align-items:center;gap:4px}
+.rc-report .up{color:var(--up)}
+.rc-report .down{color:var(--down)}
+.rc-report .flat{color:var(--flat)}
+.rc-report .sec-title{font-size:1.3rem;margin:40px 0 4px}
+.rc-report .sec-sub{font-size:.9rem;color:var(--muted);margin-bottom:18px}
+.rc-report .states{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.rc-report .scard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;transition:border-color .15s,box-shadow .15s}
+.rc-report .scard:hover{border-color:var(--gold);box-shadow:0 6px 20px -12px rgba(15,42,63,.4)}
+.rc-report .scard .st{display:flex;align-items:baseline;justify-content:space-between}
+.rc-report .scard .name{font-family:var(--head);font-weight:600;color:var(--navy);font-size:1.02rem}
+.rc-report .scard .ab{font-size:.72rem;color:var(--muted);font-weight:600}
+.rc-report .scard .val{font-family:var(--head);font-size:1.9rem;font-weight:700;color:var(--ink);margin-top:6px;line-height:1}
+.rc-report .scard .row{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.rc-report .scard .chg{font-size:.84rem;font-weight:600}
+.rc-report .scard .basins{font-size:.72rem;color:var(--muted);margin-top:8px}
+.rc-report .bars{display:grid;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px}
+.rc-report .bar{display:grid;grid-template-columns:160px 1fr 92px;gap:12px;align-items:center}
+.rc-report .bar .bn{font-size:.9rem;font-weight:600;color:var(--ink)}
+.rc-report .bar .track{display:block;height:14px;background:#eee7d8;border-radius:8px;overflow:hidden}
+.rc-report .bar .fill{display:block;height:100%;background:linear-gradient(90deg,var(--navy),var(--navy-2));border-radius:8px}
+.rc-report .bar .bv{font-size:.86rem;text-align:right;color:var(--body)}
+.rc-report .bar .bv b{color:var(--navy)}
+.rc-report .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.rc-report .og{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;text-align:center}
+.rc-report .og .big{font-family:var(--head);font-size:2.4rem;font-weight:700}
+.rc-report .og.oil .big{color:var(--gold)}
+.rc-report .og.gas .big{color:var(--navy)}
+.rc-report .og .lab{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.rc-report .og .chg{font-size:.86rem;font-weight:600;margin-top:4px}
+.rc-report .inds{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rc-report .ind{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.rc-report .ind .t{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.rc-report .ind .v{font-family:var(--head);font-size:1.6rem;font-weight:700;color:var(--navy);margin-top:3px}
+.rc-report .ind .v small{font-size:.82rem;color:var(--muted);font-weight:600}
+.rc-report .ind .d{font-size:.8rem;font-weight:600;margin-top:1px}
+.rc-report .ind .r{font-size:.8rem;color:var(--body);margin-top:6px;border-top:1px dashed var(--line);padding-top:6px}
+.rc-report .analysis{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px 28px;margin-top:14px}
+.rc-report .analysis h3{font-size:1.05rem;margin:14px 0 2px}
+.rc-report .analysis h3:first-of-type{margin-top:0}
+.rc-report .analysis .tag{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.rc-report .analysis p{font-size:.95rem;color:var(--ink);margin-top:6px}
+.rc-report .analysis .cta{font-size:.9rem;color:var(--body);border-top:1px solid var(--line);margin-top:14px;padding-top:12px}
+.rc-report footer{background:var(--navy);color:rgba(255,255,255,.75);padding:26px 0;margin-top:44px;font-size:.84rem}
+.rc-report footer a{color:var(--gold-2)}
+.rc-report footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:760px){.rc-report .stats{grid-template-columns:1fr 1fr}
+.rc-report .split{grid-template-columns:1fr}
+.rc-report .inds{grid-template-columns:1fr}
+.rc-report .bar{grid-template-columns:120px 1fr 74px}
+}
+</style>
+  <script>
+/* ============================================================
+   RIG DATA. Edit these numbers each week.
+   National totals, prices, production, and the frac-spread count
+   reflect public releases dated the week of Aug 7, 2026. State and
+   basin counts are from reporting on that Baker Hughes release.
+   ============================================================ */
+const RIG_DATA = {
+  weekEnding: "August 7, 2026",
+  updated: "August 10, 2026",
+  isSample: false,
+  national: { total:588, totalWk:0, oil:454, oilWk:3, gas:124, gasWk:-3, misc:10, miscWk:0, yoyLast:539 },
+  prices: [
+    { t:"WTI crude",     v:"~$77",   u:"/bbl",   cls:"up",   note:"supports oil drilling" },
+    { t:"Henry Hub gas", v:"~$2.70", u:"/MMBtu", cls:"down", note:"weak on the spot market" },
+    { t:"Brent crude",   v:"~$82",   u:"/bbl",   cls:"flat", note:"global benchmark" },
+    { t:"Frac spreads",  v:"194",    u:"crews",  cls:"down", dk:true, note:"down 4 on the week" }
+  ],
+  indicators: [
+    { t:"U.S. crude output", v:"~13.8", u:"MMb/d", wkText:"+3.8% year over year", cls:"up",
+      r:"A record, on a modest rig count. Efficiency, not new rigs, is driving supply." },
+    { t:"U.S. dry gas output", v:"~112", u:"Bcf/d", wkText:"+3.9% year over year", cls:"up",
+      r:"Also a record. Gas volumes climb even with a soft price, which helps keep the price soft." },
+    { t:"Canada rig count", v:"216", u:"rigs", wkText:"down 3 on the week", cls:"down",
+      r:"The other half of the North America count, and a check on continental activity." }
+  ],
+  states: [
+    { name:"Texas",         ab:"TX", now:275, wk:2,  lat:31.3, lon:-99.3,  basins:"Permian, Eagle Ford, Haynesville" },
+    { name:"New Mexico",    ab:"NM", now:96,  wk:0,  lat:34.4, lon:-106.1, basins:"Permian (Delaware)" },
+    { name:"Oklahoma",      ab:"OK", now:50,  wk:0,  lat:35.6, lon:-97.5,  basins:"Anadarko, SCOOP/STACK, Woodford" },
+    { name:"Louisiana",     ab:"LA", now:38,  wk:0,  lat:30.9, lon:-92.0,  basins:"Haynesville, Gulf" },
+    { name:"North Dakota",  ab:"ND", now:24,  wk:0,  lat:47.5, lon:-100.3, basins:"Williston / Bakken" },
+    { name:"Pennsylvania",  ab:"PA", now:16,  wk:-1, lat:41.0, lon:-77.6,  basins:"Marcellus" },
+    { name:"Wyoming",       ab:"WY", now:15,  wk:-1, lat:43.0, lon:-107.5, basins:"Powder River" },
+    { name:"Utah",          ab:"UT", now:14,  wk:0,  lat:39.3, lon:-111.7, basins:"Uinta" },
+    { name:"Colorado",      ab:"CO", now:13,  wk:0,  lat:39.0, lon:-105.5, basins:"DJ / Niobrara" },
+    { name:"Ohio",          ab:"OH", now:10,  wk:0,  lat:40.4, lon:-82.8,  basins:"Utica" },
+    { name:"West Virginia", ab:"WV", now:9,   wk:0,  lat:38.6, lon:-80.6,  basins:"Marcellus / Utica" },
+    { name:"Alaska",        ab:"AK", now:12,  wk:0,  lat:64.0, lon:-152.0, basins:"North Slope" }
+  ],
+  basins: [
+    { name:"Permian",            now:263, wk:3 },
+    { name:"Haynesville",        now:56,  wk:0 },
+    { name:"Eagle Ford",         now:49,  wk:0 },
+    { name:"Williston (Bakken)", now:27,  wk:0 },
+    { name:"Marcellus",          now:24,  wk:-1 },
+    { name:"Cana Woodford",      now:20,  wk:0 },
+    { name:"Granite Wash",       now:19,  wk:-1 },
+    { name:"DJ / Niobrara",      now:11,  wk:0 },
+    { name:"Utica",              now:11,  wk:0 }
+  ],
+  analysis: [
+    { h:"Steady oil, weak gas, record output", p:"The total number of working rigs barely moved, holding at 588. Underneath that flat number, drilling kept tilting toward oil. Oil rigs added three over the week and gas rigs gave back three. Over the past year the country has put 49 rigs back to work, and almost all of them are drilling for oil. The bigger story is how much oil is actually being pumped. The United States is producing close to 13.8 million barrels a day, an all-time high, and it is doing that with far fewer rigs than it would have needed ten years ago. Today's wells simply produce more than they used to, so the rig count on its own makes activity look quieter than it really is." },
+    { h:"The Permian is doing most of the work", p:"The Permian Basin, in West Texas and southeast New Mexico, is running 263 rigs, up three on the week. That is close to 45 percent of every oil rig in the country, so this one area still drives most of the work. New Mexico held at 96 rigs and Texas added a couple to reach 275, which keeps us busy across that region. Most wells today are drilled straight down and then turned to run a mile or two sideways through the rock, so a single well can cross many separate tracts and many different owners. More owners on one well means more title records to track down and clear, and more chance of a problem later if the up-front land work was rushed." },
+    { h:"Oklahoma is picking up, close to home", p:"Away from the Permian, the oil areas are steady. South Texas, known as the Eagle Ford, held at 49 rigs, and North Dakota, home of the Bakken, is quiet at 24. Oklahoma is the one worth pointing out. The state is running 50 rigs, seven more than a year ago, led by drilling across western and central Oklahoma in the areas operators call the Anadarko and the Woodford. We are based in Oklahoma City, so that activity turns into leasing and title work we can take on without sending people far from home." },
+    { h:"Gas prices are soft, but the rigs are holding", p:"Natural gas prices have been weak. The main U.S. gas price, set at a Louisiana hub called Henry Hub, has been trading around $2.70, well below what most gas-focused drilling needs to pay off. What is surprising is that gas drilling has held up anyway. The Haynesville area of East Texas and North Louisiana is steady at 56 rigs, and the Marcellus and Utica in the Appalachian region are close to flat. Operators seem to be betting that winter heating demand and steady exports of liquefied natural gas, or LNG, will pull prices back up. If gas stays near $2.70 into the fall, we would expect a few of those rigs to come off, and the new leasing and pipeline right-of-way work that follows drilling would slow a few months after that." }
+  ],
+  cta: "Have a project in one of these areas? We handle leasing, title, and pipeline right-of-way work out of Oklahoma City and across the mid-continent. If you have a tract in one of these plays, we can tell you where it sits in the cycle."
+};
+
+/* ---- render 2D ---- */
+(function(){
+  const d = RIG_DATA, $ = id => document.getElementById(id);
+  $('yr').textContent = new Date().getFullYear();
+  $('wkEnding').textContent = d.weekEnding;
+  $('updated').textContent = d.updated;
+  $('sampleNote').innerHTML = "National rig totals, prices, production, and the frac-spread count are from public releases dated the week of "+d.weekEnding+". State and basin counts are from reporting on the Baker Hughes release for that week.";
+
+  const arrow = v => v>0?"&#9650;":(v<0?"&#9660;":"&#8211;");
+  const cls   = v => v>0?"up":(v<0?"down":"flat");
+  const sign  = v => v===0?"0":((v>0?"+":"")+v);
+  const wkLbl = v => v===0?"flat on the week":(arrow(v)+" "+sign(v)+" on the week");
+
+  const n=d.national, yoy=n.total-n.yoyLast;
+  const cards=[
+    {lab:"U.S. total rigs", num:n.total, chg:n.totalWk, note:"on the week", dk:false},
+    {lab:"Oil rigs",   num:n.oil, chg:n.oilWk, note:"on the week", dk:false},
+    {lab:"Gas rigs",   num:n.gas, chg:n.gasWk, note:"on the week", dk:false},
+    {lab:"Vs. a year ago", num:"+"+yoy, chg:1, note:"total rigs added", dk:true}
+  ];
+  $('headline').innerHTML = cards.map(c=>`
+    <div class="stat ${c.dk?'dk':''}"><div class="lab">${c.lab}</div><div class="num">${typeof c.num==='number'?c.num.toLocaleString():c.num}</div>
+    <div class="chg ${c.dk?'up':cls(c.chg)}" ${c.dk?'style="color:var(--gold-2)"':''}>${c.dk?'&#9650;':arrow(c.chg)} ${c.dk?'':(sign(c.chg)+' ')}<span style="color:${c.dk?'var(--gold-2)':'var(--muted)'};font-weight:400">${c.note}</span></div></div>`).join('');
+
+  $('states').innerHTML = d.states.map(s=>`
+    <div class="scard"><div class="st"><span class="name">${s.name}</span><span class="ab">${s.ab}</span></div>
+    <div class="val">${s.now}</div>
+    <div class="row"><span class="chg ${cls(s.wk)}">${arrow(s.wk)} ${sign(s.wk)} <span style="color:var(--muted);font-weight:400">on the week</span></span></div>
+    <div class="basins">${s.basins}</div></div>`).join('');
+
+  const maxB=Math.max(...d.basins.map(b=>b.now));
+  $('basins').innerHTML = d.basins.map(b=>`
+    <div class="bar"><span class="bn">${b.name}</span>
+    <span class="track"><span class="fill" style="width:${Math.round(b.now/maxB*100)}%"></span></span>
+    <span class="bv"><b>${b.now}</b> <span class="${cls(b.wk)}">${arrow(b.wk)}${sign(b.wk)}</span></span></div>`).join('');
+
+  $('split').innerHTML = `
+    <div class="og oil"><div class="lab">Oil</div><div class="big">${n.oil}</div>
+      <div class="chg ${cls(n.oilWk)}">${arrow(n.oilWk)} ${sign(n.oilWk)} on the week</div></div>
+    <div class="og gas"><div class="lab">Gas</div><div class="big">${n.gas}</div>
+      <div class="chg ${cls(n.gasWk)}">${arrow(n.gasWk)} ${sign(n.gasWk)} on the week</div></div>`;
+
+  $('prices').innerHTML = d.prices.map(p=>`
+    <div class="stat ${p.dk?'dk':''}"><div class="lab">${p.t}</div>
+    <div class="num">${p.v}<span style="font-size:.9rem;font-weight:600;color:${p.dk?'rgba(255,255,255,.6)':'var(--muted)'}"> ${p.u}</span></div>
+    <div class="chg ${p.dk?'':p.cls}" ${p.dk?'style="color:var(--gold-2)"':''}>${p.cls==='up'?'&#9650; ':(p.cls==='down'?'&#9660; ':'')}${p.note}</div></div>`).join('');
+
+  $('inds').innerHTML = d.indicators.map(i=>`
+    <div class="ind"><div class="t">${i.t}</div>
+      <div class="v">${i.v} <small>${i.u}</small></div>
+      <div class="d ${i.cls}">${i.cls==='up'?'&#9650;':(i.cls==='down'?'&#9660;':'&#8211;')} ${i.wkText}</div>
+      <div class="r">${i.r}</div></div>`).join('');
+
+  $('analysis').innerHTML = '<span class="tag">McCracken analysis</span>'
+    + d.analysis.map(a=>`<h3>${a.h}</h3><p>${a.p}</p>`).join('')
+    + `<p class="cta">${d.cta} &nbsp;&middot;&nbsp; <a href="mailto:landmanmike@gmail.com">landmanmike@gmail.com</a></p>`;
+})();
+</script>
+  <script src="../script.js"></script>
+</body>
+</html>
