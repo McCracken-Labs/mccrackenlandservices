@@ -7,7 +7,15 @@
     <atom:link href="https://www.mccrackenlandservices.com/rig-count/feed.xml" rel="self" type="application/rss+xml" />
     <description>Weekly U.S. drilling rig count by state and basin from the public Baker Hughes North America Rig Count, with oil and gas prices and a plain-English read. Not affiliated with or endorsed by Baker Hughes.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Aug 2026 18:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 18:00:00 GMT</lastBuildDate>
+    <item>
+      <title>U.S. Rig Count &#8212; week ending August 21, 2026</title>
+      <link>https://www.mccrackenlandservices.com/rig-count/</link>
+      <guid isPermaLink="false">mls-rigcount-2026-08-21</guid>
+      <pubDate>Fri, 21 Aug 2026 18:00:00 GMT</pubDate>
+      <description>U.S. total 588 rigs, down 5 on the week (452 oil, 127 gas, +50 vs a year ago). WTI about $87, Henry Hub about $2.78. State and basin detail is provisional until Monday, August 24. Full report and downloadable PDF at the link.</description>
+      <enclosure url="https://www.mccrackenlandservices.com/rig-count/archive/McCracken-Rig-Count-2026-08-21.pdf" type="application/pdf" length="216464" />
+    </item>
     <item>
       <title>U.S. Rig Count &#8212; week ending August 7, 2026</title>
       <link>https://www.mccrackenlandservices.com/rig-count/</link>

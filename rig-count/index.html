@@ -85,6 +85,7 @@
       <li><b>Sources.</b> The rig figures come from the <b>Baker Hughes North America Rig Count</b>, a public dataset Baker Hughes publishes every week at <a href="https://rigcount.bakerhughes.com" target="_blank" rel="noopener">rigcount.bakerhughes.com</a>. Prices, production, and the frac-spread count come from the U.S. Energy Information Administration and Primary Vision. Each provider is the source of its own numbers.</li>
       <li><b>The analysis is ours.</b> The counts belong to the providers above. The reading of what they mean is McCracken Land Services' own view, and it does not represent Baker Hughes, the EIA, or anyone else.</li>
       <li><b>No client or private data.</b> This page reports only activity that is already published at the state and basin level. It names no operator, well, lease, or client, and nothing here is drawn from our client work or any private source.</li>
+      <li><b>Assembled automatically.</b> We put this page together each week with the help of software that gathers the published numbers and drafts the summary. We review it before it goes out, but automated data pulls can carry an error. If a figure looks off, trust the original source it came from, and let us know so we can fix it.</li>
       <li><b>Not advice.</b> This is general industry information. It is not legal, investment, title, or drilling advice.</li>
     </ul>
     <p class="fine" id="sampleNote"></p>
@@ -94,7 +95,7 @@
 
   <!-- PRICES FIRST -->
   <h2 class="sec-title" style="margin-top:22px">Oil and gas prices</h2>
-  <p class="sec-sub">The market backdrop, from the EIA and NYMEX. Week of Aug 7, 2026.</p>
+  <p class="sec-sub">The wider market, from the EIA and NYMEX. Week ending August 21, 2026.</p>
   <div class="stats" id="prices"></div>
 
   <!-- HEADLINE STATS -->
@@ -103,11 +104,12 @@
   <!-- BY STATE -->
   <h2 class="sec-title">By state</h2>
   <p class="sec-sub">Main drilling states, with the change from the prior week.</p>
+  <div class="provbox" id="provState" hidden></div>
   <div class="states" id="states"></div>
 
   <!-- BY BASIN -->
   <h2 class="sec-title">By basin</h2>
-  <p class="sec-sub">Active rigs by major play.</p>
+  <p class="sec-sub">Active rigs by major basin.</p>
   <div class="bars" id="basins"></div>
 
   <!-- OIL / GAS -->
@@ -183,6 +185,8 @@
 .rc-report .disclaimer .fine{font-size:.8rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
 .rc-report .updated{font-size:.85rem;color:var(--muted);margin:26px 0 12px}
 .rc-report .updated b{color:var(--navy)}
+.rc-report .provbox{background:#fffdf6;border:1px solid var(--line-2);border-left:4px solid var(--gold);border-radius:8px;padding:12px 16px;margin:10px 0 2px;font-size:.86rem;color:var(--body)}
+.rc-report .provbox b{color:var(--navy)}
 .rc-report .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .rc-report .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
 .rc-report .stat.dk{background:var(--navy);border-color:var(--navy)}
@@ -250,56 +254,59 @@
    basin counts are from reporting on that Baker Hughes release.
    ============================================================ */
 const RIG_DATA = {
-  weekEnding: "August 7, 2026",
-  updated: "August 10, 2026",
+  weekEnding: "August 21, 2026",
+  updated: "August 22, 2026",
   isSample: false,
-  national: { total:588, totalWk:0, oil:454, oilWk:3, gas:124, gasWk:-3, misc:10, miscWk:0, yoyLast:539 },
+  detailProvisional: true,
+  provAsOf: "August 14, 2026",
+  provRefresh: "Monday, August 24",
+  national: { total:588, totalWk:-5, oil:452, oilWk:-3, gas:127, gasWk:-1, misc:9, miscWk:-1, yoyLast:538 },
   prices: [
-    { t:"WTI crude",     v:"~$77",   u:"/bbl",   cls:"up",   note:"supports oil drilling" },
-    { t:"Henry Hub gas", v:"~$2.70", u:"/MMBtu", cls:"down", note:"weak on the spot market" },
-    { t:"Brent crude",   v:"~$82",   u:"/bbl",   cls:"flat", note:"global benchmark" },
-    { t:"Frac spreads",  v:"194",    u:"crews",  cls:"down", dk:true, note:"down 4 on the week" }
+    { t:"WTI crude",     v:"~$87",   u:"/bbl",   cls:"up",   note:"firmed on Mideast supply worry" },
+    { t:"Henry Hub gas", v:"~$2.78", u:"/MMBtu", cls:"down", note:"still soft on the spot market" },
+    { t:"Brent crude",   v:"~$92",   u:"/bbl",   cls:"up",   note:"global benchmark, up on the week" },
+    { t:"Frac spreads",  v:"193",    u:"crews",  cls:"down", dk:true, note:"down 3 on the week" }
   ],
   indicators: [
-    { t:"U.S. crude output", v:"~13.8", u:"MMb/d", wkText:"+3.8% year over year", cls:"up",
-      r:"A record, on a modest rig count. Efficiency, not new rigs, is driving supply." },
-    { t:"U.S. dry gas output", v:"~112", u:"Bcf/d", wkText:"+3.9% year over year", cls:"up",
-      r:"Also a record. Gas volumes climb even with a soft price, which helps keep the price soft." },
-    { t:"Canada rig count", v:"216", u:"rigs", wkText:"down 3 on the week", cls:"down",
-      r:"The other half of the North America count, and a check on continental activity." }
+    { t:"U.S. crude output", v:"~13.8", u:"MMb/d", wkText:"at a record", cls:"up",
+      r:"An all-time high, on a modest rig count. Getting more out of each well, not drilling more of them, is what lifts the total." },
+    { t:"U.S. dry gas output", v:"~111", u:"Bcf/d", wkText:"near a record", cls:"up",
+      r:"Gas volumes stay high even with a soft price, which is part of why the price stays soft." },
+    { t:"Canada rig count", v:"219", u:"rigs", wkText:"week ending Aug 14", cls:"flat",
+      r:"The other half of the North America count, and a check on continental activity into the fall." }
   ],
   states: [
-    { name:"Texas",         ab:"TX", now:275, wk:2,  lat:31.3, lon:-99.3,  basins:"Permian, Eagle Ford, Haynesville" },
-    { name:"New Mexico",    ab:"NM", now:96,  wk:0,  lat:34.4, lon:-106.1, basins:"Permian (Delaware)" },
-    { name:"Oklahoma",      ab:"OK", now:50,  wk:0,  lat:35.6, lon:-97.5,  basins:"Anadarko, SCOOP/STACK, Woodford" },
-    { name:"Louisiana",     ab:"LA", now:38,  wk:0,  lat:30.9, lon:-92.0,  basins:"Haynesville, Gulf" },
-    { name:"North Dakota",  ab:"ND", now:24,  wk:0,  lat:47.5, lon:-100.3, basins:"Williston / Bakken" },
-    { name:"Pennsylvania",  ab:"PA", now:16,  wk:-1, lat:41.0, lon:-77.6,  basins:"Marcellus" },
-    { name:"Wyoming",       ab:"WY", now:15,  wk:-1, lat:43.0, lon:-107.5, basins:"Powder River" },
-    { name:"Utah",          ab:"UT", now:14,  wk:0,  lat:39.3, lon:-111.7, basins:"Uinta" },
-    { name:"Colorado",      ab:"CO", now:13,  wk:0,  lat:39.0, lon:-105.5, basins:"DJ / Niobrara" },
-    { name:"Ohio",          ab:"OH", now:10,  wk:0,  lat:40.4, lon:-82.8,  basins:"Utica" },
-    { name:"West Virginia", ab:"WV", now:9,   wk:0,  lat:38.6, lon:-80.6,  basins:"Marcellus / Utica" },
-    { name:"Alaska",        ab:"AK", now:12,  wk:0,  lat:64.0, lon:-152.0, basins:"North Slope" }
+    { name:"Texas",         ab:"TX", now:277, wk:0, basins:"Permian, Eagle Ford, Haynesville" },
+    { name:"New Mexico",    ab:"NM", now:99,  wk:0, basins:"Permian (Delaware)" },
+    { name:"Oklahoma",      ab:"OK", now:51,  wk:0, basins:"Anadarko, SCOOP/STACK, Woodford" },
+    { name:"Louisiana",     ab:"LA", now:38,  wk:0, basins:"Haynesville, Gulf" },
+    { name:"North Dakota",  ab:"ND", now:24,  wk:0, basins:"Williston / Bakken" },
+    { name:"Pennsylvania",  ab:"PA", now:16,  wk:0, basins:"Marcellus" },
+    { name:"Wyoming",       ab:"WY", now:15,  wk:0, basins:"Powder River" },
+    { name:"Utah",          ab:"UT", now:13,  wk:0, basins:"Uinta" },
+    { name:"Colorado",      ab:"CO", now:13,  wk:0, basins:"DJ / Niobrara" },
+    { name:"Ohio",          ab:"OH", now:10,  wk:0, basins:"Utica" },
+    { name:"West Virginia", ab:"WV", now:9,   wk:0, basins:"Marcellus / Utica" },
+    { name:"Alaska",        ab:"AK", now:12,  wk:0, basins:"North Slope" }
   ],
   basins: [
-    { name:"Permian",            now:263, wk:3 },
+    { name:"Permian",            now:263, wk:0 },
     { name:"Haynesville",        now:56,  wk:0 },
     { name:"Eagle Ford",         now:49,  wk:0 },
     { name:"Williston (Bakken)", now:27,  wk:0 },
-    { name:"Marcellus",          now:24,  wk:-1 },
+    { name:"Marcellus",          now:24,  wk:0 },
     { name:"Cana Woodford",      now:20,  wk:0 },
-    { name:"Granite Wash",       now:19,  wk:-1 },
+    { name:"Granite Wash",       now:19,  wk:0 },
     { name:"DJ / Niobrara",      now:11,  wk:0 },
     { name:"Utica",              now:11,  wk:0 }
   ],
   analysis: [
-    { h:"Steady oil, weak gas, record output", p:"The total number of working rigs barely moved, holding at 588. Underneath that flat number, drilling kept tilting toward oil. Oil rigs added three over the week and gas rigs gave back three. Over the past year the country has put 49 rigs back to work, and almost all of them are drilling for oil. The bigger story is how much oil is actually being pumped. The United States is producing close to 13.8 million barrels a day, an all-time high, and it is doing that with far fewer rigs than it would have needed ten years ago. Today's wells simply produce more than they used to, so the rig count on its own makes activity look quieter than it really is." },
-    { h:"The Permian is doing most of the work", p:"The Permian Basin, in West Texas and southeast New Mexico, is running 263 rigs, up three on the week. That is close to 45 percent of every oil rig in the country, so this one area still drives most of the work. New Mexico held at 96 rigs and Texas added a couple to reach 275, which keeps us busy across that region. Most wells today are drilled straight down and then turned to run a mile or two sideways through the rock, so a single well can cross many separate tracts and many different owners. More owners on one well means more title records to track down and clear, and more chance of a problem later if the up-front land work was rushed." },
-    { h:"Oklahoma is picking up, close to home", p:"Away from the Permian, the oil areas are steady. South Texas, known as the Eagle Ford, held at 49 rigs, and North Dakota, home of the Bakken, is quiet at 24. Oklahoma is the one worth pointing out. The state is running 50 rigs, seven more than a year ago, led by drilling across western and central Oklahoma in the areas operators call the Anadarko and the Woodford. We are based in Oklahoma City, so that activity turns into leasing and title work we can take on without sending people far from home." },
-    { h:"Gas prices are soft, but the rigs are holding", p:"Natural gas prices have been weak. The main U.S. gas price, set at a Louisiana hub called Henry Hub, has been trading around $2.70, well below what most gas-focused drilling needs to pay off. What is surprising is that gas drilling has held up anyway. The Haynesville area of East Texas and North Louisiana is steady at 56 rigs, and the Marcellus and Utica in the Appalachian region are close to flat. Operators seem to be betting that winter heating demand and steady exports of liquefied natural gas, or LNG, will pull prices back up. If gas stays near $2.70 into the fall, we would expect a few of those rigs to come off, and the new leasing and pipeline right-of-way work that follows drilling would slow a few months after that." }
+    { h:"Prices jumped, the fleet eased", p:"The count of working rigs slipped by five this week to 588, giving back the small gain that had pushed it to a seventeen-month high the week before. What stands out is that it fell while oil prices went the other way. West Texas Intermediate, the main U.S. crude price, climbed into the high $80s after renewed trouble around the Strait of Hormuz, the narrow shipping lane that carries a large share of the world's oil. A one-week jump in price does not turn into new rigs right away. Operators set their drilling budgets months ahead, so a fleet this size takes time to respond, and a single strong week is not enough to move it." },
+    { h:"Oil still carries the count, output at a record", p:"Oil rigs eased by three to 452 and gas rigs by one to 127, so close to 77 percent of the working fleet is still chasing oil. Even with a smaller rig count than a decade ago, the country is pumping near 13.8 million barrels a day, an all-time high. Today's wells produce far more than older ones, so the rig count on its own makes activity look quieter than it is. For anyone who owns minerals or collects a royalty check, steady production on firmer prices is good for near-term income." },
+    { h:"Gas stays soft, but the rigs are holding", p:"Natural gas prices are still weak. Henry Hub, the main U.S. gas price set at a hub in Louisiana, has been trading in the high $2s, below what most gas-focused drilling needs to pay off. Gas drilling has barely moved anyway, on a bet that winter heating demand and steady exports of liquefied natural gas, or LNG, pull the price back up by the fall. If gas stays this soft, a few of those rigs would be the first to come off, and the leasing and pipeline right-of-way work that follows drilling would slow a few months after that." },
+    { h:"The caution for anyone planning ahead", p:"The crews that finish drilled wells and get them flowing eased to 193, a reminder that the pace after the rig can slow even while prices firm. The larger caution sits in next year. Federal forecasters raised their near-term oil price this month on the Strait of Hormuz disruptions, yet they still expect the world to hold more oil than it needs in 2027, which points to lower prices down the road. A softer outlook next year is a reason to get ownership and title records cleaned up now, while activity and income are steady." }
   ],
-  cta: "Have a project in one of these areas? We handle leasing, title, and pipeline right-of-way work out of Oklahoma City and across the mid-continent. If you have a tract in one of these plays, we can tell you where it sits in the cycle."
+  cta: "Have a project in one of these areas? We handle leasing, title, and pipeline right-of-way work out of Oklahoma City and across the mid-continent. If you have land in one of these areas, we can tell you what the current drilling activity means for it."
 };
 
 /* ---- render 2D ---- */
@@ -308,7 +315,13 @@ const RIG_DATA = {
   $('yr').textContent = new Date().getFullYear();
   $('wkEnding').textContent = d.weekEnding;
   $('updated').textContent = d.updated;
-  $('sampleNote').innerHTML = "National rig totals, prices, production, and the frac-spread count are from public releases dated the week of "+d.weekEnding+". State and basin counts are from reporting on the Baker Hughes release for that week.";
+  $('sampleNote').innerHTML = "National rig totals, prices, production, and the frac-spread count are from public releases for the week ending "+d.weekEnding+". State and basin counts are from reporting on the Baker Hughes release.";
+
+  if(d.detailProvisional){
+    const pb=$('provState');
+    if(pb){ pb.hidden=false;
+      pb.innerHTML="<b>State and basin detail updates "+d.provRefresh+".</b> The Aug 21 national totals and prices above are final. Baker Hughes posts the full state and basin breakdown a few days after the Friday release, so the counts below are last week's confirmed levels (week ending "+d.provAsOf+") and the weekly change is held until the detail settles."; }
+  }
 
   const arrow = v => v>0?"&#9650;":(v<0?"&#9660;":"&#8211;");
   const cls   = v => v>0?"up":(v<0?"down":"flat");
@@ -329,14 +342,14 @@ const RIG_DATA = {
   $('states').innerHTML = d.states.map(s=>`
     <div class="scard"><div class="st"><span class="name">${s.name}</span><span class="ab">${s.ab}</span></div>
     <div class="val">${s.now}</div>
-    <div class="row"><span class="chg ${cls(s.wk)}">${arrow(s.wk)} ${sign(s.wk)} <span style="color:var(--muted);font-weight:400">on the week</span></span></div>
+    <div class="row"><span class="chg ${d.detailProvisional?'flat':cls(s.wk)}">${d.detailProvisional?'wk pending':(arrow(s.wk)+' '+sign(s.wk)+' <span style="color:var(--muted);font-weight:400">on the week</span>')}</span></div>
     <div class="basins">${s.basins}</div></div>`).join('');
 
   const maxB=Math.max(...d.basins.map(b=>b.now));
   $('basins').innerHTML = d.basins.map(b=>`
     <div class="bar"><span class="bn">${b.name}</span>
     <span class="track"><span class="fill" style="width:${Math.round(b.now/maxB*100)}%"></span></span>
-    <span class="bv"><b>${b.now}</b> <span class="${cls(b.wk)}">${arrow(b.wk)}${sign(b.wk)}</span></span></div>`).join('');
+    <span class="bv"><b>${b.now}</b> ${d.detailProvisional?'':('<span class="'+cls(b.wk)+'">'+arrow(b.wk)+sign(b.wk)+'</span>')}</span></div>`).join('');
 
   $('split').innerHTML = `
     <div class="og oil"><div class="lab">Oil</div><div class="big">${n.oil}</div>
