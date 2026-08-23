@@ -44,11 +44,12 @@
     } catch (e) { return ""; }
   }
 
-  function send() {
+  // Send a hit. Optional pathOverride lets us record a file download under its own path.
+  function send(pathOverride) {
     try {
       var data = {
         site: site,
-        p: location.pathname || "/",
+        p: pathOverride || location.pathname || "/",
         r: refHost(),
         s: (screen.width || 0) + "x" + (screen.height || 0)
       };
@@ -64,6 +65,20 @@
 
   // Count the first view.
   if (document.visibilityState !== "prerender") send();
+
+  // Count downloads. Clicking a file (a PDF, EPUB, doc, etc.) navigates the browser
+  // straight to the file, so this page's counter never runs for it. Record it here,
+  // under the file's own path, so downloads show up in the dashboard's page list.
+  var DL_RE = /\.(pdf|epub|docx?|xlsx?|pptx?|csv|zip|rtf|txt)$/i;
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) return;
+    var u;
+    try { u = new URL(a.href, location.href); } catch (x) { return; }
+    // Only files: a link to a downloadable document, or one marked with the download attribute.
+    if (!DL_RE.test(u.pathname) && !a.hasAttribute("download")) return;
+    send(u.pathname || "/");
+  }, true);
 
   // Count client-side route changes (single-page apps).
   var last = location.pathname;

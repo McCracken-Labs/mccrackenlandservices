@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oil &amp; Gas Lease Sale Calendar | McCracken Land Services</title>
+  <meta name="description" content="Upcoming oil and gas lease sales across the mid-continent and federal lands: New Mexico, Texas, Oklahoma, and BLM, with dates, areas, and links to the official notices. By McCracken Land Services, Oklahoma City." />
+  <meta name="theme-color" content="#0b2233" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="canonical" href="https://www.mccrackenlandservices.com/lease-sales/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Oil &amp; Gas Lease Sale Calendar | McCracken Land Services" />
+  <meta property="og:url" content="https://www.mccrackenlandservices.com/lease-sales/" />
+  <meta property="og:site_name" content="McCracken Land Services" />
+  <meta property="og:image" content="https://www.mccrackenlandservices.com/assets/og-image.png" />
+  <style>
+    .lc-hero{background:var(--navy-800);color:#fff;padding:52px 0 38px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .lc-hero .eyebrow{color:var(--gold-400);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin:0 0 12px}
+    .lc-hero h1{font-family:var(--head);font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.1;margin:0 0 12px;color:#fff}
+    .lc-hero p.lead{color:rgba(255,255,255,.85);max-width:730px;margin:0 0 4px;font-size:1.05rem}
+    .lc-report{padding:34px 0 10px}
+    .lc-foot-links{padding:14px 0 60px}
+    .lc-foot-links .container{border-top:1px solid var(--line);padding-top:20px;color:var(--ink-500);font-size:.9rem;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center;text-align:center}
+    .lc-foot-links a{color:var(--navy-800);font-weight:600}
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html#top" aria-label="McCracken Land Services home">
+        <img src="../assets/logo-full-trans.svg" class="brand-full" alt="McCracken Land Services" />
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#process">Projects</a></li>
+          <li><a href="../tools/index.html">Tools</a></li>
+          <li><a href="../rig-count/index.html">Rig Count</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../index.html#expertise">Expertise</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a class="nav-cta" href="../index.html#contact">Get in touch</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="lc-hero">
+    <div class="container">
+      <p class="eyebrow">Public data tools</p>
+      <h1>Oil &amp; Gas Lease Sale Calendar</h1>
+      <p class="lead">Upcoming state and federal oil and gas lease sales across the mid-continent, with dates, the acreage on offer where it is posted, and a link to each official notice. Acreage coming to market is the earliest sign of new leasing and title work. Focused on New Mexico, Texas, Oklahoma, and federal BLM sales for those states.</p>
+    </div>
+  </section>
+
+  <main class="lc-report"><div class="wrap">
+
+    <!-- DISCLAIMER -->
+    <section class="disclaimer" id="disclaimer">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg> About this calendar</h2>
+      <p>A plain-English roundup of publicly announced oil and gas lease sales, built from the offices that run them.</p>
+      <ul>
+        <li><b>Sources.</b> Dates and details come from the official notices published by each seller: the New Mexico State Land Office, the Texas General Land Office, the Oklahoma Commissioners of the Land Office, and the U.S. Bureau of Land Management. Each office is the source of its own schedule, and every sale below links to that office.</li>
+        <li><b>Dates can change.</b> Lease sales get postponed, rescheduled, or cancelled, and some are marked tentative by the office itself. Always confirm the date, terms, and tracts against the official notice before you rely on it.</li>
+        <li><b>Assembled by hand, refreshed regularly.</b> We gather these from the government sites and keep them current, but a date can move after we post it. If something looks off, the official notice is the last word, and we would be glad to hear about it.</li>
+        <li><b>Not advice.</b> This is general information for planning. It is not legal, title, investment, or bidding advice, and it is not an offer to sell or lease anything.</li>
+      </ul>
+      <p class="fine" id="updatedNote"></p>
+    </section>
+
+    <h2 class="sec-title" style="margin-top:8px">Upcoming sales</h2>
+    <p class="sec-sub">Nearest first. State trust lands and federal BLM parcels are marked. Click any sale for the official notice.</p>
+    <div id="cal"></div>
+
+    <h2 class="sec-title">How each one works</h2>
+    <div class="lc-notes" id="notes"></div>
+
+  </div></main>
+
+  <section class="lc-foot-links">
+    <div class="container">
+      <a href="../rig-count/index.html">Rig Count &rarr;</a><span>&middot;</span>
+      <a href="../tools/index.html">All tools</a><span>&middot;</span>
+      <a href="../index.html#contact">Have a tract in one of these areas? Get in touch</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="../assets/logo-full-trans.svg" class="footer-full" alt="McCracken Land Services" />
+        <p class="footer-tag">Title &bull; Research &bull; Leasing &bull; Due Diligence &bull; GIS</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#process">Projects</a>
+        <a href="../tools/index.html">Tools</a>
+        <a href="../rig-count/index.html">Rig Count</a>
+        <a href="../blog/index.html">Blog</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/michaeltmccracken/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+      <p class="footer-legal">&copy; <span id="year"></span> McCracken Land Services. All rights reserved.<br />
+        <span class="footer-credit">Design &amp; Development by <a href="https://mccrackenlabs.com" target="_blank" rel="noopener">McCracken Labs</a></span></p>
+    </div>
+  </footer>
+  <span id="yr" hidden></span>
+
+  <style>.lc-report{
+    --navy:#0f2a3f; --navy-2:#173a52; --gold:#c79a3b; --gold-2:#e0b657;
+    --ink:#1c2733; --body:#3d4a57; --muted:#6c7885; --line:#e4e0d6; --line-2:#d6d1c4;
+    --paper:#f7f5ef; --card:#ffffff; --fed:#7c4d1e; --state:#0f5c46;
+    --head:"Source Serif 4",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  }
+  .lc-report *{margin:0;padding:0;box-sizing:border-box}
+  .lc-report{font-family:var(--sans);background:var(--paper);color:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .lc-report .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  .lc-report h1,.lc-report h2,.lc-report h3{font-family:var(--head);color:var(--navy);line-height:1.15;font-weight:600}
+  .lc-report a{color:var(--navy)}
+  .lc-report .disclaimer{background:#fffdf6;border:1px solid var(--line-2);border-left:5px solid var(--gold);border-radius:8px;padding:22px 24px;margin-top:28px}
+  .lc-report .disclaimer h2{font-size:1.06rem;display:flex;align-items:center;gap:9px;margin-bottom:10px;color:var(--navy)}
+  .lc-report .disclaimer h2 svg{width:20px;height:20px;color:var(--gold);flex:none}
+  .lc-report .disclaimer p{font-size:.92rem;color:var(--ink);margin-bottom:9px}
+  .lc-report .disclaimer ul{list-style:none;display:grid;gap:8px;margin:4px 0 2px}
+  .lc-report .disclaimer li{font-size:.9rem;color:var(--body);padding-left:20px;position:relative}
+  .lc-report .disclaimer li::before{content:"\25C6";color:var(--gold);position:absolute;left:0;font-size:.7rem;top:4px}
+  .lc-report .disclaimer .fine{font-size:.8rem;color:var(--muted);margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+  .lc-report .sec-title{font-size:1.3rem;margin:40px 0 4px}
+  .lc-report .sec-sub{font-size:.9rem;color:var(--muted);margin-bottom:18px}
+  /* calendar cards */
+  .lc-report .cal-card{display:grid;grid-template-columns:88px 1fr auto;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:12px;transition:border-color .15s,box-shadow .15s}
+  .lc-report .cal-card:hover{border-color:var(--gold);box-shadow:0 6px 20px -12px rgba(15,42,63,.4)}
+  .lc-report .cal-card.tent{border-style:dashed}
+  .lc-report .datebox{text-align:center;border-right:1px solid var(--line);padding-right:16px}
+  .lc-report .datebox .mo{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .lc-report .datebox .day{font-family:var(--head);font-size:2rem;font-weight:700;color:var(--navy);line-height:1}
+  .lc-report .datebox .yr{font-size:.72rem;color:var(--muted);font-weight:600}
+  .lc-report .datebox .tba{font-family:var(--head);font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.1}
+  .lc-report .cal-main .who{font-family:var(--head);font-size:1.12rem;font-weight:600;color:var(--navy)}
+  .lc-report .cal-main .where{font-size:.9rem;color:var(--body);margin-top:2px}
+  .lc-report .cal-main .tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+  .lc-report .pill{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+  .lc-report .pill.state{background:rgba(15,92,70,.1);color:var(--state)}
+  .lc-report .pill.fed{background:rgba(124,77,30,.1);color:var(--fed)}
+  .lc-report .pill.tent{background:#f3ede0;color:var(--muted)}
+  .lc-report .cal-act a{display:inline-block;font-size:.82rem;font-weight:600;color:var(--navy);text-decoration:none;border:1px solid var(--line);border-radius:7px;padding:8px 14px;white-space:nowrap}
+  .lc-report .cal-act a:hover{border-color:var(--gold)}
+  @media(max-width:640px){
+    .lc-report .cal-card{grid-template-columns:64px 1fr;gap:14px}
+    .lc-report .cal-act{grid-column:1 / -1}
+    .lc-report .datebox{padding-right:10px}
+    .lc-report .datebox .day{font-size:1.6rem}
+  }
+  /* notes */
+  .lc-report .lc-notes{display:grid;gap:12px}
+  .lc-report .note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px}
+  .lc-report .note h3{font-size:1rem;margin-bottom:3px}
+  .lc-report .note p{font-size:.9rem;color:var(--ink)}
+  .lc-report .note a{font-weight:600}
+  </style>
+
+  <script>
+  /* ============================================================
+     LEASE SALE DATA. Edit as notices are posted.
+     Each item: date (YYYY-MM-DD or null for undated), a display
+     day, seller, kind (state/federal), area, tentative flag, and
+     the official notice link.
+     ============================================================ */
+  const CAL_DATA = {
+    updated: "August 22, 2026",
+    sales: [
+      { date:"2026-09-15", seller:"New Mexico State Land Office", kind:"state",
+        area:"New Mexico state trust lands (statewide)", tentative:false,
+        link:"https://www.nmstatelands.org/divisions/oil-gas-and-minerals/lease-sale-notices-and-results/" },
+      { date:"2026-10-20", seller:"New Mexico State Land Office", kind:"state",
+        area:"New Mexico state trust lands (statewide)", tentative:false,
+        link:"https://www.nmstatelands.org/divisions/oil-gas-and-minerals/lease-sale-notices-and-results/" },
+      { date:"2026-10-20", seller:"Texas General Land Office", kind:"state",
+        area:"Texas Permanent School Fund and state lands", tentative:true,
+        link:"https://glo.texas.gov/energy/mineral-leasing/leasing" },
+      { date:"2026-11-17", seller:"New Mexico State Land Office", kind:"state",
+        area:"New Mexico state trust lands (statewide)", tentative:false,
+        link:"https://www.nmstatelands.org/divisions/oil-gas-and-minerals/lease-sale-notices-and-results/" },
+      { date:"2026-11-30", displayOverride:{mo:"Nov", day:"", yr:"2026", tba:"Nov 2026"}, seller:"U.S. Bureau of Land Management (Q4)", kind:"federal",
+        area:"New Mexico, Oklahoma, Kansas & Texas — 30 parcels, about 8,071 acres (Carlsbad, Farmington, and Oklahoma field offices)", tentative:false,
+        link:"https://www.blm.gov/press-release/blm-seeks-input-november-2026-sale-oil-and-gas-leases-new-mexico-oklahoma-kansas-and" },
+      { date:"2026-12-15", seller:"New Mexico State Land Office", kind:"state",
+        area:"New Mexico state trust lands (statewide)", tentative:false,
+        link:"https://www.nmstatelands.org/divisions/oil-gas-and-minerals/lease-sale-notices-and-results/" },
+      { date:null, tba:"TBA", seller:"Oklahoma Commissioners of the Land Office", kind:"state",
+        area:"Oklahoma school trust lands — next Notice of Sale not yet posted", tentative:false,
+        link:"https://clo.ok.gov/services/auction-information/minerals/" }
+    ],
+    notes: [
+      { h:"New Mexico State Land Office", p:"Holds an oil and gas lease sale the third Tuesday of every month for state trust lands. Tracts are leased by competitive sealed or oral bid; bidders need an OGRID number first. Each month's notice and tract list is posted on the State Land Office site.",
+        link:"https://www.nmstatelands.org/divisions/oil-gas-and-minerals/lease-sale-notices-and-results/", linkText:"NM lease sale notices" },
+      { h:"Texas General Land Office", p:"Runs oil and gas lease sales on state lands as tracts are nominated, with each sale's date and nomination deadline announced ahead of time. The next one is tentatively set and can shift, so confirm before you plan around it.",
+        link:"https://glo.texas.gov/energy/mineral-leasing/leasing", linkText:"Texas GLO leasing" },
+      { h:"Oklahoma Commissioners of the Land Office", p:"Sells oil, gas, and helium leases on school trust lands through periodic auctions run online, with live streaming from about 10:30 a.m. on the auction date. Dates are set by Notice of Sale, so there is not always one on the calendar. Watch the CLO minerals page for the next one.",
+        link:"https://clo.ok.gov/services/auction-information/minerals/", linkText:"Oklahoma CLO minerals" },
+      { h:"U.S. Bureau of Land Management", p:"Leases federal minerals through competitive sales held roughly quarterly. The office in Santa Fe runs the sales that cover New Mexico, Oklahoma, Kansas, and Texas, with a public comment and protest period before each one. Parcel lists and maps are on the BLM ePlanning site.",
+        link:"https://www.blm.gov/programs/energy-and-minerals/oil-and-gas/leasing/regional-lease-sales/new-mexico", linkText:"BLM New Mexico sales" }
+    ]
+  };
+
+  (function(){
+    const d = CAL_DATA, $ = id => document.getElementById(id);
+    const yEl=$('year'); if(yEl) yEl.textContent = new Date().getFullYear();
+    $('updatedNote').textContent = "Calendar last reviewed " + d.updated + ". Sales are listed nearest first; dates marked tentative come from the office as not yet final.";
+    const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+    // sort: dated first (ascending), undated (TBA) last
+    const sales = d.sales.slice().sort((a,b)=>{
+      if(!a.date && !b.date) return 0;
+      if(!a.date) return 1;
+      if(!b.date) return -1;
+      return a.date < b.date ? -1 : (a.date > b.date ? 1 : 0);
+    });
+
+    $('cal').innerHTML = sales.map(function(s){
+      var box;
+      if(s.displayOverride){
+        box = '<div class="tba">'+s.displayOverride.tba+'</div>';
+      } else if(s.date){
+        var p=s.date.split('-'); var mo=MON[parseInt(p[1],10)-1]; var day=parseInt(p[2],10);
+        box = '<div class="mo">'+mo+'</div><div class="day">'+day+'</div><div class="yr">'+p[0]+'</div>';
+      } else {
+        box = '<div class="tba">'+(s.tba||'TBA')+'</div>';
+      }
+      var pills = '<span class="pill '+(s.kind==='federal'?'fed':'state')+'">'+(s.kind==='federal'?'Federal':'State')+'</span>'
+        + (s.tentative?'<span class="pill tent">Tentative</span>':'');
+      return '<div class="cal-card'+(s.tentative?' tent':'')+'">'
+        + '<div class="datebox">'+box+'</div>'
+        + '<div class="cal-main"><div class="who">'+s.seller+'</div>'
+        + '<div class="where">'+s.area+'</div>'
+        + '<div class="tags">'+pills+'</div></div>'
+        + '<div class="cal-act"><a href="'+s.link+'" target="_blank" rel="noopener">Official notice &rarr;</a></div>'
+        + '</div>';
+    }).join('');
+
+    $('notes').innerHTML = d.notes.map(function(n){
+      return '<div class="note"><h3>'+n.h+'</h3><p>'+n.p+' &nbsp;<a href="'+n.link+'" target="_blank" rel="noopener">'+n.linkText+' &rarr;</a></p></div>';
+    }).join('');
+  })();
+  </script>
+  <script src="../script.js"></script>
+</body>
+</html>
