@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Overriding Royalty Interests: Advanced Calculations</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet"/>
+<style>
+  @page{ size:Letter; margin:0.42in 0 0.42in 0;
+    @bottom-left{ content:"McCracken Land Services \2022\00a0mccrackenlandservices.com"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-left:0.5in; vertical-align:top; }
+    @bottom-right{ content:"Reference guide, not legal advice"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-right:0.5in; vertical-align:top; }
+  }
+  @page :first{ margin-top:0; }
+  :root{--navy-900:#0b2233;--navy-800:#0f2a3f;--navy-700:#163b56;--gold-500:#c79a3b;--gold-400:#d8b256;
+    --sand-50:#f7f4ee;--ink-900:#14202b;--ink-700:#33454f;--ink-500:#5d6b73;--line:#dfd8cc;
+    --head:"Source Serif 4",Georgia,serif;--body:"Inter",Arial,sans-serif}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--body);color:var(--ink-900);font-size:10pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  p{margin:0 0 8px}
+  .doc-body{padding:0 0.5in}
+  .masthead{background:var(--navy-800);color:#fff;height:1.45in;padding:0 0.5in;
+    display:flex;align-items:center;justify-content:space-between;gap:34px}
+  .mh-text{flex:1 1 auto;min-width:0}
+  .masthead img{height:82px;width:auto;display:block;border:0;margin:0;flex:0 0 auto}
+  .doc-title{font-family:var(--head);font-weight:700;color:#fff;font-size:18.5pt;line-height:1.14;margin:0 0 4px;letter-spacing:-.3px}
+  .doc-meta{font-family:var(--body);color:rgba(255,255,255,.85);font-size:9.5pt;margin:0;line-height:1.3}
+  .sec-h{font-family:var(--head);font-size:12.6pt;font-weight:700;color:var(--navy-800);border-bottom:2px solid var(--gold-500);padding-bottom:4px;margin:18px 0 8px;break-after:avoid;page-break-after:avoid}
+  .sec-h.first{margin-top:16px}
+  table.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:9.3pt}
+  table.tbl th{background:var(--navy-800);color:#fff;text-align:left;padding:7px 11px;font-family:var(--head);font-weight:700;font-size:9.6pt}
+  table.tbl td{padding:6px 11px;vertical-align:top;border-bottom:1px solid var(--line)}
+  table.tbl tr:nth-child(even) td{background:var(--sand-50)}
+  table.tbl td.k{font-weight:600;color:var(--navy-800)}
+  table.tbl.long{break-inside:auto;page-break-inside:auto}
+  table.tbl.long tr{break-inside:avoid;page-break-inside:avoid}
+  table.tbl.long thead{display:table-header-group}
+  .disc{background:var(--sand-50);border-left:3px solid var(--gold-500);border-radius:6px;padding:11px 15px;font-size:8.6pt;color:var(--ink-700);margin:16px 0 0;break-inside:avoid;page-break-inside:avoid}
+</style>
+</head>
+<body>
+<div class="masthead">
+  <div class="mh-text">
+    <p class="doc-title">Overriding Royalty Interests: Advanced Calculations</p>
+    <div class="doc-meta">Reservation structures, unitization, and burden tracking</div>
+  </div>
+  <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjMwLjAgMjUzLjQgOTY5LjMgNDQyLjIiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5jbHMtMiwgLmNscy0zIHsKICAgICAgICBmaWxsOiAjZDhiMjU2OwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGZvbnQtZmFtaWx5OiBNZXV0YXMtRXh0cmFCb2xkLCAnQ0pLQlMgSisgTWV1dGFzJzsKICAgICAgICBmb250LXNpemU6IDU4Ljc3cHg7CiAgICAgICAgZm9udC13ZWlnaHQ6IDcwMDsKICAgICAgICBsZXR0ZXItc3BhY2luZzogLjdlbTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI0MS45IDU3My4yNCAyMzUuMzggNTc1LjA1IDIyMS42IDU3OC44NiAyMjEuNiA1NzUuMDUgMTk0LjU4IDU3NS4wNSAxOTQuNTggNTc4Ljg0IDE4MC44OCA1NzUuMDUgMTc0LjI3IDU3My4yMiAxODAuODcgNTcxLjM5IDE5NC41OCA1NjcuNjEgMTk0LjU4IDU3MS4zOSAyMjEuNiA1NzEuMzkgMjIxLjYgNTY3LjYyIDIzNS4yMiA1NzEuMzkgMjQxLjkgNTczLjI0Ii8+CiAgPHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0Ni4wMSA2NjYuNykgc2NhbGUoLjkzIDEpIj48dHNwYW4geD0iMCIgeT0iMCI+TEFORCBTRVJWSUNFUzwvdHNwYW4+PC90ZXh0PgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIyMTkuNTIgNDIzLjM2IDIyOS4zNyA0MjkuMDUgMjQwLjkgNDM1LjcxIDI2Mi4yMiA0NDguMDEgMjU1LjEzIDQzNS43MSAyNTEuMjkgNDI5LjA1IDIxOS41MiAzNzMuOTEgMjE5LjUyIDQyMy4zNiIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjQuNDkgNDM1LjcxIDI2OS4yNCA0NDMuOTQgMjY5LjI0IDM2Mi43OCAyMjIuNDkgMzYyLjc4IDI2MC42NiA0MjkuMDUgMjY0LjQ5IDQzNS43MSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjkuMjQgMzU0LjY1IDI2OS4yNCAyNzMuNDkgMjIyLjQ5IDM1NC42NSAyNjkuMjQgMzU0LjY1Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI2Mi4yMiAyNjkuNDEgMjYyLjIgMjY5LjQxIDE2NS43NSAzMjUuMjQgMjEzLjk4IDM1My4xNiAyNjIuMjIgMjY5LjQxIi8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjE2MS42OCAzMzIuMjggMTYxLjY4IDM4NC43NyAyMDcuMzEgMzU4LjY5IDE2MS42OCAzMzIuMjgiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTQ5LjUxIDMyNS4yNCA1My4wNSAyNjkuNDEgMTAxLjI3IDM1My4xNiAxNDkuNTEgMzI1LjI0Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjQ2LjAxIDI3My40OSA0Ni4wMSAzNTQuNjUgOTIuNzYgMzU0LjY1IDQ2LjAxIDI3My40OSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxNTMuNTYgMzg0Ljc3IDE1My41NiAzMzIuMjggMTA3Ljk1IDM1OC42OSAxNTMuNTYgMzg0Ljc3Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjYwLjEzIDQzNS43MSA1My4wNCA0NDguMDEgNzQuMzQgNDM1LjcxIDg1Ljg4IDQyOS4wNSA5NS43MiA0MjMuMzYgOTUuNzIgMzczLjkxIDYzLjk2IDQyOS4wNSA2MC4xMyA0MzUuNzEiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNTQuNTkgNDI5LjA1IDkyLjc2IDM2Mi43OCA0Ni4wMSAzNjIuNzggNDYuMDEgNDQzLjk0IDUwLjc1IDQzNS43MSA1NC41OSA0MjkuMDUiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjcuNzUgNTExLjg0IDEwMS44MiA1NjQuOTUgMTM1LjkgNTExLjk5IDEzNS45IDU4Mi4zNiAxNTcuNjIgNTgyLjM2IDE1Ny42MiA0NjYuMyAxMzkuNDcgNDY2LjMgMTAxLjgyIDUyOS4zOSA2NC4xOSA0NjYuMyA0Ni4wMyA0NjYuMyA0Ni4wMyA1ODIuMzYgNjcuNzUgNTgyLjM2IDY3Ljc1IDUxMS44NCIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTIyMC4zMyw0ODIuOTVjOC4zMSwwLDEzLjc0LDEuMjgsMjEuNDIsMy41MXYtMTkuODJjLTguNDctMi44Ny0xNS44My0zLjk5LTI1LjU4LTMuOTktMzguMiwwLTQ5LjIyLDIzLjk3LTQ5LjIyLDQ3Ljc5czExLjAyLDQ3Ljk1LDQ5LjIyLDQ3Ljk1YzkuNzUsMCwxNy4yNy0xLjEyLDI1Ljc0LTMuOTl2LTE5Ljk4Yy04LDIuMzktMTMuMjcsMy42Ny0yMS41OCwzLjY3LTE4LjA3LDAtMzAuNTMtOS4xLTMwLjUzLTI3LjY1czEyLjYyLTI3LjQ5LDMwLjUzLTI3LjQ5WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI1MS45NSw1MjEuMjFjMCwzNC42NiwxNy44Niw2MS4xNSw2MS43NSw2MS4xNSwxMi4wNiwwLDIwLjU0LTEuNDksMjguNzItNC43NnYtMjEuMTJjLTcuMTQsMi44Mi0xNy4xMSw0LjE2LTI1LjYsNC4xNi0yNy4yMiwwLTQyLjctMTMuNTQtNDIuNy0zOS40MnMxNS40Ny0zOS41OCw0Mi43LTM5LjU4YzguNjQsMCwxOC45LDEuNzksMjUuNiw0LjQ2di0yMC44MmMtOC4xOS0zLjU3LTE2LjY2LTUuMjEtMjguNzItNS4yMS00NC4wNCwwLTYxLjc1LDI2LjY0LTYxLjc1LDYxLjE2WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ0NS44Miw1MDkuNzVjMC0yOC44Ni0xNC4xNC00My40NS00Ni40Mi00My40NWgtNDMuNnYxMTYuMDVoMjEuNzJ2LTMxLjY5aDIxLjcybDI1LDMxLjY5aDI1LjE1bC0yNi45My0zNC42NmMxNS43Ny01LjA2LDIzLjM2LTE4LjMxLDIzLjM2LTM3Ljk1Wk0zOTcuNzcsNTMxLjYyaC0yMC4yNHYtNDYuMTJoMjAuMjRjMTguMTUsMCwyNi4wNCw2Ljg0LDI2LjA0LDI0LjQsMCwxNi41MS03Ljg5LDIxLjcyLTI2LjA0LDIxLjcyWiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ1Ni4xLDU4Mi4zNmgyNC4xbDcuODktMjQuNGg0NS4zOGw3Ljg4LDI0LjRoMjQuMTFsLTQyLjcxLTExNi4wNWgtMjMuOGwtNDIuODUsMTE2LjA1Wk01MjcuMDcsNTM4LjMyaC0zMi41OWwxNi4zNi01MC40NSwxNi4yMiw1MC40NVoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02MzAuMzIsNDg0LjljOC42MywwLDE4LjksMS43OSwyNS42LDQuNDZ2LTIwLjgyYy04LjE5LTMuNTctMTYuNjctNS4yMS0yOC43Mi01LjIxLTQ0LjA0LDAtNjEuNzUsMjYuNjQtNjEuNzUsNjEuMTZzMTcuODUsNjEuMTUsNjEuNzUsNjEuMTVjMTIuMDUsMCwyMC41NC0xLjQ5LDI4LjcyLTQuNzZ2LTIxLjEyYy03LjE1LDIuODMtMTcuMTEsNC4xNi0yNS42LDQuMTYtMjcuMjIsMC00Mi43LTEzLjU0LTQyLjctMzkuNDJzMTUuNDctMzkuNTgsNDIuNy0zOS41OFoiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjY5LjMxIDQ2Ni4zIDY2OS4zMSA1ODIuMzYgNjkwLjU4IDU4Mi4zNiA2OTAuNTggNTMxLjQ3IDcyOS43MiA1ODIuMzYgNzU1LjYgNTgyLjM2IDcwOS4zMyA1MjMuMjkgNzU1LjMgNDY2LjMgNzI5LjQyIDQ2Ni4zIDY5MC41OCA1MTUuMTEgNjkwLjU4IDQ2Ni4zIDY2OS4zMSA0NjYuMyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI4NDUuMDIgNDg1LjA1IDg0NS4wMiA0NjYuMyA3NjYuMDMgNDY2LjMgNzY2LjAzIDU4Mi4zNiA4NDUuMDIgNTgyLjM2IDg0NS4wMiA1NjMuMzEgNzg3Ljc0IDU2My4zMSA3ODcuNzQgNTMzLjcxIDg0MC4xMiA1MzMuNzEgODQwLjEyIDUxNC42NiA3ODcuNzQgNTE0LjY2IDc4Ny43NCA0ODUuMDUgODQ1LjAyIDQ4NS4wNSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI5MzEuNDcgNTQzLjY3IDg3Ny43NiA0NjYuMyA4NTguNDIgNDY2LjMgODU4LjQyIDU4Mi4zNiA4ODAuMTQgNTgyLjM2IDg4MC4xNCA1MDQuNTQgOTMzLjg1IDU4Mi4zNiA5NTMuMDUgNTgyLjM2IDk1My4wNSA0NjYuMyA5MzEuNDcgNDY2LjMgOTMxLjQ3IDU0My42NyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIzMDQuMTkgNDQwLjA2IDg3Ny41MSA0NDAuMDYgODg5LjA3IDQ0MC4wNiA5MjcuNTcgNDQwLjA2IDkyNy41NyA0NDIuODMgOTUwLjgyIDQzOC43MiA5MjcuNTcgNDM0LjYyIDkyNy41NyA0MzcuMzkgODg0LjYyIDQzNy4zOSA4NzcuNTEgNDM3LjM5IDMwNC4xOSA0MzcuMzkgMzA0LjE5IDQzNC42MiAyODAuOTMgNDM4LjcyIDMwNC4xOSA0NDIuODMgMzA0LjE5IDQ0MC4wNiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTk1My4wNSwzNjEuMDJ2LTQuOTloLTIwLjU0Yy0uNDctNC4yMS0yLjE0LTguMDYtNC42NS0xMS4yMWwxNC41My0xNC41My0zLjUzLTMuNTMtMTQuNTMsMTQuNTNoMGMtMy4xNS0yLjUxLTctNC4xOC0xMS4yLTQuNjV2LTIwLjU0aC00Ljk5djIwLjU0Yy00LjIuNDctOC4wNSwyLjE0LTExLjIsNC42NWwtMTQuNTMtMTQuNTMtMy41MywzLjUzLDE0LjUzLDE0LjUzYy0yLjUxLDMuMTUtNC4xNyw3LTQuNjUsMTEuMjFoLTIwLjU0djQuOTloMjAuNTRjLjQ3LDQuMjEsMi4xNCw4LjA2LDQuNjUsMTEuMjFoMGwtMTQuNTMsMTQuNTMsMy41MywzLjUzLDE0LjUzLTE0LjUzaDBjMy4xNSwyLjUxLDcsNC4xOCwxMS4yLDQuNjV2MjAuNTRoNC45OXYtMjAuNTRjNC4yLS40Nyw4LjA1LTIuMTQsMTEuMi00LjY1bDE0LjUzLDE0LjUzLDMuNTMtMy41My0xNC41My0xNC41M2MyLjUxLTMuMTUsNC4xNy03LDQuNjUtMTEuMjFoMjAuNTRaTTkyNC4zMSwzNjguNjdjLTEsMS4zNC0yLjE5LDIuNTMtMy41MywzLjUzLTIuMiwxLjY0LTQuODIsMi43Ni03LjY1LDMuMTgtLjgxLjEyLTEuNjUuMTgtMi40OS4xOHMtMS42OC0uMDYtMi40OS0uMThjLTIuODQtLjQyLTUuNDUtMS41NC03LjY1LTMuMTgtMS4zNC0xLTIuNTMtMi4xOC0zLjUzLTMuNTMtMS42NC0yLjItMi43Ni00LjgyLTMuMTgtNy42NS0uMTItLjgxLS4xOC0xLjY1LS4xOC0yLjQ5cy4wNi0xLjY4LjE4LTIuNDljLjQyLTIuODQsMS41NC01LjQ1LDMuMTgtNy42NSwxLTEuMzQsMi4xOC0yLjUzLDMuNTMtMy41MywyLjItMS42NCw0LjgyLTIuNzYsNy42NS0zLjE4LjgxLS4xMiwxLjY1LS4xOCwyLjQ5LS4xOHMxLjY4LjA2LDIuNDkuMThjMi44NC40Miw1LjQ1LDEuNTQsNy42NSwzLjE4LDEuMzQsMSwyLjUzLDIuMTgsMy41MywzLjUzLDEuNjQsMi4yLDIuNzYsNC44MiwzLjE4LDcuNjUuMTIuODEuMTgsMS42NS4xOCwyLjQ5cy0uMDYsMS42OC0uMTgsMi40OWMtLjQyLDIuODQtMS41NCw1LjQ1LTMuMTgsNy42NVoiLz4KPC9zdmc+" alt="McCracken Land Services"/>
+</div>
+<div class="doc-body">
+
+<div class="sec-h first">What an overriding royalty is</div>
+<p>An overriding royalty interest (ORRI) is carved out of the working interest, the leasehold estate, not out of the minerals. Like a royalty it is free of drilling and operating costs, but unlike a landowner's royalty or a non-participating royalty, it lives only for the term of the lease it burdens. When that lease terminates, the override ordinarily ends with it. That single fact drives most of the advanced math: an override is always tied to a specific leasehold, a specific working interest, and a specific set of burdens. (For the broader interest types, see the Mineral &amp; Royalty Interest Types reference.)</p>
+
+<div class="sec-h">The interest formulas</div>
+<p>Every decimal in a unit is built from the same pieces: the interest rate, the working or mineral interest, and the share of the unit the tract represents. The tract participation factor (TPF) is the tract acres divided by the unit acres.</p>
+<table class="tbl long">
+  <thead><tr><th style="width:41%">Interest</th><th style="width:59%">Formula</th></tr></thead>
+  <tbody>
+  <tr><td class="k">Landowner royalty (RI)</td><td>Royalty rate &times; mineral interest &times; TPF</td></tr>
+  <tr><td class="k">Overriding royalty (ORRI)</td><td>Override rate &times; working interest &times; mineral interest &times; TPF</td></tr>
+  <tr><td class="k">Gross working interest (GWI)</td><td>Working interest &times; mineral interest &times; TPF</td></tr>
+  <tr><td class="k">Net revenue interest (NRI)</td><td>(1 &minus; burdens) &times; working interest &times; mineral interest &times; TPF</td></tr>
+  </tbody>
+</table>
+<p>Burdens are everything taken off the top before the working interest gets paid: the landowner royalty plus every override and other lease burden. So NRI factor = 1 &minus; (royalty + all overrides). TPF = tract acres &divide; unit acres; for a 320-acre tract in a 640-acre unit, TPF = 0.5.</p>
+
+<div class="sec-h">How an override rate is set</div>
+<p>The hard part of an override is rarely the multiplication. It is reading how the reservation defines the rate, because that is what changes lease to lease.</p>
+<table class="tbl long">
+  <thead><tr><th style="width:41%">Reservation</th><th style="width:36%">How the rate is set</th><th style="width:23%">Watch for</th></tr></thead>
+  <tbody>
+  <tr><td class="k">Flat rate</td><td>A fixed percentage, for example 2%, independent of the lease royalty.</td><td>The simplest case, and the one where shortcut math is safe.</td></tr>
+  <tr><td class="k">Sliding scale by royalty</td><td>The rate steps with the lease's royalty, for example 3% where the royalty is 18.75% or less, 2% from 18.75% to 22.5%, and none above 22.5%.</td><td>Read the tiers exactly. The same reservation gives different rates on different leases.</td></tr>
+  <tr><td class="k">Stated rate less and except any burdens</td><td>A reservation such as &ldquo;a 25% ORRI, less and except any burdens&rdquo; delivers the difference between the stated rate and everything already burdening the lease, figured lease by lease. The reservation I now see most often.</td><td>&ldquo;Any burdens&rdquo; sweeps in the royalty and every prior override, not just the royalty. Never let the result go below zero.</td></tr>
+  <tr><td class="k">Proportionately reduced</td><td>The rate is reduced to the assignor's working interest, whatever fraction that happens to be, so a 3% reserved against a 50% interest is really 1.5% and against a 2% interest is really 0.06%.</td><td>Reduce to the assignor's working interest, not the mineral interest.</td></tr>
+  </tbody>
+</table>
+
+<div class="sec-h">&ldquo;Less and except any burdens&rdquo; overrides</div>
+<p>Of all the override reservations I am asked to figure, this one has become the favorite by a wide margin, and I do not expect that to change any time soon. It reads something like &ldquo;a 25% overriding royalty, less and except any burdens.&rdquo; It does not reserve a flat 25%. It reserves whatever is left of that 25% after you take out the burdens already sitting on the leasehold, so the real override moves from one lease to the next as those burdens change. On a lightly burdened lease it can come out to twelve or thirteen percent, and on a heavily burdened one it can come out to almost nothing.</p>
+<p>The words that matter are &ldquo;any burdens.&rdquo; They are meant to be broad, and they do not just mean the landowner royalty. They pull in the royalty and every prior override and anything else burdening that lease, so a lease that is already carrying a heavy royalty or an earlier override has less room left, and sometimes none at all. When I work one of these I read it as twenty-five percent minus everything that comes ahead of me rather than twenty-five percent minus the royalty. Forgetting an earlier override in that stack is the easiest way to figure one of these too high.</p>
+<p>A couple of habits keep it right. I work it against each lease by itself and never against a blended or unit-wide royalty, because blending washes out the very differences the reservation depends on. And I never let the result drop below zero. If the burdens already add up to the stated rate or more, there is nothing left to reserve and the override is zero. It does not go negative, and you do not make up the shortfall out of the royalty.</p>
+<p><b>Scenario.</b> Zeus owns the working interest across three leases and assigns it to Poseidon, reserving &ldquo;a 25% overriding royalty, less and except any burdens.&rdquo; Each lease already carries its own burdens, so the override Zeus keeps lands on a different number every time:</p>
+<table class="tbl long">
+  <thead><tr><th style="width:41%">Existing burdens on the lease</th><th style="width:30%">25% less any burdens</th><th style="width:29%">Reserved override</th></tr></thead>
+  <tbody>
+  <tr><td class="k">1/8 royalty (12.5%)</td><td>0.250 &minus; 0.125</td><td>12.5%</td></tr>
+  <tr><td class="k">3/16 royalty (18.75%), plus a 2% prior override = 20.75%</td><td>0.250 &minus; 0.2075</td><td>4.25%</td></tr>
+  <tr><td class="k">1/4 royalty (25%)</td><td>0.250 &minus; 0.250</td><td>0% (nothing left to give)</td></tr>
+  </tbody>
+</table>
+<p>The middle row is the one worth slowing down on. That 2% prior override is a burden the same as the royalty is, so it comes out of the 25% right along with it. If you dropped it, you would carry the override at 6.25% instead of 4.25%, and the unit would not foot. That is why I list out every burden on a lease before I start subtracting, instead of stopping at the royalty that happens to catch my eye first.</p>
+
+<div class="sec-h">Watch for &ldquo;proportionately reduced&rdquo;</div>
+<p>The wording here can change an override more than any of the numbers around it. When someone assigns a working interest and reserves an override, the reservation either says the override is proportionately reduced to the assignor's interest, or it says nothing about it at all. That one difference is what tells you whether to scale the rate down to the assignor's working interest, and it is easy to miss, because it comes down to language the instrument may simply leave out.</p>
+<p>It matters because of how the two cases behave. When the reservation is proportionately reduced, the override shrinks to the assignor's working interest, whether that is half or only a couple of percent, so the burden on the lease stays in line with the interest the assignor actually held. An override that is silent does not shrink at all. It attaches at its full stated rate no matter how small the working interest behind it was, and that can load a lease far more heavily than either side had in mind.</p>
+<p><b>Scenario.</b> Odysseus owns 50% of the working interest, assigns it to Perseus, and reserves &ldquo;a 3% overriding royalty.&rdquo; Whether Odysseus keeps 1.5% or the full 3% turns entirely on whether the reservation says it is proportionately reduced:</p>
+<table class="tbl long">
+  <thead><tr><th style="width:41%">Language in the instrument</th><th style="width:59%">Effective override</th></tr></thead>
+  <tbody>
+  <tr><td class="k">&ldquo;a 3% ORRI, proportionately reduced to the assignor's interest&rdquo;</td><td>3% &times; 50% = 1.5%</td></tr>
+  <tr><td class="k">&ldquo;a 3% ORRI,&rdquo; silent on proportionate reduction</td><td>commonly the full 3%, not scaled to the 50%</td></tr>
+  </tbody>
+</table>
+<p>So I read the exact words every time, and when a reduction does apply, I take it against the assignor's working interest and never the mineral interest. A silent reservation is usually read at its full stated rate, which is a good deal heavier on the lease than a proportionately reduced one would be. When the language is not there and the number comes out looking too high, I treat that as a reason to go back and confirm what the parties intended, not a reason to quietly add a reduction the deed does not contain. If they really did mean to reduce it, that gets cleaned up with a corrected or clarifying instrument they both sign, rather than an assumption made on the division-order side.</p>
+
+<div class="sec-h">Unitizing the interests</div>
+<p>In a pooled unit, scale every interest to the unit by the tract participation factor and by the mineral interest the lease actually covers, then add up each owner's pieces across every lease and tract they touch.</p>
+<p><b>Scenario.</b> Prometheus owns 50% of the working interest under a lease covering 100% of the minerals in the S/2 (320 acres) of a 640-acre unit, at a 1/8 royalty with no override. TPF = 320 &divide; 640 = 0.5.</p>
+<table class="tbl long">
+  <thead><tr><th style="width:41%">Figure</th><th style="width:33%">Calculation</th><th style="width:26%">Result</th></tr></thead>
+  <tbody>
+  <tr><td class="k">Unitized working interest</td><td>0.50 WI &times; 1.00 MI &times; 0.5 TPF</td><td>0.2500000</td></tr>
+  <tr><td class="k">NRI factor</td><td>1 &minus; 0.125 royalty</td><td>0.875</td></tr>
+  <tr><td class="k">Unitized net revenue interest</td><td>0.875 &times; 0.50 &times; 1.00 &times; 0.5</td><td>0.2187500</td></tr>
+  </tbody>
+</table>
+<p><b>Prove the unit.</b> Across the whole unit, every revenue interest, meaning royalties plus overrides plus net working interests, must total 1.000000, and every working interest on the expense side must total 1.000000. If either column does not foot to one, a decimal is wrong.</p>
+
+<div class="sec-h">The &ldquo;quick and dirty&rdquo; trap</div>
+<p>When someone conveys a working interest and reserves an override, it is tempting to estimate the override from a single blended net revenue interest: take the fraction of WI conveyed against the current NRI and back out the difference. Whether that shortcut is safe depends entirely on how the override rate is defined.</p>
+<table class="tbl long">
+  <thead><tr><th style="width:41%">Reservation type</th><th style="width:16%">Does the shortcut work?</th><th style="width:43%">Why</th></tr></thead>
+  <tbody>
+  <tr><td class="k">Flat rate, proportionately reduced</td><td>Yes</td><td>The reserved rate does not depend on the existing burdens, so a single blended figure is fine.</td></tr>
+  <tr><td class="k">Less and except any burdens</td><td>No</td><td>Each lease can carry a different royalty, so the &ldquo;less burdens&rdquo; amount and the resulting NRI differ lease by lease. A blended NRI smears those differences and gives the wrong number.</td></tr>
+  </tbody>
+</table>
+<p><b>Scenario.</b> Zeus again reserves &ldquo;25% less and except any burdens,&rdquo; this time across two leases in the same unit. On the lease at a 1/8 royalty his override comes to 12.5%; on the lease at a 1/4 royalty it floors to 0%. A single blended estimate cannot produce that split, it would hand back one averaged rate on both. Run each lease separately and add the pieces.</p>
+
+<div class="sec-h">Burden groups: who actually pays the override</div>
+<p>An override burdens the working interest it was carved from. When that working interest is later assigned, the override follows and reduces whoever now holds that WI. In an area of mutual interest or a chain of letter agreements, several overrides can stack, each burdening a different working interest owner.</p>
+<p>A burden group is the bookkeeping that assigns each override to the working interest owner or owners whose revenue actually carries it. For every override, track two things: the working interest it burdens, and each current WI owner's share of that burden. Done right, the net revenue interests fall out correctly and the unit still foots to one.</p>
+
+<div class="sec-h">Washout: an override can disappear</div>
+<p>Because an override is tied to the term of its lease, it is extinguished if that lease is released, expires, or is surrendered, and a fresh lease on the same land generally starts free of it. That loss is called a washout. An override survives into a new or renewed lease only if the assignment that created it carried an extension and renewal clause or an anti-washout provision. When you see an override, confirm whether it was written to survive, and whether the lease it rode on is still alive.</p>
+
+<div class="sec-h">Notes for division-order and title work</div>
+<table class="tbl long">
+  <thead><tr><th style="width:41%">Topic</th><th style="width:59%">Note</th></tr></thead>
+  <tbody>
+  <tr><td class="k">Read the reservation first</td><td>Confirm what the override is carved from and exactly how its rate is set before you set any decimal. The structure, not the arithmetic, is where errors hide.</td></tr>
+  <tr><td class="k">Work &ldquo;less burdens&rdquo; lease by lease</td><td>Never blend royalties. Compute the override against each lease's actual burdens, and floor every result at zero.</td></tr>
+  <tr><td class="k">Check for &ldquo;proportionately reduced&rdquo;</td><td>Only scale the override down to the assignor's working interest if the instrument says so. If it is silent, the override generally stands at its full stated rate. Do not add a reduction the deed does not contain, and reduce to the assignor's working interest, never the mineral interest.</td></tr>
+  <tr><td class="k">Foot the unit</td><td>Revenue interests and working interests each total 1.000000. If they do not, find the decimal that is off before you pay anyone.</td></tr>
+  <tr><td class="k">Check whether it washed out</td><td>An override dies with its lease unless an extension and renewal or anti-washout clause carried it forward. Confirm the lease is still in effect.</td></tr>
+  </tbody>
+</table>
+
+<div class="disc">This reference is prepared for use by landmen and division-order analysts as a working field tool. It is not legal advice and does not substitute for the advice of qualified oil and gas counsel or a review of the actual instruments. Override language, tract participation, and unit terms turn on the exact wording of each assignment, lease, and unit agreement. Confirm every decimal against the instruments and the governing agreement, and refer complex or disputed matters to a licensed attorney in the state involved.</div>
+
+</div></body></html>

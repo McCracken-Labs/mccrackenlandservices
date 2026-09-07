@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Ohio Intestacy Chart</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet"/>
+<style>
+  @page{ size:Letter; margin:0.42in 0 0.42in 0;
+    @bottom-left{ content:"McCracken Land Services \2022\00a0mccrackenlandservices.com"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-left:0.5in; vertical-align:top; }
+    @bottom-right{ content:"Reference chart, not legal advice"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-right:0.5in; vertical-align:top; }
+  }
+  @page :first{ margin-top:0 }
+  :root{--navy-900:#0b2233;--navy-800:#0f2a3f;--navy-700:#163b56;--gold-500:#c79a3b;--gold-400:#d8b256;
+    --sand-50:#f7f4ee;--sand-100:#efe9df;--ink-900:#14202b;--ink-700:#33454f;--ink-500:#5d6b73;--line:#dfd8cc;
+    --head:"Source Serif 4",Georgia,serif;--body:"Inter",Arial,sans-serif}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--body);color:var(--ink-900);font-size:9.5pt;line-height:1.48;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  p{margin:0 0 7px}
+  a{color:var(--navy-700)}
+
+  .masthead{background:var(--navy-800);color:#fff;height:1.45in;padding:0 0.5in;
+    display:flex;align-items:center;justify-content:space-between;gap:34px}
+  .mh-text{flex:1 1 auto;min-width:0}
+  .masthead img{height:82px;width:auto;display:block;border:0;margin:0;flex:0 0 auto}
+  .doc-title{font-family:var(--head);font-weight:700;color:#fff;font-size:18.5pt;line-height:1.14;margin:0 0 4px;letter-spacing:-.3px}
+  .doc-meta{font-family:var(--body);color:rgba(255,255,255,.85);font-size:9.5pt;margin:0}
+  .doc-body{padding:15px 0.5in 0}
+
+  .lead{font-size:9.8pt;color:var(--ink-700);margin:0 0 12px}
+
+  /* primer */
+  .primer{border:1px solid var(--line);border-left:3px solid var(--gold-500);background:var(--sand-50);
+    border-radius:8px;padding:11px 15px;margin:0 0 13px;break-inside:avoid}
+  .primer .plbl{font-weight:700;font-size:8pt;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--gold-500);margin:0 0 6px}
+  .primer dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:8.9pt}
+  .primer dt{font-weight:700;color:var(--navy-800);white-space:nowrap}
+  .primer dd{margin:0;color:var(--ink-700)}
+
+  /* date gate */
+  .gate{background:var(--navy-800);color:#eef2f6;border-radius:8px;padding:13px 16px;margin:0 0 13px;break-inside:avoid}
+  .gate .glbl{font-family:var(--head);color:var(--gold-400);font-weight:700;font-size:11pt;margin:0 0 5px}
+  .gate p{color:#e3eaf0;margin:0 0 8px;font-size:9.2pt}
+  .gsplit{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2px}
+  .gbox{background:rgba(255,255,255,.08);border-left:3px solid var(--gold-500);border-radius:5px;padding:8px 11px}
+  .gbox .gk{font-weight:700;color:#fff;margin:0 0 2px;font-size:9.4pt}
+  .gbox .gv{margin:0;color:#c8d4dd;font-size:8.8pt}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:4px 20px;margin:0 0 14px;font-size:8.4pt;color:var(--ink-700);break-inside:avoid}
+  .legend .lk{display:flex;align-items:center;gap:6px}
+  .legend i{width:12px;height:9px;border-radius:2px;display:inline-block}
+
+  /* section head: the whole box stays together AND sticks to what follows */
+  .sec-h{background:var(--navy-800);border-left:5px solid var(--gold-500);border-radius:7px;
+    padding:10px 16px 11px;margin:13px 0 10px;
+    break-inside:avoid;page-break-inside:avoid;break-after:avoid;page-break-after:avoid}
+  .sec-h .sh-t{font-family:var(--head);font-weight:700;color:#fff;font-size:12.4pt;margin:0 0 4px}
+  .sec-h .sh-s{margin:0;color:#c3d0da;font-size:8.9pt}
+
+  /* rows */
+  .row{display:grid;grid-template-columns:222px 1fr;gap:20px;align-items:start;
+    padding:9px 0 10px;border-bottom:1px solid #ebe6dc;
+    break-inside:avoid;page-break-inside:avoid}
+  .row:last-of-type{border-bottom:0}
+  .cond .q{font-family:var(--head);font-weight:700;color:var(--navy-800);font-size:9.9pt;line-height:1.28;margin:0 0 5px}
+  .cond .cite{margin:0;font-size:8.1pt}
+  .cond .cite a{color:var(--ink-500);text-decoration:none;border-bottom:1px solid #cfd8dd}
+  .tag{display:inline-block;font-size:7.1pt;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    border-radius:3px;padding:2.5px 7px;margin:0 0 6px}
+  .tag-all{background:#e6ecf1;color:#2b4a61}
+  .tag-ji{background:#dfeaf2;color:#215a80}
+  .tag-op{background:#f3e6cb;color:#8a6410}
+
+  .bars{display:flex;gap:5px}
+  .bar{color:#fff;font-weight:700;font-size:10.5pt;text-align:center;padding:7px 4px;border-radius:5px;
+    font-family:var(--head)}
+  .caps{display:flex;gap:5px;margin-top:4px}
+  .cap{text-align:center;font-size:8.3pt;color:var(--ink-700);padding:0 2px;line-height:1.3}
+  .res .note{margin:7px 0 0;font-size:8.6pt;color:var(--ink-700)}
+  .res .eg{margin:6px 0 0;font-size:8.6pt;color:var(--ink-700);background:var(--sand-50);
+    border-left:2px solid var(--gold-500);border-radius:0 4px 4px 0;padding:6px 10px}
+  .eglbl{font-weight:700;font-size:7.2pt;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--gold-500);margin-right:7px}
+
+  /* explanatory + trap boxes */
+  .why{background:#eef1f4;border-left:3px solid var(--navy-700);border-radius:0 7px 7px 0;
+    padding:10px 14px;margin:13px 0;break-inside:avoid;page-break-inside:avoid}
+  .why .wlbl{font-family:var(--head);font-weight:700;color:var(--navy-800);font-size:10pt;margin:0 0 5px}
+  .why p{margin:0 0 6px;color:var(--ink-700);font-size:9pt}
+  .why .wcite{margin:0;font-size:8.1pt;color:var(--ink-500)}
+  .trap{border:1px solid var(--line);border-left:3px solid var(--gold-500);background:#fff;
+    border-radius:0 7px 7px 0;padding:9px 14px;margin:9px 0;break-inside:avoid;page-break-inside:avoid}
+  .trap .tlbl{font-family:var(--head);font-weight:700;color:var(--navy-800);font-size:10pt;margin:0 0 4px}
+  .trap p{margin:0 0 6px;color:var(--ink-700);font-size:9pt}
+  .trap p:last-child{margin-bottom:0}
+  .trap .tcite{font-size:8.1pt;color:var(--ink-500)}
+  .trap-lead{background:var(--sand-50);margin:0 0 13px}
+
+  .src{font-size:8.4pt;color:var(--ink-500);margin:11px 0 0;break-inside:avoid}
+  .disc{background:var(--sand-50);border-left:3px solid var(--gold-500);border-radius:0 7px 7px 0;
+    padding:10px 15px;font-size:8.4pt;color:var(--ink-700);margin:9px 0 0;
+    break-inside:avoid;page-break-inside:avoid}
+</style></head><body>
+<div class="masthead">
+  <div class="mh-text">
+    <p class="doc-title">Ohio Intestacy Chart</p>
+    <p class="doc-meta">Descent of real property &middot; Ohio Revised Code &sect; 2105.06</p>
+  </div>
+  <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjMwLjAgMjUzLjQgOTY5LjMgNDQyLjIiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5jbHMtMiwgLmNscy0zIHsKICAgICAgICBmaWxsOiAjZDhiMjU2OwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGZvbnQtZmFtaWx5OiBNZXV0YXMtRXh0cmFCb2xkLCAnQ0pLQlMgSisgTWV1dGFzJzsKICAgICAgICBmb250LXNpemU6IDU4Ljc3cHg7CiAgICAgICAgZm9udC13ZWlnaHQ6IDcwMDsKICAgICAgICBsZXR0ZXItc3BhY2luZzogLjdlbTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI0MS45IDU3My4yNCAyMzUuMzggNTc1LjA1IDIyMS42IDU3OC44NiAyMjEuNiA1NzUuMDUgMTk0LjU4IDU3NS4wNSAxOTQuNTggNTc4Ljg0IDE4MC44OCA1NzUuMDUgMTc0LjI3IDU3My4yMiAxODAuODcgNTcxLjM5IDE5NC41OCA1NjcuNjEgMTk0LjU4IDU3MS4zOSAyMjEuNiA1NzEuMzkgMjIxLjYgNTY3LjYyIDIzNS4yMiA1NzEuMzkgMjQxLjkgNTczLjI0Ii8+CiAgPHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0Ni4wMSA2NjYuNykgc2NhbGUoLjkzIDEpIj48dHNwYW4geD0iMCIgeT0iMCI+TEFORCBTRVJWSUNFUzwvdHNwYW4+PC90ZXh0PgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIyMTkuNTIgNDIzLjM2IDIyOS4zNyA0MjkuMDUgMjQwLjkgNDM1LjcxIDI2Mi4yMiA0NDguMDEgMjU1LjEzIDQzNS43MSAyNTEuMjkgNDI5LjA1IDIxOS41MiAzNzMuOTEgMjE5LjUyIDQyMy4zNiIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjQuNDkgNDM1LjcxIDI2OS4yNCA0NDMuOTQgMjY5LjI0IDM2Mi43OCAyMjIuNDkgMzYyLjc4IDI2MC42NiA0MjkuMDUgMjY0LjQ5IDQzNS43MSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjkuMjQgMzU0LjY1IDI2OS4yNCAyNzMuNDkgMjIyLjQ5IDM1NC42NSAyNjkuMjQgMzU0LjY1Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI2Mi4yMiAyNjkuNDEgMjYyLjIgMjY5LjQxIDE2NS43NSAzMjUuMjQgMjEzLjk4IDM1My4xNiAyNjIuMjIgMjY5LjQxIi8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjE2MS42OCAzMzIuMjggMTYxLjY4IDM4NC43NyAyMDcuMzEgMzU4LjY5IDE2MS42OCAzMzIuMjgiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTQ5LjUxIDMyNS4yNCA1My4wNSAyNjkuNDEgMTAxLjI3IDM1My4xNiAxNDkuNTEgMzI1LjI0Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjQ2LjAxIDI3My40OSA0Ni4wMSAzNTQuNjUgOTIuNzYgMzU0LjY1IDQ2LjAxIDI3My40OSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxNTMuNTYgMzg0Ljc3IDE1My41NiAzMzIuMjggMTA3Ljk1IDM1OC42OSAxNTMuNTYgMzg0Ljc3Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjYwLjEzIDQzNS43MSA1My4wNCA0NDguMDEgNzQuMzQgNDM1LjcxIDg1Ljg4IDQyOS4wNSA5NS43MiA0MjMuMzYgOTUuNzIgMzczLjkxIDYzLjk2IDQyOS4wNSA2MC4xMyA0MzUuNzEiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNTQuNTkgNDI5LjA1IDkyLjc2IDM2Mi43OCA0Ni4wMSAzNjIuNzggNDYuMDEgNDQzLjk0IDUwLjc1IDQzNS43MSA1NC41OSA0MjkuMDUiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjcuNzUgNTExLjg0IDEwMS44MiA1NjQuOTUgMTM1LjkgNTExLjk5IDEzNS45IDU4Mi4zNiAxNTcuNjIgNTgyLjM2IDE1Ny42MiA0NjYuMyAxMzkuNDcgNDY2LjMgMTAxLjgyIDUyOS4zOSA2NC4xOSA0NjYuMyA0Ni4wMyA0NjYuMyA0Ni4wMyA1ODIuMzYgNjcuNzUgNTgyLjM2IDY3Ljc1IDUxMS44NCIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTIyMC4zMyw0ODIuOTVjOC4zMSwwLDEzLjc0LDEuMjgsMjEuNDIsMy41MXYtMTkuODJjLTguNDctMi44Ny0xNS44My0zLjk5LTI1LjU4LTMuOTktMzguMiwwLTQ5LjIyLDIzLjk3LTQ5LjIyLDQ3Ljc5czExLjAyLDQ3Ljk1LDQ5LjIyLDQ3Ljk1YzkuNzUsMCwxNy4yNy0xLjEyLDI1Ljc0LTMuOTl2LTE5Ljk4Yy04LDIuMzktMTMuMjcsMy42Ny0yMS41OCwzLjY3LTE4LjA3LDAtMzAuNTMtOS4xLTMwLjUzLTI3LjY1czEyLjYyLTI3LjQ5LDMwLjUzLTI3LjQ5WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI1MS45NSw1MjEuMjFjMCwzNC42NiwxNy44Niw2MS4xNSw2MS43NSw2MS4xNSwxMi4wNiwwLDIwLjU0LTEuNDksMjguNzItNC43NnYtMjEuMTJjLTcuMTQsMi44Mi0xNy4xMSw0LjE2LTI1LjYsNC4xNi0yNy4yMiwwLTQyLjctMTMuNTQtNDIuNy0zOS40MnMxNS40Ny0zOS41OCw0Mi43LTM5LjU4YzguNjQsMCwxOC45LDEuNzksMjUuNiw0LjQ2di0yMC44MmMtOC4xOS0zLjU3LTE2LjY2LTUuMjEtMjguNzItNS4yMS00NC4wNCwwLTYxLjc1LDI2LjY0LTYxLjc1LDYxLjE2WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ0NS44Miw1MDkuNzVjMC0yOC44Ni0xNC4xNC00My40NS00Ni40Mi00My40NWgtNDMuNnYxMTYuMDVoMjEuNzJ2LTMxLjY5aDIxLjcybDI1LDMxLjY5aDI1LjE1bC0yNi45My0zNC42NmMxNS43Ny01LjA2LDIzLjM2LTE4LjMxLDIzLjM2LTM3Ljk1Wk0zOTcuNzcsNTMxLjYyaC0yMC4yNHYtNDYuMTJoMjAuMjRjMTguMTUsMCwyNi4wNCw2Ljg0LDI2LjA0LDI0LjQsMCwxNi41MS03Ljg5LDIxLjcyLTI2LjA0LDIxLjcyWiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ1Ni4xLDU4Mi4zNmgyNC4xbDcuODktMjQuNGg0NS4zOGw3Ljg4LDI0LjRoMjQuMTFsLTQyLjcxLTExNi4wNWgtMjMuOGwtNDIuODUsMTE2LjA1Wk01MjcuMDcsNTM4LjMyaC0zMi41OWwxNi4zNi01MC40NSwxNi4yMiw1MC40NVoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02MzAuMzIsNDg0LjljOC42MywwLDE4LjksMS43OSwyNS42LDQuNDZ2LTIwLjgyYy04LjE5LTMuNTctMTYuNjctNS4yMS0yOC43Mi01LjIxLTQ0LjA0LDAtNjEuNzUsMjYuNjQtNjEuNzUsNjEuMTZzMTcuODUsNjEuMTUsNjEuNzUsNjEuMTVjMTIuMDUsMCwyMC41NC0xLjQ5LDI4LjcyLTQuNzZ2LTIxLjEyYy03LjE1LDIuODMtMTcuMTEsNC4xNi0yNS42LDQuMTYtMjcuMjIsMC00Mi43LTEzLjU0LTQyLjctMzkuNDJzMTUuNDctMzkuNTgsNDIuNy0zOS41OFoiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjY5LjMxIDQ2Ni4zIDY2OS4zMSA1ODIuMzYgNjkwLjU4IDU4Mi4zNiA2OTAuNTggNTMxLjQ3IDcyOS43MiA1ODIuMzYgNzU1LjYgNTgyLjM2IDcwOS4zMyA1MjMuMjkgNzU1LjMgNDY2LjMgNzI5LjQyIDQ2Ni4zIDY5MC41OCA1MTUuMTEgNjkwLjU4IDQ2Ni4zIDY2OS4zMSA0NjYuMyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI4NDUuMDIgNDg1LjA1IDg0NS4wMiA0NjYuMyA3NjYuMDMgNDY2LjMgNzY2LjAzIDU4Mi4zNiA4NDUuMDIgNTgyLjM2IDg0NS4wMiA1NjMuMzEgNzg3Ljc0IDU2My4zMSA3ODcuNzQgNTMzLjcxIDg0MC4xMiA1MzMuNzEgODQwLjEyIDUxNC42NiA3ODcuNzQgNTE0LjY2IDc4Ny43NCA0ODUuMDUgODQ1LjAyIDQ4NS4wNSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI5MzEuNDcgNTQzLjY3IDg3Ny43NiA0NjYuMyA4NTguNDIgNDY2LjMgODU4LjQyIDU4Mi4zNiA4ODAuMTQgNTgyLjM2IDg4MC4xNCA1MDQuNTQgOTMzLjg1IDU4Mi4zNiA5NTMuMDUgNTgyLjM2IDk1My4wNSA0NjYuMyA5MzEuNDcgNDY2LjMgOTMxLjQ3IDU0My42NyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIzMDQuMTkgNDQwLjA2IDg3Ny41MSA0NDAuMDYgODg5LjA3IDQ0MC4wNiA5MjcuNTcgNDQwLjA2IDkyNy41NyA0NDIuODMgOTUwLjgyIDQzOC43MiA5MjcuNTcgNDM0LjYyIDkyNy41NyA0MzcuMzkgODg0LjYyIDQzNy4zOSA4NzcuNTEgNDM3LjM5IDMwNC4xOSA0MzcuMzkgMzA0LjE5IDQzNC42MiAyODAuOTMgNDM4LjcyIDMwNC4xOSA0NDIuODMgMzA0LjE5IDQ0MC4wNiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTk1My4wNSwzNjEuMDJ2LTQuOTloLTIwLjU0Yy0uNDctNC4yMS0yLjE0LTguMDYtNC42NS0xMS4yMWwxNC41My0xNC41My0zLjUzLTMuNTMtMTQuNTMsMTQuNTNoMGMtMy4xNS0yLjUxLTctNC4xOC0xMS4yLTQuNjV2LTIwLjU0aC00Ljk5djIwLjU0Yy00LjIuNDctOC4wNSwyLjE0LTExLjIsNC42NWwtMTQuNTMtMTQuNTMtMy41MywzLjUzLDE0LjUzLDE0LjUzYy0yLjUxLDMuMTUtNC4xNyw3LTQuNjUsMTEuMjFoLTIwLjU0djQuOTloMjAuNTRjLjQ3LDQuMjEsMi4xNCw4LjA2LDQuNjUsMTEuMjFoMGwtMTQuNTMsMTQuNTMsMy41MywzLjUzLDE0LjUzLTE0LjUzaDBjMy4xNSwyLjUxLDcsNC4xOCwxMS4yLDQuNjV2MjAuNTRoNC45OXYtMjAuNTRjNC4yLS40Nyw4LjA1LTIuMTQsMTEuMi00LjY1bDE0LjUzLDE0LjUzLDMuNTMtMy41My0xNC41My0xNC41M2MyLjUxLTMuMTUsNC4xNy03LDQuNjUtMTEuMjFoMjAuNTRaTTkyNC4zMSwzNjguNjdjLTEsMS4zNC0yLjE5LDIuNTMtMy41MywzLjUzLTIuMiwxLjY0LTQuODIsMi43Ni03LjY1LDMuMTgtLjgxLjEyLTEuNjUuMTgtMi40OS4xOHMtMS42OC0uMDYtMi40OS0uMThjLTIuODQtLjQyLTUuNDUtMS41NC03LjY1LTMuMTgtMS4zNC0xLTIuNTMtMi4xOC0zLjUzLTMuNTMtMS42NC0yLjItMi43Ni00LjgyLTMuMTgtNy42NS0uMTItLjgxLS4xOC0xLjY1LS4xOC0yLjQ5cy4wNi0xLjY4LjE4LTIuNDljLjQyLTIuODQsMS41NC01LjQ1LDMuMTgtNy42NSwxLTEuMzQsMi4xOC0yLjUzLDMuNTMtMy41MywyLjItMS42NCw0LjgyLTIuNzYsNy42NS0zLjE4LjgxLS4xMiwxLjY1LS4xOCwyLjQ5LS4xOHMxLjY4LjA2LDIuNDkuMThjMi44NC40Miw1LjQ1LDEuNTQsNy42NSwzLjE4LDEuMzQsMSwyLjUzLDIuMTgsMy41MywzLjUzLDEuNjQsMi4yLDIuNzYsNC44MiwzLjE4LDcuNjUuMTIuODEuMTgsMS42NS4xOCwyLjQ5cy0uMDYsMS42OC0uMTgsMi40OWMtLjQyLDIuODQtMS41NCw1LjQ1LTMuMTgsNy42NVoiLz4KPC9zdmc+" alt="McCracken Land Services"/>
+</div>
+<div class="doc-body">
+<p class="lead">Who inherits Ohio real property, minerals and surface, when a person dies without a will, under Ohio Revised Code &sect; 2105.06. The bars show the fractional split of the land. A surviving spouse also takes a money amount off the top of the estate first, which can raise the spouse's land fraction above the fraction shown; that amount is noted where it applies. Current law governs deaths on or after March 22, 2001; earlier deaths follow the rules summarized at the bottom.</p>
+
+<div class="sec-h"><p class="sh-t">Married person &mdash; real property</p><p class="sh-s">Deaths on or after March 22, 2001. Fractional split of the land is shown; the spouse's money preferential is noted.</p></div>
+
+<div class="row"><div class="cond"><p class="q">No children, or their lineal descendants</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(E)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">All</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div></div></div></div>
+
+<div class="row"><div class="cond"><p class="q">Children, all of whom are also the surviving spouse's</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(B)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">All</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div></div></div></div>
+
+<div class="row"><div class="cond"><p class="q">One child, who is not the surviving spouse's</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(C)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">&frac12;</div><div class="bar" style="flex:1;background:#c79a3b">&frac12;</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div><div class="cap" style="flex:1">Child, or lineal descendants</div></div><p class="note"><i>The surviving spouse also takes the first $20,000 off the top, so in land the spouse's share is one-half or more.</i></p></div></div>
+
+<div class="row"><div class="cond"><p class="q">Two or more children, the spouse is the parent of at least one but not all</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(D)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">&#8531;</div><div class="bar" style="flex:2;background:#c79a3b">&#8532;</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div><div class="cap" style="flex:2">Children, equally, per stirpes</div></div><p class="note"><i>The surviving spouse also takes the first $60,000 off the top, so in land the spouse's share is one-third or more.</i></p></div></div>
+
+<div class="row"><div class="cond"><p class="q">Two or more children, the spouse is the parent of none</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(D)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">&#8531;</div><div class="bar" style="flex:2;background:#c79a3b">&#8532;</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div><div class="cap" style="flex:2">Children, equally, per stirpes</div></div><p class="note"><i>The surviving spouse also takes the first $20,000 off the top, so in land the spouse's share is one-third or more.</i></p></div></div>
+
+<div class="sec-h"><p class="sh-t">No surviving spouse, or the share that does not pass to the spouse</p><p class="sh-s">The land descends in this order (&sect; 2105.06).</p></div>
+
+<div class="row"><div class="cond"><p class="q">Surviving children or their lineal descendants</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(A)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#c79a3b">All</div></div><div class="caps"><div class="cap" style="flex:1">Children and their descendants, per stirpes</div></div></div></div>
+
+<div class="row"><div class="cond"><p class="q">No children; surviving parents</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(F)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#2f6f96">&frac12;</div><div class="bar" style="flex:1;background:#c79a3b">&frac12;</div></div><div class="caps"><div class="cap" style="flex:1">Father</div><div class="cap" style="flex:1">Mother</div></div><p class="note"><i>If only one parent survives, that parent takes the whole share.</i></p></div></div>
+
+<div class="row"><div class="cond"><p class="q">No children or parents; brothers and sisters or their descendants</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(G)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#c79a3b">All</div></div><div class="caps"><div class="cap" style="flex:1">Siblings, whole or half blood, or their descendants</div></div></div></div>
+
+<div class="row"><div class="cond"><p class="q">No siblings; grandparents</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(H)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">&frac12;</div><div class="bar" style="flex:1;background:#c79a3b">&frac12;</div></div><div class="caps"><div class="cap" style="flex:1">Paternal grandparents</div><div class="cap" style="flex:1">Maternal grandparents</div></div></div></div>
+
+<div class="row"><div class="cond"><p class="q">No grandparents or their descendants; next of kin</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(I)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#5b7f99">All</div></div><div class="caps"><div class="cap" style="flex:1">Next of kin, no representation</div></div></div></div>
+
+<div class="row"><div class="cond"><p class="q">No next of kin; stepchildren</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(J)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#c79a3b">All</div></div><div class="caps"><div class="cap" style="flex:1">Stepchildren or their lineal descendants, per stirpes</div></div></div></div>
+
+<div class="row"><div class="cond"><p class="q">No surviving spouse, kin, or stepchildren</p><p class="cite"><a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">&sect; 2105.06(K)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">All</div></div><div class="caps"><div class="cap" style="flex:1">Escheats to the State of Ohio</div></div></div></div>
+
+<div class="why"><p class="wlbl">Deaths before March 22, 2001</p>
+<p>Earlier rules apply, and old chains can turn on the exact date of death. From 12/17/1986 to 3/21/2001 the spouse took a preferential of $60,000, or $20,000 if not the parent, plus one-half of the balance with one child or one-third with more. From 1/1/1976 to 12/16/1986 the amounts were $30,000 and $10,000. From 1/19/1932 to 12/31/1975 the split was fractional: one-half to the spouse with one child, one-third with two or more, and three-fourths to the spouse with one-fourth to the parents when there were no children. Before 1932, a surviving spouse took dower, a life estate, and property inherited from an ancestor followed ancestral-property rules. The full tables are in the Ohio Intestate Succession guide.</p></div>
+
+<p class="src">Full statute text: <a href="https://codes.ohio.gov/ohio-revised-code/section-2105.06" target="_blank" rel="noopener">Ohio Revised Code &sect; 2105.06</a>. Real property descends in parcenary, so the heirs take the minerals and surface as tenants in common in the fractions shown.</p>
+
+<div class="disc">This chart is prepared for landmen and title professionals as a working field tool. It is not legal advice and does not substitute for the advice of qualified Ohio oil and gas counsel. It shows Ohio real property, minerals and surface, not the money distribution, and the fractions are the floor of the surviving spouse's interest before the money preferential is applied. Distributions turn on the date of death, the makeup of the estate, and facts such as prior marriages, ancestral property, and predeceased heirs. Complex or disputed heirship should be referred to a licensed Ohio attorney. Citations are to Ohio Revised Code &sect; 2105.06.</div>
+
+</div>
+</body></html>
