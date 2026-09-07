@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /labs/scissortail/dashboard.html
+Disallow: /tools/_sources/
 
 Sitemap: https://www.mccrackenlandservices.com/sitemap.xml

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Net Deed Plotter Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet"/>
+<style>
+  @page{ size:Letter; margin:0.42in 0 0.42in 0;
+    @bottom-left{ content:"McCracken Land Services \2022\00a0mccrackenlandservices.com"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-left:0.5in; vertical-align:top; }
+    @bottom-right{ content:"Reference guide, not legal advice"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-right:0.5in; vertical-align:top; }
+  }
+  @page :first{ margin-top:0 }
+  :root{--navy-900:#0b2233;--navy-800:#0f2a3f;--navy-700:#163b56;--gold-500:#c79a3b;--gold-400:#d8b256;
+    --sand-50:#f7f4ee;--sand-100:#efe9df;--ink-900:#14202b;--ink-700:#33454f;--ink-500:#5d6b73;--line:#dfd8cc;
+    --head:"Source Serif 4",Georgia,serif;--body:"Inter",Arial,sans-serif}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--body);color:var(--ink-900);font-size:9.6pt;line-height:1.46;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  p{margin:0 0 7px}
+  .masthead{background:var(--navy-800);color:#fff;height:1.45in;padding:0 0.5in;
+    display:flex;align-items:center;justify-content:space-between;gap:34px}
+  .mh-text{flex:1 1 auto;min-width:0}
+  .masthead img{height:82px;width:auto;display:block;border:0;margin:0;flex:0 0 auto}
+  .doc-title{font-family:var(--head);font-weight:700;color:#fff;font-size:18.5pt;line-height:1.14;margin:0 0 4px;letter-spacing:-.3px}
+  .doc-meta{font-family:var(--body);color:rgba(255,255,255,.85);font-size:9.5pt;margin:0;line-height:1.3}
+  .doc-body{padding:14px 0.5in 0}
+  .intro{font-size:9.5pt;color:var(--ink-700);margin:0 0 10px}
+  .words{border:1px solid var(--line);border-left:3px solid var(--gold-500);background:var(--sand-50);border-radius:8px;padding:11px 15px;margin:0 0 14px;break-inside:avoid}
+  .words .lbl{font-family:var(--body);font-weight:700;font-size:8pt;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-500);margin-bottom:6px}
+  .words dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:9pt}
+  .words dt{font-weight:700;color:var(--navy-800);white-space:nowrap}
+  .words dd{margin:0;color:var(--ink-700)}
+  .cols{column-count:2;column-gap:30px}
+  .s{break-inside:avoid;page-break-inside:avoid;margin:0 0 13px}
+  .sh{font-family:var(--head);font-size:11pt;font-weight:700;color:var(--navy-800);border-bottom:1.5px solid var(--gold-500);padding-bottom:3px;margin:0 0 6px;break-after:avoid;page-break-after:avoid}
+  .sh .n{color:var(--gold-500)}
+  .s p{margin:0 0 6px}
+  .c{font-family:Consolas,"SFMono-Regular",Menlo,monospace;background:#eef1f4;border:1px solid var(--line);border-radius:3px;padding:0 4px;font-size:8.4pt;color:var(--navy-800);white-space:nowrap}
+  .cb{background:var(--navy-900);border-radius:6px;padding:9px 12px;margin:6px 0;font-family:Consolas,"SFMono-Regular",Menlo,monospace;font-size:8.5pt;line-height:1.55;color:#c6d2da;break-inside:avoid}
+  .cb .in{color:var(--gold-400);font-weight:600}
+  .cb .nt{color:#8ba0ad}
+  table.tbl{width:100%;border-collapse:collapse;margin:5px 0 7px;font-size:8.8pt}
+  table.tbl th{background:var(--navy-800);color:#fff;text-align:left;padding:5px 9px;font-family:var(--head);font-weight:700;font-size:9pt}
+  table.tbl td{padding:4px 9px;vertical-align:top;border-bottom:1px solid var(--line)}
+  table.tbl tr:nth-child(even) td{background:var(--sand-50)}
+  table.tbl td.k{font-family:Consolas,monospace;font-weight:600;color:var(--navy-800);white-space:nowrap;font-size:8.4pt}
+  .why{background:#eef1f4;border-left:3px solid var(--navy-700);padding:8px 12px;margin:6px 0;font-size:8.8pt;border-radius:6px;break-inside:avoid}
+  .why .lbl{font-family:var(--body);font-weight:700;font-size:7.6pt;letter-spacing:.09em;text-transform:uppercase;color:var(--navy-700);margin-bottom:3px}
+  .why p{margin:0;color:var(--ink-700)}
+  ul.tight{margin:4px 0 6px;padding-left:15px}
+  ul.tight li{margin:0 0 4px}
+  .disc{background:var(--sand-50);border-left:3px solid var(--gold-500);border-radius:6px;padding:10px 14px;font-size:8.4pt;color:var(--ink-700);margin:12px 0 0;break-inside:avoid}
+</style>
+</head>
+<body>
+<div class="masthead">
+  <div class="mh-text">
+    <p class="doc-title">Net Deed Plotter Cheat Sheet</p>
+    <div class="doc-meta">A quick reference for plotting deeds in Greenbriar Net Deed Plotter, built from the software manual.</div>
+  </div>
+  <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjMwLjAgMjUzLjQgOTY5LjMgNDQyLjIiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5jbHMtMiwgLmNscy0zIHsKICAgICAgICBmaWxsOiAjZDhiMjU2OwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGZvbnQtZmFtaWx5OiBNZXV0YXMtRXh0cmFCb2xkLCAnQ0pLQlMgSisgTWV1dGFzJzsKICAgICAgICBmb250LXNpemU6IDU4Ljc3cHg7CiAgICAgICAgZm9udC13ZWlnaHQ6IDcwMDsKICAgICAgICBsZXR0ZXItc3BhY2luZzogLjdlbTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI0MS45IDU3My4yNCAyMzUuMzggNTc1LjA1IDIyMS42IDU3OC44NiAyMjEuNiA1NzUuMDUgMTk0LjU4IDU3NS4wNSAxOTQuNTggNTc4Ljg0IDE4MC44OCA1NzUuMDUgMTc0LjI3IDU3My4yMiAxODAuODcgNTcxLjM5IDE5NC41OCA1NjcuNjEgMTk0LjU4IDU3MS4zOSAyMjEuNiA1NzEuMzkgMjIxLjYgNTY3LjYyIDIzNS4yMiA1NzEuMzkgMjQxLjkgNTczLjI0Ii8+CiAgPHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0Ni4wMSA2NjYuNykgc2NhbGUoLjkzIDEpIj48dHNwYW4geD0iMCIgeT0iMCI+TEFORCBTRVJWSUNFUzwvdHNwYW4+PC90ZXh0PgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIyMTkuNTIgNDIzLjM2IDIyOS4zNyA0MjkuMDUgMjQwLjkgNDM1LjcxIDI2Mi4yMiA0NDguMDEgMjU1LjEzIDQzNS43MSAyNTEuMjkgNDI5LjA1IDIxOS41MiAzNzMuOTEgMjE5LjUyIDQyMy4zNiIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjQuNDkgNDM1LjcxIDI2OS4yNCA0NDMuOTQgMjY5LjI0IDM2Mi43OCAyMjIuNDkgMzYyLjc4IDI2MC42NiA0MjkuMDUgMjY0LjQ5IDQzNS43MSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjkuMjQgMzU0LjY1IDI2OS4yNCAyNzMuNDkgMjIyLjQ5IDM1NC42NSAyNjkuMjQgMzU0LjY1Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI2Mi4yMiAyNjkuNDEgMjYyLjIgMjY5LjQxIDE2NS43NSAzMjUuMjQgMjEzLjk4IDM1My4xNiAyNjIuMjIgMjY5LjQxIi8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjE2MS42OCAzMzIuMjggMTYxLjY4IDM4NC43NyAyMDcuMzEgMzU4LjY5IDE2MS42OCAzMzIuMjgiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTQ5LjUxIDMyNS4yNCA1My4wNSAyNjkuNDEgMTAxLjI3IDM1My4xNiAxNDkuNTEgMzI1LjI0Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjQ2LjAxIDI3My40OSA0Ni4wMSAzNTQuNjUgOTIuNzYgMzU0LjY1IDQ2LjAxIDI3My40OSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxNTMuNTYgMzg0Ljc3IDE1My41NiAzMzIuMjggMTA3Ljk1IDM1OC42OSAxNTMuNTYgMzg0Ljc3Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjYwLjEzIDQzNS43MSA1My4wNCA0NDguMDEgNzQuMzQgNDM1LjcxIDg1Ljg4IDQyOS4wNSA5NS43MiA0MjMuMzYgOTUuNzIgMzczLjkxIDYzLjk2IDQyOS4wNSA2MC4xMyA0MzUuNzEiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNTQuNTkgNDI5LjA1IDkyLjc2IDM2Mi43OCA0Ni4wMSAzNjIuNzggNDYuMDEgNDQzLjk0IDUwLjc1IDQzNS43MSA1NC41OSA0MjkuMDUiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjcuNzUgNTExLjg0IDEwMS44MiA1NjQuOTUgMTM1LjkgNTExLjk5IDEzNS45IDU4Mi4zNiAxNTcuNjIgNTgyLjM2IDE1Ny42MiA0NjYuMyAxMzkuNDcgNDY2LjMgMTAxLjgyIDUyOS4zOSA2NC4xOSA0NjYuMyA0Ni4wMyA0NjYuMyA0Ni4wMyA1ODIuMzYgNjcuNzUgNTgyLjM2IDY3Ljc1IDUxMS44NCIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTIyMC4zMyw0ODIuOTVjOC4zMSwwLDEzLjc0LDEuMjgsMjEuNDIsMy41MXYtMTkuODJjLTguNDctMi44Ny0xNS44My0zLjk5LTI1LjU4LTMuOTktMzguMiwwLTQ5LjIyLDIzLjk3LTQ5LjIyLDQ3Ljc5czExLjAyLDQ3Ljk1LDQ5LjIyLDQ3Ljk1YzkuNzUsMCwxNy4yNy0xLjEyLDI1Ljc0LTMuOTl2LTE5Ljk4Yy04LDIuMzktMTMuMjcsMy42Ny0yMS41OCwzLjY3LTE4LjA3LDAtMzAuNTMtOS4xLTMwLjUzLTI3LjY1czEyLjYyLTI3LjQ5LDMwLjUzLTI3LjQ5WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI1MS45NSw1MjEuMjFjMCwzNC42NiwxNy44Niw2MS4xNSw2MS43NSw2MS4xNSwxMi4wNiwwLDIwLjU0LTEuNDksMjguNzItNC43NnYtMjEuMTJjLTcuMTQsMi44Mi0xNy4xMSw0LjE2LTI1LjYsNC4xNi0yNy4yMiwwLTQyLjctMTMuNTQtNDIuNy0zOS40MnMxNS40Ny0zOS41OCw0Mi43LTM5LjU4YzguNjQsMCwxOC45LDEuNzksMjUuNiw0LjQ2di0yMC44MmMtOC4xOS0zLjU3LTE2LjY2LTUuMjEtMjguNzItNS4yMS00NC4wNCwwLTYxLjc1LDI2LjY0LTYxLjc1LDYxLjE2WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ0NS44Miw1MDkuNzVjMC0yOC44Ni0xNC4xNC00My40NS00Ni40Mi00My40NWgtNDMuNnYxMTYuMDVoMjEuNzJ2LTMxLjY5aDIxLjcybDI1LDMxLjY5aDI1LjE1bC0yNi45My0zNC42NmMxNS43Ny01LjA2LDIzLjM2LTE4LjMxLDIzLjM2LTM3Ljk1Wk0zOTcuNzcsNTMxLjYyaC0yMC4yNHYtNDYuMTJoMjAuMjRjMTguMTUsMCwyNi4wNCw2Ljg0LDI2LjA0LDI0LjQsMCwxNi41MS03Ljg5LDIxLjcyLTI2LjA0LDIxLjcyWiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ1Ni4xLDU4Mi4zNmgyNC4xbDcuODktMjQuNGg0NS4zOGw3Ljg4LDI0LjRoMjQuMTFsLTQyLjcxLTExNi4wNWgtMjMuOGwtNDIuODUsMTE2LjA1Wk01MjcuMDcsNTM4LjMyaC0zMi41OWwxNi4zNi01MC40NSwxNi4yMiw1MC40NVoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02MzAuMzIsNDg0LjljOC42MywwLDE4LjksMS43OSwyNS42LDQuNDZ2LTIwLjgyYy04LjE5LTMuNTctMTYuNjctNS4yMS0yOC43Mi01LjIxLTQ0LjA0LDAtNjEuNzUsMjYuNjQtNjEuNzUsNjEuMTZzMTcuODUsNjEuMTUsNjEuNzUsNjEuMTVjMTIuMDUsMCwyMC41NC0xLjQ5LDI4LjcyLTQuNzZ2LTIxLjEyYy03LjE1LDIuODMtMTcuMTEsNC4xNi0yNS42LDQuMTYtMjcuMjIsMC00Mi43LTEzLjU0LTQyLjctMzkuNDJzMTUuNDctMzkuNTgsNDIuNy0zOS41OFoiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjY5LjMxIDQ2Ni4zIDY2OS4zMSA1ODIuMzYgNjkwLjU4IDU4Mi4zNiA2OTAuNTggNTMxLjQ3IDcyOS43MiA1ODIuMzYgNzU1LjYgNTgyLjM2IDcwOS4zMyA1MjMuMjkgNzU1LjMgNDY2LjMgNzI5LjQyIDQ2Ni4zIDY5MC41OCA1MTUuMTEgNjkwLjU4IDQ2Ni4zIDY2OS4zMSA0NjYuMyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI4NDUuMDIgNDg1LjA1IDg0NS4wMiA0NjYuMyA3NjYuMDMgNDY2LjMgNzY2LjAzIDU4Mi4zNiA4NDUuMDIgNTgyLjM2IDg0NS4wMiA1NjMuMzEgNzg3Ljc0IDU2My4zMSA3ODcuNzQgNTMzLjcxIDg0MC4xMiA1MzMuNzEgODQwLjEyIDUxNC42NiA3ODcuNzQgNTE0LjY2IDc4Ny43NCA0ODUuMDUgODQ1LjAyIDQ4NS4wNSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI5MzEuNDcgNTQzLjY3IDg3Ny43NiA0NjYuMyA4NTguNDIgNDY2LjMgODU4LjQyIDU4Mi4zNiA4ODAuMTQgNTgyLjM2IDg4MC4xNCA1MDQuNTQgOTMzLjg1IDU4Mi4zNiA5NTMuMDUgNTgyLjM2IDk1My4wNSA0NjYuMyA5MzEuNDcgNDY2LjMgOTMxLjQ3IDU0My42NyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIzMDQuMTkgNDQwLjA2IDg3Ny41MSA0NDAuMDYgODg5LjA3IDQ0MC4wNiA5MjcuNTcgNDQwLjA2IDkyNy41NyA0NDIuODMgOTUwLjgyIDQzOC43MiA5MjcuNTcgNDM0LjYyIDkyNy41NyA0MzcuMzkgODg0LjYyIDQzNy4zOSA4NzcuNTEgNDM3LjM5IDMwNC4xOSA0MzcuMzkgMzA0LjE5IDQzNC42MiAyODAuOTMgNDM4LjcyIDMwNC4xOSA0NDIuODMgMzA0LjE5IDQ0MC4wNiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTk1My4wNSwzNjEuMDJ2LTQuOTloLTIwLjU0Yy0uNDctNC4yMS0yLjE0LTguMDYtNC42NS0xMS4yMWwxNC41My0xNC41My0zLjUzLTMuNTMtMTQuNTMsMTQuNTNoMGMtMy4xNS0yLjUxLTctNC4xOC0xMS4yLTQuNjV2LTIwLjU0aC00Ljk5djIwLjU0Yy00LjIuNDctOC4wNSwyLjE0LTExLjIsNC42NWwtMTQuNTMtMTQuNTMtMy41MywzLjUzLDE0LjUzLDE0LjUzYy0yLjUxLDMuMTUtNC4xNyw3LTQuNjUsMTEuMjFoLTIwLjU0djQuOTloMjAuNTRjLjQ3LDQuMjEsMi4xNCw4LjA2LDQuNjUsMTEuMjFoMGwtMTQuNTMsMTQuNTMsMy41MywzLjUzLDE0LjUzLTE0LjUzaDBjMy4xNSwyLjUxLDcsNC4xOCwxMS4yLDQuNjV2MjAuNTRoNC45OXYtMjAuNTRjNC4yLS40Nyw4LjA1LTIuMTQsMTEuMi00LjY1bDE0LjUzLDE0LjUzLDMuNTMtMy41My0xNC41My0xNC41M2MyLjUxLTMuMTUsNC4xNy03LDQuNjUtMTEuMjFoMjAuNTRaTTkyNC4zMSwzNjguNjdjLTEsMS4zNC0yLjE5LDIuNTMtMy41MywzLjUzLTIuMiwxLjY0LTQuODIsMi43Ni03LjY1LDMuMTgtLjgxLjEyLTEuNjUuMTgtMi40OS4xOHMtMS42OC0uMDYtMi40OS0uMThjLTIuODQtLjQyLTUuNDUtMS41NC03LjY1LTMuMTgtMS4zNC0xLTIuNTMtMi4xOC0zLjUzLTMuNTMtMS42NC0yLjItMi43Ni00LjgyLTMuMTgtNy42NS0uMTItLjgxLS4xOC0xLjY1LS4xOC0yLjQ5cy4wNi0xLjY4LjE4LTIuNDljLjQyLTIuODQsMS41NC01LjQ1LDMuMTgtNy42NSwxLTEuMzQsMi4xOC0yLjUzLDMuNTMtMy41MywyLjItMS42NCw0LjgyLTIuNzYsNy42NS0zLjE4LjgxLS4xMiwxLjY1LS4xOCwyLjQ5LS4xOHMxLjY4LjA2LDIuNDkuMThjMi44NC40Miw1LjQ1LDEuNTQsNy42NSwzLjE4LDEuMzQsMSwyLjUzLDIuMTgsMy41MywzLjUzLDEuNjQsMi4yLDIuNzYsNC44MiwzLjE4LDcuNjUuMTIuODEuMTgsMS42NS4xOCwyLjQ5cy0uMDYsMS42OC0uMTgsMi40OWMtLjQyLDIuODQtMS41NCw1LjQ1LTMuMTgsNy42NVoiLz4KPC9zdmc+" alt="McCracken Land Services"/>
+</div>
+<div class="doc-body">
+
+<p class="intro">Net Deed Plotter turns a written land description into a drawn map. You retype the deed's directions and distances as short codes, called calls, one per line, and the program draws and measures the tract. This sheet lists the codes and the common tricks. To turn a legal description into these calls automatically first, use the Net Deed Plotter Formatter at mccrackenlandservices.com. Get the software itself at deedplotter.com.</p>
+
+<div class="words">
+  <div class="lbl">Plain words first</div>
+  <dl>
+    <dt>Call (course)</dt><dd>One line of the boundary: a direction and a distance.</dd>
+    <dt>Bearing</dt><dd>A direction written as a compass angle, like N22&deg;13'10"E, meaning North, then so many degrees toward east or west.</dd>
+    <dt>Quadrant</dt><dd>The N or S at the start and the E or W at the end of a bearing.</dd>
+    <dt>Metes and bounds</dt><dd>A deed written as a walk around the edge of the tract, one call at a time.</dd>
+    <dt>Aliquot parts</dt><dd>The standard half and quarter pieces of a section, like the NE/4 or the N/2.</dd>
+    <dt>Section, township, range</dt><dd>The grid address that locates a one-square-mile section of land.</dd>
+  </dl>
+</div>
+
+<div class="cols">
+
+<div class="s">
+  <div class="sh"><span class="n">1.</span> Entering metes and bounds</div>
+  <p>Start at the first "thence" and enter one course per line. A course, or one call, is: quadrant, degrees, a period, then minutes and seconds as four digits, the second quadrant, a space, and the distance.</p>
+  <div class="cb">Thence North 22 degrees 13 minutes 10 seconds East, 200.7 feet<br><span class="in">N22.1310E 200.7</span>&nbsp;&nbsp;<span class="nt">then press Enter</span></div>
+  <p>Minutes and seconds are always two digits each, because a bearing is counted in sixties, not tenths (see section 9). Five minutes and three seconds is <span class="c">0503</span>, so a call might read <span class="c">S4.0503W 96.2</span>.</p>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">2.</span> Varas and feet</div>
+  <p>Older deeds, especially in Texas and old Spanish grants, measure in varas, an old Spanish unit of about 33 1/3 inches. Put a V at the end of the distance so the plot figures acreage and scale correctly. Feet need no suffix.</p>
+  <div class="cb">Thence North 22 degrees 13 minutes 10 seconds East, 200.7 varas<br><span class="in">N22.1310E 200.7V</span></div>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">3.</span> Units and directions it accepts</div>
+  <p><b>Distances:</b> feet, varas, chains, rods, poles, perches, links, and meters, the old surveyor's units. <b>Directions:</b> bearings, azimuths (a single angle from north, 0 to 360), deflections, and interior angles.</p>
+  <p>Feet need no suffix. For anything else, put the letter right after the number with no space. The first letter is what Net Deed Plotter reads.</p>
+  <table class="tbl">
+    <tr><td class="k">472.93</td><td>Feet (no suffix needed)</td></tr>
+    <tr><td class="k">129M</td><td>Meters</td></tr>
+    <tr><td class="k">68V</td><td>Varas (127.9 varas is 127.9V)</td></tr>
+    <tr><td class="k">4C</td><td>Chains</td></tr>
+    <tr><td class="k">14.3P</td><td>Poles, rods, and perches (all 16.5 ft; 14.3R works too)</td></tr>
+    <tr><td class="k">38P5L</td><td>Links, and combined units</td></tr>
+  </table>
+  <p>Old deeds often combine chains, poles, and links in one call. Enter them together with no spaces, for example <span class="c">N12.30W 7C4P3L</span> for 7 chains, 4 poles, and 3 links.</p>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">4.</span> Entering a section (aliquot parts)</div>
+  <p>When the land is described by its quarter and half pieces instead of a boundary walk, type the aliquot parts, section, township, and range in short form, separated by commas with no spaces, then press Enter. Net Deed Plotter converts it to metes and bounds for you.</p>
+  <div class="cb">All of section 23, T10N, R13W<br><span class="in">all,23,10N,13W</span>&nbsp;&nbsp;<span class="nt">then press Enter</span><br><br>N/2 of the SE/4 of sec 9, T8N, R15W<br><span class="in">n,se,9,8n,15w</span></div>
+  <table class="tbl">
+    <tr><td class="k">ALL</td><td>All of the section</td></tr>
+    <tr><td class="k">N&nbsp;&nbsp;/&nbsp;&nbsp;W</td><td>North half / West half</td></tr>
+    <tr><td class="k">SW</td><td>Southwest quarter</td></tr>
+    <tr><td class="k">N,S</td><td>North half of the south half</td></tr>
+    <tr><td class="k">E,SW</td><td>East half of the southwest quarter</td></tr>
+    <tr><td class="k">S,NE,SE,SW</td><td>S/2 of NE of SE of SW</td></tr>
+    <tr><td class="k">N251,S800</td><td>North 251 ft of the south 800 ft</td></tr>
+  </table>
+  <p>List the aliquot parts in the wording order, largest tract last. To tie a metes-and-bounds call to a section corner, begin with a <span class="c">/</span> then corner, quarter-quarter, quarter, section, township, range, for example <span class="c">/se,n,s,10,4n,5w</span>.</p>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">5.</span> Curves</div>
+  <p>Type the word Curve on its own line, then double-click it (or press Ctrl+Enter) to open the Curve Data Entry Form. Press Tab to move between fields. You do not need every field.</p>
+  <ul class="tight">
+    <li><b>Curve direction:</b> R or L, meaning the boundary bends right or left as you walk it (or C for concave-to a quadrant). Required.</li>
+    <li><b>Radius:</b> how tight the curve is, in feet. A bigger radius is a flatter curve. If it is missing, enter <span class="c">?</span> as a last resort, or enter a degree of curvature like <span class="c">3.05d</span> and let the program compute the radius.</li>
+    <li><b>Arc length:</b> the curved distance itself, measured along the curve. Never less than the chord.</li>
+    <li><b>Delta (central angle):</b> how far the curve sweeps, in degrees-minutes-seconds, such as <span class="c">132.0732</span>.</li>
+    <li><b>Chord direction and distance:</b> the chord is the straight line between the two ends of the curve. Its direction is a bearing, such as <span class="c">N50.2459W</span>; its distance is that straight length, never more than the arc.</li>
+    <li><b>Back tangent, ahead tangent, radial direction:</b> straight-line directions used for curves that do not flow smoothly out of the line before them.</li>
+  </ul>
+  <p><b>Minimum curve data.</b> A normal (tangent) curve, one that flows straight out of the line before it, usually draws with the direction, the radius, and one more element (arc, delta, or chord distance). A non-tangent curve, or any curve that is the first call in a tract, must also include one bearing: chord, tangent, radial, or ahead-tangent direction.</p>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">6.</span> Draw a tract with the mouse (Advanced)</div>
+  <p>Handy when a new tract begins at a point you can see on a tract already on the map, like the intersection of a road and a railroad or a shared corner, and the deed gives no written tie to a section.</p>
+  <ul class="tight">
+    <li>Have the first tract on screen so the starting point is visible.</li>
+    <li>Open the Advanced menu, then Draw Tract with Mouse, and click your beginning point. To land exactly on a corner of an existing tract, hover until the cursor becomes a hand, then click.</li>
+    <li>Click a few rough corners, close the loop by clicking the first point again, and answer Yes. The rough calls drop into the Deed Call Editor starting with <span class="c">@0</span>.</li>
+    <li>In the editor, delete the guessed calls so the cursor sits at your true point of beginning, the corner the deed starts from, then type the real calls.</li>
+  </ul>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">7.</span> The "?" for a missing call</div>
+  <p>If a deed is missing a call or a radius, put a <span class="c">?</span> where that call would go and let Net Deed Plotter solve it. For a missing curve, follow the <span class="c">?</span> with the curve direction and radius, no spaces.</p>
+  <div class="cb"><span class="in">?L5729.58</span>&nbsp;&nbsp;<span class="nt">a curve to the left, radius 5729.58 ft</span></div>
+  <p>Only one <span class="c">?</span> is allowed per tract.</p>
+  <div class="why"><div class="lbl">Careful</div><p>Solving with a <span class="c">?</span> drives the closure error, how far the end of the walk misses the start, down to near zero, so it can hide a real mistake. Confirm the solved value against the deed before you trust it.</p></div>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">8.</span> Map and workflow tips</div>
+  <ul class="tight">
+    <li>Press F2 to view the map.</li>
+    <li>Scale: pick Scale in the directory tree. It is inches per feet, so 100 means 1 inch = 100 feet. Smaller number, larger map.</li>
+    <li>Color: click inside the tract until it is outlined in green, then use Fill (solid, hatch, or checker) or Lines for color.</li>
+    <li>Label courses: Map, then Deed Calls on Lines.</li>
+    <li>Bad closure: the Analyze option helps find the faulty call. A bad call shows in red.</li>
+    <li>Add any text notes last, after the map is scaled and placed.</li>
+    <li>Net Deed Plotter reports area, net area, closure, and precision.</li>
+  </ul>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">9.</span> Minutes and seconds are base 60</div>
+  <p>A bearing is degrees, minutes, and seconds. There are 60 minutes in a degree and 60 seconds in a minute, so a fraction of a minute is seconds, not a decimal.</p>
+  <ul class="tight">
+    <li>Half a minute is 30 seconds, not 0.5. "45 and a half minutes" is 45 minutes 30 seconds, written as the pair <span class="c">4530</span>.</li>
+    <li>A quarter minute is 15 seconds. Three quarters is 45 seconds.</li>
+  </ul>
+  <div class="cb">North 12 degrees 45&frac12; minutes East<br><span class="in">N12.4530E</span>&nbsp;&nbsp;<span class="nt">not N12.455E</span></div>
+  <p>A fraction of a degree works the same way: half a degree is 30 minutes.</p>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">10.</span> Sections first, then the tract</div>
+  <p>When a description is tied to a section, township, and range, draw the section first, then the tract inside it. Type the section and press Enter so the whole section appears, then add the tract.</p>
+  <div class="cb"><span class="in">all,9,16n,7w</span>&nbsp;&nbsp;<span class="nt">draws the full section</span></div>
+  <p>This keeps the tract in context and lets you add more tracts to the same section later. If the map is only meant to show one tract, color that tract so it stands out: click inside it until it is outlined in green, then Fill.</p>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">11.</span> Multiple tracts: chaining and merging</div>
+  <p>To show more than one tract, separate each tract's calls with <span class="c">@0</span> on its own line. Type the first tract's calls, then <span class="c">@0</span>, then the next tract's calls. That is chaining. Merging does the same automatically: use File, then Merge, to pull calls you saved in another file into the editor, and the program inserts the <span class="c">@0</span> for you. Move or rotate tracts into position after they draw.</p>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">12.</span> Turning deed call labels on and off</div>
+  <p>The Show Deed Calls icon toggles the call labels along the boundary lines. With no tract selected it toggles every tract. With a tract active it toggles only that one. To hide a single label that overlaps another, select the corner where the line starts, open the Lines menu, and toggle that line off.</p>
+</div>
+
+<div class="s">
+  <div class="sh"><span class="n">13.</span> Basis of bearing: a rotated section</div>
+  <p>Many sections, especially older ones, are rotated from true north, so the deed gives a basis of bearing, the survey's own reference direction, the way the surveyor called north. A standard section has due north, south, east, and west sides, and <span class="c">all,9,16n,7w</span> draws it that way. When the deed gives a basis of bearing, match the tilt one of two ways.</p>
+  <p><b>Rotate the section.</b> Build the standard section, then rotate it by the difference between due west and the basis of bearing, using the Rotate Selected Tract tool.</p>
+  <div class="cb">90&deg;00'00"&nbsp;&nbsp;due west<br>- 83&deg;26'15"&nbsp;&nbsp;basis of bearing<br>= 6&deg;33'45"&nbsp;&nbsp;<span class="nt">rotate the section by this</span></div>
+  <p><b>Build it on the basis of bearing.</b> Start with the deed's bearing instead of due west, turning each following side 90 degrees.</p>
+  <div class="cb"><span class="in">N83.2615W 5280</span><br><span class="in">S6.3345W 5280</span><br><span class="in">S83.2615E 5280</span><br><span class="in">N6.3345E 5280</span></div>
+  <div class="why"><div class="lbl">Note</div><p>Use the first basis of bearing in the deed, since it sets the section's overall orientation. A separate basis on an interior tract usually does not change a simple plot, and a tract sticking slightly past a section line is normal: the deed follows a real survey, while the section you draw is a theoretical PLSS (Public Land Survey System) square.</p></div>
+</div>
+
+</div>
+
+<div class="disc">This reference is prepared for use by landmen and title professionals as a working field tool. It is a quick reference for Greenbriar Net Deed Plotter, built from the software manual, and is not a substitute for the manual. Net Deed Plotter is software from Greenbriar Graphics; get it at deedplotter.com. Always confirm a plotted description against the deed itself.</div>
+
+</div>
+</body></html>

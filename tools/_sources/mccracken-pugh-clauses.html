@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Pugh Clauses</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet"/>
+<style>
+  @page{ size:Letter; margin:0.42in 0 0.42in 0;
+    @bottom-left{ content:"McCracken Land Services \2022\00a0mccrackenlandservices.com"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-left:0.5in; vertical-align:top; }
+    @bottom-right{ content:"Reference guide, not legal advice"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-right:0.5in; vertical-align:top; }
+  }
+  @page :first{ margin-top:0; }
+  :root{--navy-900:#0b2233;--navy-800:#0f2a3f;--navy-700:#163b56;--gold-500:#c79a3b;--gold-400:#d8b256;
+    --sand-50:#f7f4ee;--sand-100:#efe9df;--ink-900:#14202b;--ink-700:#33454f;--ink-500:#5d6b73;--line:#dfd8cc;--muted:#7c8a90;
+    --head:"Source Serif 4",Georgia,serif;--body:"Inter",Arial,sans-serif}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--body);color:var(--ink-900);font-size:10pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  p{margin:0 0 8px}
+  .doc-body{padding:0 0.5in}
+  .masthead{background:var(--navy-800);color:#fff;height:1.45in;padding:0 0.5in;
+    display:flex;align-items:center;justify-content:space-between;gap:34px}
+  .mh-text{flex:1 1 auto;min-width:0}
+  .masthead img{height:82px;width:auto;display:block;border:0;margin:0;flex:0 0 auto}
+  .doc-title{font-family:var(--head);font-weight:700;color:#fff;font-size:18.5pt;line-height:1.14;margin:0 0 4px;letter-spacing:-.3px}
+  .doc-meta{font-family:var(--body);color:rgba(255,255,255,.85);font-size:9.5pt;margin:0;line-height:1.3}
+  .principle{background:var(--navy-800);color:#eef2f6;padding:15px 18px;border-radius:8px;margin:16px 0}
+  .principle .lbl{font-family:var(--head);color:var(--gold-400);font-weight:700;font-size:10.5pt;margin-bottom:6px}
+  .principle p{margin:0;color:#eef2f6}
+  .sec-h{font-family:var(--head);font-size:12.6pt;font-weight:700;color:var(--navy-800);border-bottom:2px solid var(--gold-500);padding-bottom:4px;margin:18px 0 8px}
+  .sec-h.first{margin-top:10px}
+  table.tbl{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:9.3pt}
+  table.tbl th{background:var(--navy-800);color:#fff;text-align:left;padding:7px 11px;font-family:var(--head);font-weight:700;font-size:9.6pt}
+  table.tbl td{padding:6px 11px;vertical-align:top;border-bottom:1px solid var(--line)}
+  table.tbl tr:nth-child(even) td{background:var(--sand-50)}
+  table.tbl td.k{font-weight:600;color:var(--navy-800);white-space:nowrap}
+  .example{border:1px solid var(--line);border-left:3px solid var(--gold-500);background:#fff;border-radius:8px;padding:13px 16px;margin:8px 0;break-inside:avoid;page-break-inside:avoid}
+  .example h3{font-family:var(--head);margin:0 0 6px;font-size:11.5pt;color:var(--navy-800)}
+  .example .res{margin:6px 0 0;font-size:9.3pt;color:var(--navy-800);background:var(--sand-50);border-radius:6px;padding:7px 11px}
+  .example .res b{color:var(--navy-900)}
+  .why,.tip{padding:9px 13px;margin:8px 0;font-size:9.3pt;border-radius:6px;break-inside:avoid;page-break-inside:avoid}
+  .why{background:var(--sand-50);border-left:3px solid var(--gold-500)}
+  .tip{background:#eef1f4;border-left:3px solid var(--navy-700)}
+  .why .lbl,.tip .lbl{font-family:var(--body);font-weight:700;font-size:8pt;letter-spacing:.09em;text-transform:uppercase;margin-bottom:3px}
+  .why .lbl{color:var(--gold-500)}
+  .tip .lbl{color:var(--navy-700)}
+  .why p,.tip p{margin:0;color:var(--ink-700)}
+  .disc{background:var(--sand-50);border-left:3px solid var(--gold-500);border-radius:6px;padding:11px 15px;font-size:8.6pt;color:var(--ink-700);margin:16px 0 0}
+  .sec-h,.example h3{break-after:avoid;page-break-after:avoid}
+  .tbl,.principle,.disc{break-inside:avoid;page-break-inside:avoid}
+
+  table.tbl.long{break-inside:auto;page-break-inside:auto}
+  table.tbl.long tr{break-inside:avoid;page-break-inside:avoid}
+  .fig{border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px 12px 6px;margin:10px 0}
+  .fig .cap{font-size:8.4pt;color:var(--ink-500);margin:2px 0 0;text-align:center}
+
+  .clause{background:#eef1f4;border:1px solid var(--line);border-left:3px solid var(--navy-700);border-radius:6px;padding:10px 14px;margin:8px 0;break-inside:avoid;page-break-inside:avoid}
+  .clause .lbl{font-family:var(--body);font-weight:700;font-size:8pt;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-700);margin-bottom:5px}
+  .clause .txt{font-style:italic;color:var(--ink-900);margin:0}
+  .clause .txt+.txt{margin-top:7px}
+  .clause .op{text-decoration:underline;text-decoration-color:var(--gold-500);text-decoration-thickness:1.5px;text-underline-offset:2px;font-weight:600}
+  .clause .note{margin:6px 0 0;font-size:8.6pt;color:var(--ink-700)}
+</style>
+</head>
+<body>
+<div class="masthead">
+  <div class="mh-text">
+    <p class="doc-title">Pugh Clauses</p>
+    <div class="doc-meta">Contractual and statutory. Oklahoma and Texas. Horizontal and vertical, rolling and snapshot.</div>
+  </div>
+  <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjMwLjAgMjUzLjQgOTY5LjMgNDQyLjIiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5jbHMtMiwgLmNscy0zIHsKICAgICAgICBmaWxsOiAjZDhiMjU2OwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGZvbnQtZmFtaWx5OiBNZXV0YXMtRXh0cmFCb2xkLCAnQ0pLQlMgSisgTWV1dGFzJzsKICAgICAgICBmb250LXNpemU6IDU4Ljc3cHg7CiAgICAgICAgZm9udC13ZWlnaHQ6IDcwMDsKICAgICAgICBsZXR0ZXItc3BhY2luZzogLjdlbTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI0MS45IDU3My4yNCAyMzUuMzggNTc1LjA1IDIyMS42IDU3OC44NiAyMjEuNiA1NzUuMDUgMTk0LjU4IDU3NS4wNSAxOTQuNTggNTc4Ljg0IDE4MC44OCA1NzUuMDUgMTc0LjI3IDU3My4yMiAxODAuODcgNTcxLjM5IDE5NC41OCA1NjcuNjEgMTk0LjU4IDU3MS4zOSAyMjEuNiA1NzEuMzkgMjIxLjYgNTY3LjYyIDIzNS4yMiA1NzEuMzkgMjQxLjkgNTczLjI0Ii8+CiAgPHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0Ni4wMSA2NjYuNykgc2NhbGUoLjkzIDEpIj48dHNwYW4geD0iMCIgeT0iMCI+TEFORCBTRVJWSUNFUzwvdHNwYW4+PC90ZXh0PgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIyMTkuNTIgNDIzLjM2IDIyOS4zNyA0MjkuMDUgMjQwLjkgNDM1LjcxIDI2Mi4yMiA0NDguMDEgMjU1LjEzIDQzNS43MSAyNTEuMjkgNDI5LjA1IDIxOS41MiAzNzMuOTEgMjE5LjUyIDQyMy4zNiIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjQuNDkgNDM1LjcxIDI2OS4yNCA0NDMuOTQgMjY5LjI0IDM2Mi43OCAyMjIuNDkgMzYyLjc4IDI2MC42NiA0MjkuMDUgMjY0LjQ5IDQzNS43MSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjkuMjQgMzU0LjY1IDI2OS4yNCAyNzMuNDkgMjIyLjQ5IDM1NC42NSAyNjkuMjQgMzU0LjY1Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI2Mi4yMiAyNjkuNDEgMjYyLjIgMjY5LjQxIDE2NS43NSAzMjUuMjQgMjEzLjk4IDM1My4xNiAyNjIuMjIgMjY5LjQxIi8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjE2MS42OCAzMzIuMjggMTYxLjY4IDM4NC43NyAyMDcuMzEgMzU4LjY5IDE2MS42OCAzMzIuMjgiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTQ5LjUxIDMyNS4yNCA1My4wNSAyNjkuNDEgMTAxLjI3IDM1My4xNiAxNDkuNTEgMzI1LjI0Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjQ2LjAxIDI3My40OSA0Ni4wMSAzNTQuNjUgOTIuNzYgMzU0LjY1IDQ2LjAxIDI3My40OSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxNTMuNTYgMzg0Ljc3IDE1My41NiAzMzIuMjggMTA3Ljk1IDM1OC42OSAxNTMuNTYgMzg0Ljc3Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjYwLjEzIDQzNS43MSA1My4wNCA0NDguMDEgNzQuMzQgNDM1LjcxIDg1Ljg4IDQyOS4wNSA5NS43MiA0MjMuMzYgOTUuNzIgMzczLjkxIDYzLjk2IDQyOS4wNSA2MC4xMyA0MzUuNzEiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNTQuNTkgNDI5LjA1IDkyLjc2IDM2Mi43OCA0Ni4wMSAzNjIuNzggNDYuMDEgNDQzLjk0IDUwLjc1IDQzNS43MSA1NC41OSA0MjkuMDUiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjcuNzUgNTExLjg0IDEwMS44MiA1NjQuOTUgMTM1LjkgNTExLjk5IDEzNS45IDU4Mi4zNiAxNTcuNjIgNTgyLjM2IDE1Ny42MiA0NjYuMyAxMzkuNDcgNDY2LjMgMTAxLjgyIDUyOS4zOSA2NC4xOSA0NjYuMyA0Ni4wMyA0NjYuMyA0Ni4wMyA1ODIuMzYgNjcuNzUgNTgyLjM2IDY3Ljc1IDUxMS44NCIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTIyMC4zMyw0ODIuOTVjOC4zMSwwLDEzLjc0LDEuMjgsMjEuNDIsMy41MXYtMTkuODJjLTguNDctMi44Ny0xNS44My0zLjk5LTI1LjU4LTMuOTktMzguMiwwLTQ5LjIyLDIzLjk3LTQ5LjIyLDQ3Ljc5czExLjAyLDQ3Ljk1LDQ5LjIyLDQ3Ljk1YzkuNzUsMCwxNy4yNy0xLjEyLDI1Ljc0LTMuOTl2LTE5Ljk4Yy04LDIuMzktMTMuMjcsMy42Ny0yMS41OCwzLjY3LTE4LjA3LDAtMzAuNTMtOS4xLTMwLjUzLTI3LjY1czEyLjYyLTI3LjQ5LDMwLjUzLTI3LjQ5WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI1MS45NSw1MjEuMjFjMCwzNC42NiwxNy44Niw2MS4xNSw2MS43NSw2MS4xNSwxMi4wNiwwLDIwLjU0LTEuNDksMjguNzItNC43NnYtMjEuMTJjLTcuMTQsMi44Mi0xNy4xMSw0LjE2LTI1LjYsNC4xNi0yNy4yMiwwLTQyLjctMTMuNTQtNDIuNy0zOS40MnMxNS40Ny0zOS41OCw0Mi43LTM5LjU4YzguNjQsMCwxOC45LDEuNzksMjUuNiw0LjQ2di0yMC44MmMtOC4xOS0zLjU3LTE2LjY2LTUuMjEtMjguNzItNS4yMS00NC4wNCwwLTYxLjc1LDI2LjY0LTYxLjc1LDYxLjE2WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ0NS44Miw1MDkuNzVjMC0yOC44Ni0xNC4xNC00My40NS00Ni40Mi00My40NWgtNDMuNnYxMTYuMDVoMjEuNzJ2LTMxLjY5aDIxLjcybDI1LDMxLjY5aDI1LjE1bC0yNi45My0zNC42NmMxNS43Ny01LjA2LDIzLjM2LTE4LjMxLDIzLjM2LTM3Ljk1Wk0zOTcuNzcsNTMxLjYyaC0yMC4yNHYtNDYuMTJoMjAuMjRjMTguMTUsMCwyNi4wNCw2Ljg0LDI2LjA0LDI0LjQsMCwxNi41MS03Ljg5LDIxLjcyLTI2LjA0LDIxLjcyWiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ1Ni4xLDU4Mi4zNmgyNC4xbDcuODktMjQuNGg0NS4zOGw3Ljg4LDI0LjRoMjQuMTFsLTQyLjcxLTExNi4wNWgtMjMuOGwtNDIuODUsMTE2LjA1Wk01MjcuMDcsNTM4LjMyaC0zMi41OWwxNi4zNi01MC40NSwxNi4yMiw1MC40NVoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02MzAuMzIsNDg0LjljOC42MywwLDE4LjksMS43OSwyNS42LDQuNDZ2LTIwLjgyYy04LjE5LTMuNTctMTYuNjctNS4yMS0yOC43Mi01LjIxLTQ0LjA0LDAtNjEuNzUsMjYuNjQtNjEuNzUsNjEuMTZzMTcuODUsNjEuMTUsNjEuNzUsNjEuMTVjMTIuMDUsMCwyMC41NC0xLjQ5LDI4LjcyLTQuNzZ2LTIxLjEyYy03LjE1LDIuODMtMTcuMTEsNC4xNi0yNS42LDQuMTYtMjcuMjIsMC00Mi43LTEzLjU0LTQyLjctMzkuNDJzMTUuNDctMzkuNTgsNDIuNy0zOS41OFoiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjY5LjMxIDQ2Ni4zIDY2OS4zMSA1ODIuMzYgNjkwLjU4IDU4Mi4zNiA2OTAuNTggNTMxLjQ3IDcyOS43MiA1ODIuMzYgNzU1LjYgNTgyLjM2IDcwOS4zMyA1MjMuMjkgNzU1LjMgNDY2LjMgNzI5LjQyIDQ2Ni4zIDY5MC41OCA1MTUuMTEgNjkwLjU4IDQ2Ni4zIDY2OS4zMSA0NjYuMyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI4NDUuMDIgNDg1LjA1IDg0NS4wMiA0NjYuMyA3NjYuMDMgNDY2LjMgNzY2LjAzIDU4Mi4zNiA4NDUuMDIgNTgyLjM2IDg0NS4wMiA1NjMuMzEgNzg3Ljc0IDU2My4zMSA3ODcuNzQgNTMzLjcxIDg0MC4xMiA1MzMuNzEgODQwLjEyIDUxNC42NiA3ODcuNzQgNTE0LjY2IDc4Ny43NCA0ODUuMDUgODQ1LjAyIDQ4NS4wNSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI5MzEuNDcgNTQzLjY3IDg3Ny43NiA0NjYuMyA4NTguNDIgNDY2LjMgODU4LjQyIDU4Mi4zNiA4ODAuMTQgNTgyLjM2IDg4MC4xNCA1MDQuNTQgOTMzLjg1IDU4Mi4zNiA5NTMuMDUgNTgyLjM2IDk1My4wNSA0NjYuMyA5MzEuNDcgNDY2LjMgOTMxLjQ3IDU0My42NyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIzMDQuMTkgNDQwLjA2IDg3Ny41MSA0NDAuMDYgODg5LjA3IDQ0MC4wNiA5MjcuNTcgNDQwLjA2IDkyNy41NyA0NDIuODMgOTUwLjgyIDQzOC43MiA5MjcuNTcgNDM0LjYyIDkyNy41NyA0MzcuMzkgODg0LjYyIDQzNy4zOSA4NzcuNTEgNDM3LjM5IDMwNC4xOSA0MzcuMzkgMzA0LjE5IDQzNC42MiAyODAuOTMgNDM4LjcyIDMwNC4xOSA0NDIuODMgMzA0LjE5IDQ0MC4wNiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTk1My4wNSwzNjEuMDJ2LTQuOTloLTIwLjU0Yy0uNDctNC4yMS0yLjE0LTguMDYtNC42NS0xMS4yMWwxNC41My0xNC41My0zLjUzLTMuNTMtMTQuNTMsMTQuNTNoMGMtMy4xNS0yLjUxLTctNC4xOC0xMS4yLTQuNjV2LTIwLjU0aC00Ljk5djIwLjU0Yy00LjIuNDctOC4wNSwyLjE0LTExLjIsNC42NWwtMTQuNTMtMTQuNTMtMy41MywzLjUzLDE0LjUzLDE0LjUzYy0yLjUxLDMuMTUtNC4xNyw3LTQuNjUsMTEuMjFoLTIwLjU0djQuOTloMjAuNTRjLjQ3LDQuMjEsMi4xNCw4LjA2LDQuNjUsMTEuMjFoMGwtMTQuNTMsMTQuNTMsMy41MywzLjUzLDE0LjUzLTE0LjUzaDBjMy4xNSwyLjUxLDcsNC4xOCwxMS4yLDQuNjV2MjAuNTRoNC45OXYtMjAuNTRjNC4yLS40Nyw4LjA1LTIuMTQsMTEuMi00LjY1bDE0LjUzLDE0LjUzLDMuNTMtMy41My0xNC41My0xNC41M2MyLjUxLTMuMTUsNC4xNy03LDQuNjUtMTEuMjFoMjAuNTRaTTkyNC4zMSwzNjguNjdjLTEsMS4zNC0yLjE5LDIuNTMtMy41MywzLjUzLTIuMiwxLjY0LTQuODIsMi43Ni03LjY1LDMuMTgtLjgxLjEyLTEuNjUuMTgtMi40OS4xOHMtMS42OC0uMDYtMi40OS0uMThjLTIuODQtLjQyLTUuNDUtMS41NC03LjY1LTMuMTgtMS4zNC0xLTIuNTMtMi4xOC0zLjUzLTMuNTMtMS42NC0yLjItMi43Ni00LjgyLTMuMTgtNy42NS0uMTItLjgxLS4xOC0xLjY1LS4xOC0yLjQ5cy4wNi0xLjY4LjE4LTIuNDljLjQyLTIuODQsMS41NC01LjQ1LDMuMTgtNy42NSwxLTEuMzQsMi4xOC0yLjUzLDMuNTMtMy41MywyLjItMS42NCw0LjgyLTIuNzYsNy42NS0zLjE4LjgxLS4xMiwxLjY1LS4xOCwyLjQ5LS4xOHMxLjY4LjA2LDIuNDkuMThjMi44NC40Miw1LjQ1LDEuNTQsNy42NSwzLjE4LDEuMzQsMSwyLjUzLDIuMTgsMy41MywzLjUzLDEuNjQsMi4yLDIuNzYsNC44MiwzLjE4LDcuNjUuMTIuODEuMTgsMS42NS4xOCwyLjQ5cy0uMDYsMS42OC0uMTgsMi40OWMtLjQyLDIuODQtMS41NCw1LjQ1LTMuMTgsNy42NVoiLz4KPC9zdmc+" alt="McCracken Land Services"/>
+</div>
+<div class="doc-body">
+
+<div class="tip" style="margin-top:14px">
+  <div class="lbl">New to oil and gas leases? Start here</div>
+  <p>A person who owns the minerals under a piece of land, the lessor, signs an oil and gas lease with a company that will drill, the operator or lessee. The lease runs for a fixed number of years, called the primary term, often three or five. If the operator gets a well producing before that term ends, the lease does not expire. It stays alive for as long as a well keeps producing, which can run for decades. The catch is that one producing well can hold the entire leased tract, and every layer of rock under it, each named layer being a formation, including the parts the operator never drilled. A Pugh clause is the tool that breaks that grip. It lets the undrilled land, or the untapped deep layers, go back to the owner while the operator keeps only what it is actually producing. Everything below is about how those clauses are written and how they work.</p>
+</div>
+
+<div class="principle">
+  <div class="lbl">The one thing people get wrong</div>
+  <p>A Pugh clause breaks a lease into parts, so that production on one part does not hold the whole lease past the primary term. Two leases can both say "Pugh clause" and behave in opposite ways. The version that matters most in the field is not whether a lease has a Pugh clause, but whether it tests the acreage <b>once</b> or on a <b>rolling</b> basis. A well going off production does not always release the acreage around it. You have to read the clause.</p>
+</div>
+
+<div class="sec-h first">What a Pugh clause does</div>
+<p>Without a Pugh clause, a single unit well, or a small pooled unit, can hold every acre and every depth the lease covers for as long as that one well produces. The clause lets the undeveloped acreage, or the deeper formations, fall away and return to the mineral owner. It is named for Lawrence G. Pugh, a Louisiana lawyer who wrote the first version in 1947. A lessor wants one so a small amount of production cannot tie up a large lease. An operator resists it, or seeks the narrowest version, because it forces continued drilling or a release.</p>
+
+<div class="sec-h">The two directions</div>
+<table class="tbl">
+  <tr><th style="width:26%">Type</th><th style="width:74%">What it releases</th></tr>
+  <tr><td class="k">Horizontal Pugh<br><span style="font-weight:400;color:var(--ink-500)">(acreage)</span></td><td>At the end of the primary term, the lease terminates as to all acreage outside the producing or pooled unit. The owner gets back the land that is not actually being developed, while the unit acreage stays held.</td></tr>
+  <tr><td class="k">Vertical Pugh<br><span style="font-weight:400;color:var(--ink-500)">(depth)</span></td><td>The lease terminates as to depths or formations below, or outside of, the producing interval, commonly everything deeper than a set distance below the deepest producing zone. The owner gets back the deep rights that are not being produced.</td></tr>
+</table>
+
+<div class="sec-h">Rolling versus snapshot, and the mistake people make</div>
+<p>This is the part of a Pugh clause that gets read wrong the most. A snapshot Pugh, sometimes called a one-time Pugh, tests the acreage at a single moment. That moment is usually the end of the primary term, or a set time after a continuous-development program ends. Whatever is held or producing at that moment is retained. Whatever is not is released, one time. After that snapshot passes, the Pugh clause does not run again. The retained acreage is then held the way any lease is held, for as long as there is production in paying quantities, meaning production that earns more than it costs to run the well, under the lease's ordinary terms. That is not the same as held forever. If production on the retained lands finally stops, and no savings clause (a provision that keeps a lease alive during a gap, such as a shut-in or continuous-operations clause) carries the lease, it ends as to those lands too. The snapshot just means the acreage is not re-tested and lopped off each time one well goes quiet.</p>
+<p>A rolling Pugh, sometimes called a continuous Pugh, runs the test over and over. Each time operations or production stop on a part of the lease after the primary term, that part can release at that time.</p>
+<p>Texas leans snapshot. Texas courts generally presume a one-time test unless the lease clearly calls for repeated evaluations, so in Texas you should read a Pugh clause as a snapshot unless the language plainly says the test repeats.</p>
+<p>Here is what each one looks like in a lease. These are illustrative examples to show the shape, not forms to copy.</p>
+<div class="clause"><div class="lbl">Example: a snapshot clause</div><p class="txt">"<span class="op">At the end of the primary term</span>, this lease shall terminate as to all lands <span class="op">not then included</span> within a pooled unit, or within a governmental proration or spacing unit assigned to a well then capable of producing in paying quantities, and shall remain in force only as to the lands within such unit or units."</p><p class="note">One test, taken at the end of the primary term. The words that make it a snapshot are "at the end of the primary term" and "not then included." The retained units are then held the ordinary way, for as long as there is production.</p></div>
+<div class="clause"><div class="lbl">Example: a rolling clause</div><p class="txt">"After the primary term, this lease shall remain in force only <span class="op">as to each pooled or proration unit</span>, and only <span class="op">for so long as</span> a well on that unit is producing in paying quantities or operations are conducted thereon <span class="op">with no cessation of more than ninety (90) consecutive days</span>. As to any such unit on which production and operations cease and are not timely resumed, this lease shall automatically terminate <span class="op">as to the lands within that unit</span>."</p><p class="note">The test runs on each unit, again and again. The words that make it rolling are "as to each unit," "for so long as," and the automatic per-unit termination "as to the lands within that unit."</p></div>
+<div class="why">
+  <div class="lbl">The mistake in the field</div>
+  <p>Say a lease covers three separate units, with one well on each, and all three are producing at the end of the primary term. Two years later, two of the wells quit and one keeps producing. People see a Pugh clause, see two wells down, and treat those two units as released. Under a snapshot Pugh that already ran its test, that is wrong. All three units were held when the snapshot ran, so all three stay held, and the two that later quit do not fall off. It would take the last producing well stopping to end the lease and release those units and lands, because the snapshot ran once and will not run again. Under a rolling Pugh the same facts could release the two idle units, because that clause tests each unit again when it goes quiet. You cannot tell which from the word "Pugh." Read the clause closely.</p>
+</div>
+<table class="tbl">
+  <tr><th style="width:24%">&nbsp;</th><th style="width:38%">Snapshot (one-time)</th><th style="width:38%">Rolling (continuous)</th></tr>
+  <tr><td class="k">When the test runs</td><td>Once, at a set moment: the end of the primary term, or a set time after continuous development ends.</td><td>Again and again, each time operations or production stop after the primary term.</td></tr>
+  <tr><td class="k">What is retained</td><td>Whatever is held or producing at that one moment.</td><td>Only what is producing or being operated at any given later time.</td></tr>
+  <tr><td class="k">A retained well later stops</td><td>The acreage stays held so long as the lease is still producing. The lease's ordinary terms govern, and the Pugh does not lop it off again.</td><td>That acreage can release when the well stops.</td></tr>
+  <tr><td class="k">Texas default</td><td><b>Presumed</b>, unless the lease clearly calls for repeated tests.</td><td>Must be written clearly to get this result.</td></tr>
+</table>
+
+<p style="break-after:avoid;page-break-after:avoid">Two quick examples show how the same facts can land in opposite places.</p>
+<div class="example">
+  <h3>A snapshot clause in action</h3>
+  <div class="clause"><div class="lbl">The clause that does this</div><p class="txt">"... at the end of the primary term, terminate as to all lands not then included within a unit for a well then producing ..."</p></div>
+  <p>A lease covers three separate units, with one well on each, and the primary term has just ended. The lease has a snapshot Pugh, so its test runs one time, at the end of the primary term, and then it is spent. All three wells were producing on that date, so all three units were retained when the snapshot ran. Two of the wells quit the next year. Those two units do not release, because the snapshot already happened and does not run a second time.</p>
+  <p>Here is why they stay held. Once the cut was made, the three retained units fold back together as one leased block, and the ordinary habendum, the lease's "so long as there is production" clause, now holds that whole block on the strength of any producing well in it. So the one well still running holds all three units, the two idle ones included. It would take that last well stopping, with no new production or operations started inside the lease's cessation window, to end the lease and release all three units and their lands. Until then the two idle wells change nothing, and they matter later only through that ordinary cessation clause rather than the Pugh.</p>
+  <p class="res"><b>Result:</b> all three units stay held for as long as any one well keeps the lease producing. Two wells going quiet after the snapshot release nothing by themselves. Only the last well stopping ends the lease and lets those units and lands go.</p>
+</div>
+<div class="example">
+  <h3>A rolling clause in action</h3>
+  <div class="clause"><div class="lbl">The clause that does this</div><p class="txt">"... as to each unit, for so long as a well on that unit is producing, otherwise terminate as to the lands within that unit ..."</p></div>
+  <p>Same three units, one well on each, and the same two wells quitting, but this lease has a rolling Pugh that tests each unit on its own, at any time after the primary term. When the two wells stop and are not restored in time, those two units release at that point, without waiting on the last well. The unit with the producing well stays held. There is no single snapshot that locked them all in, so each unit stands or falls on its own production.</p>
+  <p class="res"><b>Result:</b> the two idle units release and the producing unit stays. Same facts as the snapshot example, opposite outcome. The clause language, not the word "Pugh," decides it, and in Texas the snapshot reading is the default.</p>
+</div>
+<p style="break-after:avoid;page-break-after:avoid">Rolling is not one magic phrase. It shows up in different wordings, and the tell is always language that keeps the test running through the secondary term. Here are two more you will run into, with the trigger words underlined.</p>
+<div class="clause"><div class="lbl">Other rolling clauses you will see</div>
+<p class="txt">"This lease shall terminate as to any portion of the leased premises not included in a producing or spacing unit <span class="op">whenever production ceases</span> from such unit, or <span class="op">whenever operations are discontinued</span> for more than ninety (90) consecutive days. Lessee shall release such non-producing acreage upon cessation, and this lease shall continue in force only as to those portions of the leased premises <span class="op">from which oil or gas is currently being produced</span> in paying quantities."</p>
+<p class="txt">A version tied to proration units: "<span class="op">At any time</span> during the secondary term, <span class="op">if</span> a well's proration unit is reduced or <span class="op">if production from a unit stops</span>, this lease shall automatically terminate as to the acreage associated with that unit, and lessee shall promptly release it to lessor."</p>
+<p class="note">The underlined words are what make each one rolling. "Whenever," "at any time," "if production stops," and "currently being produced" all describe a test that keeps running, so acreage can fall off any time a unit goes quiet, not just once. The day count is a negotiated blank, commonly sixty, ninety, or one hundred twenty days. A snapshot clause instead ties the test to one moment, usually with "at the end of the primary term" and "not then included," and does not run again.</p>
+</div>
+
+<div class="sec-h">Oklahoma has a statutory Pugh clause</div>
+<p>Oklahoma is one of the few states that writes a horizontal Pugh clause into the statute, so it applies even when the lease itself has none. Under 52 O.S. &sect; 87.1(b), where the Corporation Commission has created a drilling and spacing unit of 160 acres or more, no leasehold interest outside that spacing unit may be held by production from the unit for more than 90 days beyond the end of the primary term. The outside acreage releases by operation of law. The provision has been in force since May 25, 1977, when it took effect under an emergency clause. It works like a snapshot tied to the end of the primary term, not a rolling test.</p>
+<div class="tip"><div class="lbl">Where the 90 days comes from</div><p>The 90 days is written directly into the statute. It is not from a continuous-drilling clause and it does not depend on anything in the lease. The statute gives the operator a short 90-day cushion after the primary term ends. Once that window passes, the acreage outside the 160-acre-or-larger spacing unit releases on its own, whether or not the operator keeps drilling and whether or not anyone files a release. "By operation of law" just means it happens automatically because the statute says so, not because someone signed a document.</p></div>
+<table class="tbl">
+  <tr><th style="width:30%">The statutory Pugh clause</th><th style="width:70%">Detail</th></tr>
+  <tr><td class="k">Where it comes from</td><td>52 O.S. &sect; 87.1(b). Added by Laws 1977, ch. 76, &sect; 1, emergency effective May 25, 1977.</td></tr>
+  <tr><td class="k">What it releases</td><td>Leasehold acreage outside the spacing unit.</td></tr>
+  <tr><td class="k">The trigger</td><td>A spacing unit of 160 acres or more, held by production from that unit, past 90 days beyond the primary term.</td></tr>
+  <tr><td class="k">What it does not do</td><td>It does not release acreage inside the unit, does not sever depths, and does not reach spacing units smaller than 160 acres. It only bites after the primary term ends.</td></tr>
+</table>
+<p>These examples use a three-section lease. A section is 640 acres, so three sections is about 1,920 acres.</p>
+<div class="clause"><div class="lbl">Example: a contractual acreage Pugh clause</div><p class="txt">"At the end of the primary term, this lease shall terminate as to all lands lying outside the pooled unit or the spacing unit for each well then producing, and shall remain in force only as to the lands within such unit or units."</p><p class="note">This is the kind of clause the 80-acre example needs, because the Oklahoma statute does not reach a unit that small. In the 160-acre example the statute does the same job even if the lease says nothing.</p></div>
+<div class="example">
+  <h3>An 80-acre unit: the statute does not reach it</h3>
+  <p>The operator drills one well and it holds an 80-acre unit. Because 80 acres is under the 160-acre threshold, the Oklahoma statute does nothing here. If the lease has its own Pugh clause, the outside acreage releases at the end of the primary term and the lease keeps only the 80-acre unit. If the lease has no Pugh clause, that single well can hold all 1,920 acres. Texas reaches the same point by a different road: with no statute at all, only a lease clause can release the outside acreage.</p>
+  <p class="res"><b>Result:</b> under 160 acres the statute does not apply. Release happens only if the lease carries its own Pugh clause. Held 80 acres, released 1,840, if it does.</p>
+</div>
+<div class="example">
+  <h3>A 160-acre unit: the statute releases the rest</h3>
+  <p>Same three-section lease, but the one well holds a 160-acre unit. Now the statute applies. Under &sect; 87.1(b), the acreage outside the 160-acre unit releases by operation of law 90 days after the primary term ends, even if the lease has no Pugh clause of its own. The lease keeps the 160-acre unit and the other 1,760 acres return to the owner. In Texas there is still no statute, so a Texas lease would need an express Pugh clause to reach the same result.</p>
+  <p class="res"><b>Result:</b> in Oklahoma the statute releases 1,760 acres and holds 160, on its own, 90 days after the primary term. In Texas the lease must do it.</p>
+</div>
+
+<div class="why"><div class="lbl">Why a contractual Pugh still matters in Oklahoma</div><p>The statute is narrow, so a negotiated Pugh clause still does real work. It can reach spacing units smaller than 160 acres, sever deep rights that the statute never touches, and set a tighter release than the 90-day statutory window. On acreage that is not in a 160-acre-or-larger unit, the statutory clause offers no help at all.</p></div>
+
+<div class="sec-h">Texas has no statutory Pugh clause</div>
+<p>Texas does not provide a statutory Pugh clause. If a Texas lease has a pooling clause and the operator pools even a small part of the tract into a producing unit, production from that unit can hold the entire lease past the primary term. The only reliable way to sever undeveloped acreage or deep rights in Texas is to negotiate a Pugh clause into the lease. Because Texas has no statute, whether the clause is snapshot or rolling is decided entirely by the words on the page, and the Texas default reading is snapshot. Texas landowners often pair a Pugh clause with a continuous-development or retained-acreage clause to force ongoing drilling or a release.</p>
+
+<div class="sec-h">Statutory Pugh, state by state</div>
+<p>The statutory picture changes by state. Most states leave the Pugh question entirely to the lease. Oklahoma is the main exception. State-lands and federal leases add their own rules on top. Here is how the states we work in compare.</p>
+<table class="tbl">
+  <tr><th style="width:16%">State</th><th style="width:36%">Statutory Pugh for a private lease?</th><th style="width:48%">What to do</th></tr>
+  <tr><td class="k">Oklahoma</td><td>Yes, but narrow. 52 O.S. &sect; 87.1(b): acreage outside a 160-acre-or-larger spacing unit releases 90 days after the primary term.</td><td>Check the spacing unit size and the primary-term date. For units under 160 acres, or for depths, you still need a clause in the lease.</td></tr>
+  <tr><td class="k">Texas</td><td>No.</td><td>The lease must carry a Pugh clause. Texas reads it as a snapshot unless the language clearly makes the test repeat.</td></tr>
+  <tr><td class="k">New Mexico</td><td>No, for fee (private) leases.</td><td>The lease controls. New Mexico State Land Office leases and federal leases carry their own segregation rules (the lease splits into the part inside a unit and the part outside), so on state or federal acreage read the lease form and any unit or communitization agreement (small tracts combined so one well can hold them, much like pooling).</td></tr>
+  <tr><td class="k">Ohio</td><td>No.</td><td>The lease must carry a Pugh clause. Ohio's pooling and unitization statutes (ORC 1509.27 and 1509.28) are a different thing and do not release held acreage the way a Pugh clause does.</td></tr>
+  <tr><td class="k">Louisiana</td><td>No broad statute, but it is where the Pugh clause was born in 1947.</td><td>The Louisiana Mineral Code governs how unit production maintains a lease, and Pugh clauses are standard. Read the clause and the Code together.</td></tr>
+  <tr><td class="k">North Dakota</td><td>No.</td><td>The lease controls, but North Dakota courts have leaned toward a rolling, continuing reading of retained-acreage language, the opposite of Texas. Do not assume snapshot in North Dakota.</td></tr>
+  <tr><td class="k">Federal (BLM) leases, any state</td><td>In effect, yes, by regulation.</td><td>A federal lease committed in part to a unit or communitization agreement segregates into committed and uncommitted parts (the acreage inside the unit and the acreage outside), which works like a Pugh clause. See 43 CFR Part 3100.</td></tr>
+</table>
+<div class="why"><div class="lbl">The safe assumption</div><p>Outside Oklahoma's narrow statute, assume that only a Pugh clause in the lease will release acreage or depths. On state and federal lands, the lease form and the unit agreement may already do that work, so read them before you decide the acreage is still held.</p></div>
+
+<div class="sec-h">A dozen ways a depth clause is written</div>
+<p>A vertical Pugh clause, also called a depth clause, releases the deep rights a well is not producing from. The catch is that there is no single standard for where the cut falls. Two leases can both have a depth clause and cut in different places, and the exact reference point is what controls. These are formulations you will actually run into in Texas and Oklahoma leases, grouped by where the cut lands.</p>
+<table class="tbl long">
+  <tr><th style="width:44%">The clause cuts at ...</th><th style="width:56%">What that means, and what to watch</th></tr>
+  <tr><td class="k">The base of the deepest producing formation</td><td>Releases everything below the bottom of the formation the well produces from. Watch: "formation" has no precise legal definition, so Wolfcamp A versus Wolfcamp B, or one member of a formation versus another, can be argued.</td></tr>
+  <tr><td class="k">100 feet below the base of the deepest producing formation</td><td>Adds a 100-foot cushion under the producing formation. This is the most common depth cut. Watch: if a nearby instrument uses a different cushion, the two cuts do not line up.</td></tr>
+  <tr><td class="k">The base of the deepest zone or horizon perforated</td><td>Ties the cut to the perforations (the holes shot in the casing where the well produces), not the geologic formation. Watch: the deepest perforation and the base of the formation are usually different depths.</td></tr>
+  <tr><td class="k">100 feet below the deepest perforation</td><td>A perforation-based cushion instead of a formation-based one.</td></tr>
+  <tr><td class="k">The stratigraphic equivalent of the deepest depth drilled</td><td>Uses the correlative depth, the depth of that same rock layer, read from well logs across the whole tract, rather than one measured number. Watch: it requires correlating logs, and the depth shifts across the lease as the beds dip.</td></tr>
+  <tr><td class="k">The deepest depth actually drilled, the total depth</td><td>Retains down to the bottom of the hole even if production is shallower. Watch: operators often drill deeper than they produce, so this holds more than the producing interval.</td></tr>
+  <tr><td class="k">The deeper of the deepest depth drilled or the base of the producing formation</td><td>A "greater of" formulation that keeps the larger interval. Watch: read which one wins; it is easy to misread as the shallower.</td></tr>
+  <tr><td class="k">The base of a named formation, such as the Mississippian, Woodford, or Wolfcamp</td><td>A fixed geologic marker, regardless of what the well actually produces. Watch: if the well produces shallower, or the formation is split or absent locally, the marker and the production do not match.</td></tr>
+  <tr><td class="k">100 feet below the base of a named formation</td><td>A named marker plus a cushion. Common in Oklahoma around the Mississippian and the Woodford.</td></tr>
+  <tr><td class="k">A fixed subsurface depth, such as below 8,000 feet</td><td>A plain number. Watch: a number and a geologic marker drift apart across the tract as the beds dip, so a depth that sits below a formation on one side of the lease can sit inside it on the other.</td></tr>
+  <tr><td class="k">The base of the producing formation as encountered in a named reference well</td><td>Ties the cut to one specific well's log, by name or API number (each well's unique ID). Watch: you then have to correlate that one well to the rest of the tract.</td></tr>
+  <tr><td class="k">Rubberband retention (Texas)</td><td>Retains to the deepest depth drilled or produced, unit by unit, so the cut can stretch deeper as deeper wells are drilled. The cut point moves over time.</td></tr>
+  <tr><td class="k">Freestone Rider (Texas)</td><td>A depth severance that only applies once a pooled unit is formed. No pooled unit, no vertical severance.</td></tr>
+</table>
+
+<div class="sec-h">What each cut holds and releases</div>
+<p>The table is easier to see on one well. Say a well is completed in the Mississippian, the top of the Mississippian is at 9,000 feet and the base is at 9,600 feet, and the hole was drilled to a total depth of 12,000 feet. Below the Mississippian sit the Woodford and deeper zones. Here is what the common cuts do to that well.</p>
+<div class="example">
+  <h3>Cut at the base of the producing formation</h3>
+  <p>The lease holds every depth from the surface down to the base of the Mississippian at 9,600 feet, within the unit. Everything below 9,600 feet is released, including the Woodford and the open hole down to 12,000 feet, and those deep rights go back to the mineral owner.</p>
+  <p class="res"><b>Held:</b> surface to 9,600 ft. &nbsp;&middot;&nbsp; <b>Released:</b> below 9,600 ft.</p>
+</div>
+<div class="example">
+  <h3>Cut at 100 feet below the base</h3>
+  <p>Same well, but the lease holds down to 9,700 feet, an extra 100 feet under the producing formation, and releases everything below 9,700 feet. If a neighboring instrument cut at 9,600 feet instead, that 100-foot slice from 9,600 to 9,700 is the stray zone shown in the diagram below.</p>
+  <p class="res"><b>Held:</b> surface to 9,700 ft. &nbsp;&middot;&nbsp; <b>Released:</b> below 9,700 ft.</p>
+</div>
+<div class="example">
+  <h3>Cut at the deepest depth drilled</h3>
+  <p>This one holds down to the bottom of the hole at 12,000 feet, even though the well only produces from the Mississippian. The operator keeps the 2,400 feet from 9,600 to 12,000 that they are not producing from. A mineral owner usually does not want this version, because it holds far more than the producing zone.</p>
+  <p class="res"><b>Held:</b> surface to 12,000 ft, the total depth. &nbsp;&middot;&nbsp; <b>Released:</b> nothing below, the hole went no deeper.</p>
+</div>
+<div class="example">
+  <h3>Cut at a fixed depth, below 10,000 feet</h3>
+  <p>The lease holds surface to 10,000 feet and releases everything below. Because 10,000 is a number and not a rock marker, it does not track the formation. On the far side of the lease, where the beds dip and the base of the Mississippian sits at 9,800 feet, the same clause holds 200 feet less of the formation. The number and the formation drift apart across the tract.</p>
+  <p class="res"><b>Held:</b> surface to 10,000 ft. &nbsp;&middot;&nbsp; <b>Released:</b> below 10,000 ft, but the line moves against the formation across the lease.</p>
+</div>
+
+<p>Horizontal, or acreage, Pugh clauses vary too, though less wildly. A few you will see:</p>
+<table class="tbl">
+  <tr><th style="width:44%">The acreage clause holds ...</th><th style="width:56%">What that means, and what to watch</th></tr>
+  <tr><td class="k">Only the pooled or producing unit at the end of the primary term</td><td>The plain acreage Pugh. Everything outside the unit releases once, at the end of the term.</td></tr>
+  <tr><td class="k">Only a governmental proration or spacing unit assigned to a well</td><td>Ties retained acreage to the regulatory unit. Watch: Texas courts have split on whether this means the acreage actually assigned on the operator's filing or the size the field rules allow (the special spacing rules a regulator sets for a particular field). Same words, opposite results (Endeavor v. Discovery; XOG v. Chesapeake).</td></tr>
+  <tr><td class="k">A fixed-size unit around each well, such as 40, 160, or 640 acres</td><td>A set unit centered on the well. Watch: the shape and orientation of the unit can matter.</td></tr>
+  <tr><td class="k">The proration unit plus a tolerance</td><td>The unit plus a stated percentage, often ten percent, to cover surveying slack.</td></tr>
+  <tr><td class="k">The units for wells drilled during a continuous development program</td><td>Retained acreage grows with each well drilled on time, and the rest releases when the program ends.</td></tr>
+</table>
+
+<div class="sec-h">How a small difference makes a zone nobody intended</div>
+<p>Here is the trap. Depth clauses in different instruments touching the same tract often cut at slightly different points, and the thin interval between the two cuts ends up held under one instrument and released under the other. It is easy to miss, because both instruments look like they cut "at the Mississippian."</p>
+<div class="fig">
+<svg viewBox="0 0 640 286" width="100%" style="max-width:5.9in;display:block;margin:2px auto;font-family:Inter,Arial,sans-serif">
+  <rect x="250" y="42" width="150" height="214" fill="#f7f4ee" stroke="#0f2a3f" stroke-width="1.5"/>
+  <text x="325" y="35" text-anchor="middle" font-size="11" fill="#33454f">Surface</text>
+  <rect x="250" y="120" width="150" height="70" fill="#e7dcc4"/>
+  <text x="325" y="161" text-anchor="middle" font-size="11" font-weight="700" fill="#0f2a3f">Mississippian</text>
+  <rect x="250" y="190" width="150" height="26" fill="#c79a3b" fill-opacity="0.55"/>
+  <line x1="250" y1="190" x2="470" y2="190" stroke="#0f2a3f" stroke-width="1.1" stroke-dasharray="4 3"/>
+  <line x1="250" y1="216" x2="470" y2="216" stroke="#0f2a3f" stroke-width="1.1" stroke-dasharray="4 3"/>
+  <text x="408" y="187" font-size="10.5" fill="#0f2a3f">Base of the Mississippian</text>
+  <text x="408" y="228" font-size="10.5" fill="#0f2a3f">100 ft below the base</text>
+  <text x="408" y="207" font-size="10" font-weight="700" fill="#8a5a26">stray 100-ft zone</text>
+  <path d="M236,42 h-10 v148 h10" fill="none" stroke="#163b56" stroke-width="1.6"/>
+  <text font-size="10.5" fill="#163b56" transform="translate(212,116) rotate(-90)" text-anchor="middle">Lease A holds to the base</text>
+  <path d="M414,42 h10 v174 h-10" fill="none" stroke="#c79a3b" stroke-width="1.8"/>
+  <text font-size="10.5" fill="#8a5a26" transform="translate(600,129) rotate(90)" text-anchor="middle">Lease B holds to 100 ft below</text>
+</svg>
+<p class="cap">Two instruments that both look like they cut &ldquo;at the Mississippian.&rdquo; Lease A lets go at the base; Lease B holds another 100 feet. The gold sliver is held under B but released under A.</p>
+</div>
+<p>Say one instrument releases the deep rights from the surface to the base of the Mississippian, and a second instrument, a neighboring lease, a prior depth-severed deed, or an assignment, releases from the surface to 100 feet below the base of the Mississippian. The 100-foot interval from the base of the Mississippian down to 100 feet below it is now treated two different ways. One instrument has let it go and the other still holds it. That sliver becomes a stray zone: leased to nobody, leased to two parties at once, or owned by someone the drafters never had in mind. The same thing happens when one clause says "base of the formation" and another says "deepest depth drilled," or when one says "stratigraphic equivalent" and another gives a fixed number, because those points fall at different depths.</p>
+<div class="why"><div class="lbl">In title work</div><p>Do not stop at noticing that each instrument has a depth clause. Compare the exact cut point of every instrument in the chain, put them in the same terms, and map them against each other. The gaps and overlaps between them are where the surprises live, and a 100-foot stray zone is the one people miss most.</p></div>
+
+<div class="sec-h">Notes for lease and title work</div>
+<table class="tbl">
+  <tr><th style="width:26%">Topic</th><th style="width:74%">Note</th></tr>
+  <tr><td class="k">Read the lease first</td><td>Check whether the lease has a Pugh clause and whether it is horizontal, vertical, or both. The clause language controls over any rule of thumb.</td></tr>
+  <tr><td class="k">Rolling or snapshot</td><td>Decide whether the clause tests the acreage once or on a rolling basis. In Texas, assume snapshot unless the lease clearly says the test repeats. A well going off production after the test does not release snapshot acreage.</td></tr>
+  <tr><td class="k">Oklahoma acreage</td><td>For land held by a unit well, check the spacing unit size and the primary-term date. If the unit is 160 acres or more, acreage outside it should have released 90 days after the primary term under &sect; 87.1(b), even with no clause in the lease.</td></tr>
+  <tr><td class="k">Depths</td><td>Neither the Oklahoma statute nor a horizontal Pugh clause releases deep rights. Look for a separate vertical or depth clause if the deep formations are the question.</td></tr>
+  <tr><td class="k">Texas acreage</td><td>Assume undeveloped acreage and deep rights stay held unless the lease has an express Pugh clause. Do not rely on any statute to release them.</td></tr>
+</table>
+
+<div class="sec-h">Plain-English terms</div>
+<table class="tbl">
+  <tr><th style="width:26%">Term</th><th style="width:74%">What it means</th></tr>
+  <tr><td class="k">Primary term</td><td>The set number of years the lease is guaranteed, often three or five years. After it ends, the lease only continues if it is being held, usually by production.</td></tr>
+  <tr><td class="k">Held by production (HBP)</td><td>A lease staying alive past the primary term because there is production in paying quantities, or the operations the lease allows.</td></tr>
+  <tr><td class="k">Paying quantities</td><td>Production that makes money over operating costs. A well that only loses money may not hold a lease.</td></tr>
+  <tr><td class="k">Drilling and spacing unit</td><td>An area the state sets for one well so wells are not drilled too close together. In Oklahoma the Corporation Commission sets these. Common sizes are 40, 160, or 640 acres.</td></tr>
+  <tr><td class="k">Pooled unit</td><td>Separate tracts combined under the lease's pooling clause into one unit that a single well can hold.</td></tr>
+  <tr><td class="k">Proration unit</td><td>The acreage assigned to a well for allowable (the volume it is permitted to produce) and production purposes. You will see this term a lot in Texas.</td></tr>
+  <tr><td class="k">By operation of law</td><td>It happens automatically because a statute says so, with no document to sign and nothing to file.</td></tr>
+  <tr><td class="k">Habendum clause</td><td>The lease clause that sets the primary term and keeps the lease alive as long as there is production. A Pugh clause carves into what the habendum would otherwise hold.</td></tr>
+  <tr><td class="k">Continuous development</td><td>A drilling program where the operator keeps drilling wells with only short gaps between them. Many leases require it to keep the undeveloped acreage.</td></tr>
+</table>
+
+<div class="disc">This reference is prepared for use by landmen and title professionals as a working field tool. It is not legal advice and does not substitute for the advice of qualified oil and gas counsel. Doctrines and statutes change and turn on the exact language of each instrument and the facts of each chain of title. The examples are simplified to show how a Pugh clause works and are not a prediction about any particular lease. Confirm any conclusion against the current statutes and case law, and refer complex or disputed matters to a licensed attorney in the state involved. Citations are to 52 O.S. &sect; 87.1(b) and general oil and gas lease authority.</div>
+
+</div></body></html>

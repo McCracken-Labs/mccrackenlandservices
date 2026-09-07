@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Oklahoma Intestacy Chart</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet"/>
+<style>
+  @page{ size:Letter; margin:0.42in 0 0.42in 0;
+    @bottom-left{ content:"McCracken Land Services \2022\00a0mccrackenlandservices.com"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-left:0.5in; vertical-align:top; }
+    @bottom-right{ content:"Reference guide, not legal advice"; font-family:"Inter",Arial,sans-serif; font-size:8pt; color:#5d6b73; padding-right:0.5in; vertical-align:top; }
+  }
+  @page :first{ margin-top:0 }
+  :root{--navy-900:#0b2233;--navy-800:#0f2a3f;--navy-700:#163b56;--gold-500:#c79a3b;--gold-400:#d8b256;
+    --sand-50:#f7f4ee;--sand-100:#efe9df;--ink-900:#14202b;--ink-700:#33454f;--ink-500:#5d6b73;--line:#dfd8cc;
+    --head:"Source Serif 4",Georgia,serif;--body:"Inter",Arial,sans-serif}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--body);color:var(--ink-900);font-size:9.5pt;line-height:1.48;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  p{margin:0 0 7px}
+  a{color:var(--navy-700)}
+
+  .masthead{background:var(--navy-800);color:#fff;height:1.45in;padding:0 0.5in;
+    display:flex;align-items:center;justify-content:space-between;gap:34px}
+  .mh-text{flex:1 1 auto;min-width:0}
+  .masthead img{height:82px;width:auto;display:block;border:0;margin:0;flex:0 0 auto}
+  .doc-title{font-family:var(--head);font-weight:700;color:#fff;font-size:18.5pt;line-height:1.14;margin:0 0 4px;letter-spacing:-.3px}
+  .doc-meta{font-family:var(--body);color:rgba(255,255,255,.85);font-size:9.5pt;margin:0}
+  .doc-body{padding:15px 0.5in 0}
+
+  .lead{font-size:9.8pt;color:var(--ink-700);margin:0 0 12px}
+
+  /* primer */
+  .primer{border:1px solid var(--line);border-left:3px solid var(--gold-500);background:var(--sand-50);
+    border-radius:8px;padding:11px 15px;margin:0 0 13px;break-inside:avoid}
+  .primer .plbl{font-weight:700;font-size:8pt;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--gold-500);margin:0 0 6px}
+  .primer dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:8.9pt}
+  .primer dt{font-weight:700;color:var(--navy-800);white-space:nowrap}
+  .primer dd{margin:0;color:var(--ink-700)}
+
+  /* date gate */
+  .gate{background:var(--navy-800);color:#eef2f6;border-radius:8px;padding:13px 16px;margin:0 0 13px;break-inside:avoid}
+  .gate .glbl{font-family:var(--head);color:var(--gold-400);font-weight:700;font-size:11pt;margin:0 0 5px}
+  .gate p{color:#e3eaf0;margin:0 0 8px;font-size:9.2pt}
+  .gsplit{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2px}
+  .gbox{background:rgba(255,255,255,.08);border-left:3px solid var(--gold-500);border-radius:5px;padding:8px 11px}
+  .gbox .gk{font-weight:700;color:#fff;margin:0 0 2px;font-size:9.4pt}
+  .gbox .gv{margin:0;color:#c8d4dd;font-size:8.8pt}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:4px 20px;margin:0 0 14px;font-size:8.4pt;color:var(--ink-700);break-inside:avoid}
+  .legend .lk{display:flex;align-items:center;gap:6px}
+  .legend i{width:12px;height:9px;border-radius:2px;display:inline-block}
+
+  /* section head: the whole box stays together AND sticks to what follows */
+  .sec-h{background:var(--navy-800);border-left:5px solid var(--gold-500);border-radius:7px;
+    padding:10px 16px 11px;margin:13px 0 10px;
+    break-inside:avoid;page-break-inside:avoid;break-after:avoid;page-break-after:avoid}
+  .sec-h .sh-t{font-family:var(--head);font-weight:700;color:#fff;font-size:12.4pt;margin:0 0 4px}
+  .sec-h .sh-s{margin:0;color:#c3d0da;font-size:8.9pt}
+
+  /* rows */
+  .row{display:grid;grid-template-columns:222px 1fr;gap:20px;align-items:start;
+    padding:9px 0 10px;border-bottom:1px solid #ebe6dc;
+    break-inside:avoid;page-break-inside:avoid}
+  .row:last-of-type{border-bottom:0}
+  .cond .q{font-family:var(--head);font-weight:700;color:var(--navy-800);font-size:9.9pt;line-height:1.28;margin:0 0 5px}
+  .cond .cite{margin:0;font-size:8.1pt}
+  .cond .cite a{color:var(--ink-500);text-decoration:none;border-bottom:1px solid #cfd8dd}
+  .tag{display:inline-block;font-size:7.1pt;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    border-radius:3px;padding:2.5px 7px;margin:0 0 6px}
+  .tag-all{background:#e6ecf1;color:#2b4a61}
+  .tag-ji{background:#dfeaf2;color:#215a80}
+  .tag-op{background:#f3e6cb;color:#8a6410}
+
+  .bars{display:flex;gap:5px}
+  .bar{color:#fff;font-weight:700;font-size:10.5pt;text-align:center;padding:7px 4px;border-radius:5px;
+    font-family:var(--head)}
+  .caps{display:flex;gap:5px;margin-top:4px}
+  .cap{text-align:center;font-size:8.3pt;color:var(--ink-700);padding:0 2px;line-height:1.3}
+  .res .note{margin:7px 0 0;font-size:8.6pt;color:var(--ink-700)}
+  .res .eg{margin:6px 0 0;font-size:8.6pt;color:var(--ink-700);background:var(--sand-50);
+    border-left:2px solid var(--gold-500);border-radius:0 4px 4px 0;padding:6px 10px}
+  .eglbl{font-weight:700;font-size:7.2pt;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--gold-500);margin-right:7px}
+
+  /* explanatory + trap boxes */
+  .why{background:#eef1f4;border-left:3px solid var(--navy-700);border-radius:0 7px 7px 0;
+    padding:10px 14px;margin:13px 0;break-inside:avoid;page-break-inside:avoid}
+  .why .wlbl{font-family:var(--head);font-weight:700;color:var(--navy-800);font-size:10pt;margin:0 0 5px}
+  .why p{margin:0 0 6px;color:var(--ink-700);font-size:9pt}
+  .why .wcite{margin:0;font-size:8.1pt;color:var(--ink-500)}
+  .trap{border:1px solid var(--line);border-left:3px solid var(--gold-500);background:#fff;
+    border-radius:0 7px 7px 0;padding:9px 14px;margin:9px 0;break-inside:avoid;page-break-inside:avoid}
+  .trap .tlbl{font-family:var(--head);font-weight:700;color:var(--navy-800);font-size:10pt;margin:0 0 4px}
+  .trap p{margin:0 0 6px;color:var(--ink-700);font-size:9pt}
+  .trap p:last-child{margin-bottom:0}
+  .trap .tcite{font-size:8.1pt;color:var(--ink-500)}
+  .trap-lead{background:var(--sand-50);margin:0 0 13px}
+
+  .src{font-size:8.4pt;color:var(--ink-500);margin:11px 0 0;break-inside:avoid}
+  .disc{background:var(--sand-50);border-left:3px solid var(--gold-500);border-radius:0 7px 7px 0;
+    padding:10px 15px;font-size:8.4pt;color:var(--ink-700);margin:9px 0 0;
+    break-inside:avoid;page-break-inside:avoid}
+</style></head>
+<body>
+<div class="masthead">
+  <div class="mh-text">
+  <p class="doc-title">Oklahoma Intestacy Chart</p>
+  <p class="doc-meta">Descent and distribution at a glance &middot; 84 O.S. &sect; 213 &middot; both statutory regimes</p>
+  </div>
+  <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjMwLjAgMjUzLjQgOTY5LjMgNDQyLjIiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5jbHMtMiwgLmNscy0zIHsKICAgICAgICBmaWxsOiAjZDhiMjU2OwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGZvbnQtZmFtaWx5OiBNZXV0YXMtRXh0cmFCb2xkLCAnQ0pLQlMgSisgTWV1dGFzJzsKICAgICAgICBmb250LXNpemU6IDU4Ljc3cHg7CiAgICAgICAgZm9udC13ZWlnaHQ6IDcwMDsKICAgICAgICBsZXR0ZXItc3BhY2luZzogLjdlbTsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI0MS45IDU3My4yNCAyMzUuMzggNTc1LjA1IDIyMS42IDU3OC44NiAyMjEuNiA1NzUuMDUgMTk0LjU4IDU3NS4wNSAxOTQuNTggNTc4Ljg0IDE4MC44OCA1NzUuMDUgMTc0LjI3IDU3My4yMiAxODAuODcgNTcxLjM5IDE5NC41OCA1NjcuNjEgMTk0LjU4IDU3MS4zOSAyMjEuNiA1NzEuMzkgMjIxLjYgNTY3LjYyIDIzNS4yMiA1NzEuMzkgMjQxLjkgNTczLjI0Ii8+CiAgPHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0Ni4wMSA2NjYuNykgc2NhbGUoLjkzIDEpIj48dHNwYW4geD0iMCIgeT0iMCI+TEFORCBTRVJWSUNFUzwvdHNwYW4+PC90ZXh0PgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIyMTkuNTIgNDIzLjM2IDIyOS4zNyA0MjkuMDUgMjQwLjkgNDM1LjcxIDI2Mi4yMiA0NDguMDEgMjU1LjEzIDQzNS43MSAyNTEuMjkgNDI5LjA1IDIxOS41MiAzNzMuOTEgMjE5LjUyIDQyMy4zNiIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjQuNDkgNDM1LjcxIDI2OS4yNCA0NDMuOTQgMjY5LjI0IDM2Mi43OCAyMjIuNDkgMzYyLjc4IDI2MC42NiA0MjkuMDUgMjY0LjQ5IDQzNS43MSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIyNjkuMjQgMzU0LjY1IDI2OS4yNCAyNzMuNDkgMjIyLjQ5IDM1NC42NSAyNjkuMjQgMzU0LjY1Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjI2Mi4yMiAyNjkuNDEgMjYyLjIgMjY5LjQxIDE2NS43NSAzMjUuMjQgMjEzLjk4IDM1My4xNiAyNjIuMjIgMjY5LjQxIi8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjE2MS42OCAzMzIuMjggMTYxLjY4IDM4NC43NyAyMDcuMzEgMzU4LjY5IDE2MS42OCAzMzIuMjgiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTQ5LjUxIDMyNS4yNCA1My4wNSAyNjkuNDEgMTAxLjI3IDM1My4xNiAxNDkuNTEgMzI1LjI0Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjQ2LjAxIDI3My40OSA0Ni4wMSAzNTQuNjUgOTIuNzYgMzU0LjY1IDQ2LjAxIDI3My40OSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxNTMuNTYgMzg0Ljc3IDE1My41NiAzMzIuMjggMTA3Ljk1IDM1OC42OSAxNTMuNTYgMzg0Ljc3Ii8+CiAgPHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjYwLjEzIDQzNS43MSA1My4wNCA0NDguMDEgNzQuMzQgNDM1LjcxIDg1Ljg4IDQyOS4wNSA5NS43MiA0MjMuMzYgOTUuNzIgMzczLjkxIDYzLjk2IDQyOS4wNSA2MC4xMyA0MzUuNzEiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iNTQuNTkgNDI5LjA1IDkyLjc2IDM2Mi43OCA0Ni4wMSAzNjIuNzggNDYuMDEgNDQzLjk0IDUwLjc1IDQzNS43MSA1NC41OSA0MjkuMDUiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjcuNzUgNTExLjg0IDEwMS44MiA1NjQuOTUgMTM1LjkgNTExLjk5IDEzNS45IDU4Mi4zNiAxNTcuNjIgNTgyLjM2IDE1Ny42MiA0NjYuMyAxMzkuNDcgNDY2LjMgMTAxLjgyIDUyOS4zOSA2NC4xOSA0NjYuMyA0Ni4wMyA0NjYuMyA0Ni4wMyA1ODIuMzYgNjcuNzUgNTgyLjM2IDY3Ljc1IDUxMS44NCIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTIyMC4zMyw0ODIuOTVjOC4zMSwwLDEzLjc0LDEuMjgsMjEuNDIsMy41MXYtMTkuODJjLTguNDctMi44Ny0xNS44My0zLjk5LTI1LjU4LTMuOTktMzguMiwwLTQ5LjIyLDIzLjk3LTQ5LjIyLDQ3Ljc5czExLjAyLDQ3Ljk1LDQ5LjIyLDQ3Ljk1YzkuNzUsMCwxNy4yNy0xLjEyLDI1Ljc0LTMuOTl2LTE5Ljk4Yy04LDIuMzktMTMuMjcsMy42Ny0yMS41OCwzLjY3LTE4LjA3LDAtMzAuNTMtOS4xLTMwLjUzLTI3LjY1czEyLjYyLTI3LjQ5LDMwLjUzLTI3LjQ5WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI1MS45NSw1MjEuMjFjMCwzNC42NiwxNy44Niw2MS4xNSw2MS43NSw2MS4xNSwxMi4wNiwwLDIwLjU0LTEuNDksMjguNzItNC43NnYtMjEuMTJjLTcuMTQsMi44Mi0xNy4xMSw0LjE2LTI1LjYsNC4xNi0yNy4yMiwwLTQyLjctMTMuNTQtNDIuNy0zOS40MnMxNS40Ny0zOS41OCw0Mi43LTM5LjU4YzguNjQsMCwxOC45LDEuNzksMjUuNiw0LjQ2di0yMC44MmMtOC4xOS0zLjU3LTE2LjY2LTUuMjEtMjguNzItNS4yMS00NC4wNCwwLTYxLjc1LDI2LjY0LTYxLjc1LDYxLjE2WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ0NS44Miw1MDkuNzVjMC0yOC44Ni0xNC4xNC00My40NS00Ni40Mi00My40NWgtNDMuNnYxMTYuMDVoMjEuNzJ2LTMxLjY5aDIxLjcybDI1LDMxLjY5aDI1LjE1bC0yNi45My0zNC42NmMxNS43Ny01LjA2LDIzLjM2LTE4LjMxLDIzLjM2LTM3Ljk1Wk0zOTcuNzcsNTMxLjYyaC0yMC4yNHYtNDYuMTJoMjAuMjRjMTguMTUsMCwyNi4wNCw2Ljg0LDI2LjA0LDI0LjQsMCwxNi41MS03Ljg5LDIxLjcyLTI2LjA0LDIxLjcyWiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ1Ni4xLDU4Mi4zNmgyNC4xbDcuODktMjQuNGg0NS4zOGw3Ljg4LDI0LjRoMjQuMTFsLTQyLjcxLTExNi4wNWgtMjMuOGwtNDIuODUsMTE2LjA1Wk01MjcuMDcsNTM4LjMyaC0zMi41OWwxNi4zNi01MC40NSwxNi4yMiw1MC40NVoiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02MzAuMzIsNDg0LjljOC42MywwLDE4LjksMS43OSwyNS42LDQuNDZ2LTIwLjgyYy04LjE5LTMuNTctMTYuNjctNS4yMS0yOC43Mi01LjIxLTQ0LjA0LDAtNjEuNzUsMjYuNjQtNjEuNzUsNjEuMTZzMTcuODUsNjEuMTUsNjEuNzUsNjEuMTVjMTIuMDUsMCwyMC41NC0xLjQ5LDI4LjcyLTQuNzZ2LTIxLjEyYy03LjE1LDIuODMtMTcuMTEsNC4xNi0yNS42LDQuMTYtMjcuMjIsMC00Mi43LTEzLjU0LTQyLjctMzkuNDJzMTUuNDctMzkuNTgsNDIuNy0zOS41OFoiLz4KICA8cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNjY5LjMxIDQ2Ni4zIDY2OS4zMSA1ODIuMzYgNjkwLjU4IDU4Mi4zNiA2OTAuNTggNTMxLjQ3IDcyOS43MiA1ODIuMzYgNzU1LjYgNTgyLjM2IDcwOS4zMyA1MjMuMjkgNzU1LjMgNDY2LjMgNzI5LjQyIDQ2Ni4zIDY5MC41OCA1MTUuMTEgNjkwLjU4IDQ2Ni4zIDY2OS4zMSA0NjYuMyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI4NDUuMDIgNDg1LjA1IDg0NS4wMiA0NjYuMyA3NjYuMDMgNDY2LjMgNzY2LjAzIDU4Mi4zNiA4NDUuMDIgNTgyLjM2IDg0NS4wMiA1NjMuMzEgNzg3Ljc0IDU2My4zMSA3ODcuNzQgNTMzLjcxIDg0MC4xMiA1MzMuNzEgODQwLjEyIDUxNC42NiA3ODcuNzQgNTE0LjY2IDc4Ny43NCA0ODUuMDUgODQ1LjAyIDQ4NS4wNSIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI5MzEuNDcgNTQzLjY3IDg3Ny43NiA0NjYuMyA4NTguNDIgNDY2LjMgODU4LjQyIDU4Mi4zNiA4ODAuMTQgNTgyLjM2IDg4MC4xNCA1MDQuNTQgOTMzLjg1IDU4Mi4zNiA5NTMuMDUgNTgyLjM2IDk1My4wNSA0NjYuMyA5MzEuNDcgNDY2LjMgOTMxLjQ3IDU0My42NyIvPgogIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIzMDQuMTkgNDQwLjA2IDg3Ny41MSA0NDAuMDYgODg5LjA3IDQ0MC4wNiA5MjcuNTcgNDQwLjA2IDkyNy41NyA0NDIuODMgOTUwLjgyIDQzOC43MiA5MjcuNTcgNDM0LjYyIDkyNy41NyA0MzcuMzkgODg0LjYyIDQzNy4zOSA4NzcuNTEgNDM3LjM5IDMwNC4xOSA0MzcuMzkgMzA0LjE5IDQzNC42MiAyODAuOTMgNDM4LjcyIDMwNC4xOSA0NDIuODMgMzA0LjE5IDQ0MC4wNiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTk1My4wNSwzNjEuMDJ2LTQuOTloLTIwLjU0Yy0uNDctNC4yMS0yLjE0LTguMDYtNC42NS0xMS4yMWwxNC41My0xNC41My0zLjUzLTMuNTMtMTQuNTMsMTQuNTNoMGMtMy4xNS0yLjUxLTctNC4xOC0xMS4yLTQuNjV2LTIwLjU0aC00Ljk5djIwLjU0Yy00LjIuNDctOC4wNSwyLjE0LTExLjIsNC42NWwtMTQuNTMtMTQuNTMtMy41MywzLjUzLDE0LjUzLDE0LjUzYy0yLjUxLDMuMTUtNC4xNyw3LTQuNjUsMTEuMjFoLTIwLjU0djQuOTloMjAuNTRjLjQ3LDQuMjEsMi4xNCw4LjA2LDQuNjUsMTEuMjFoMGwtMTQuNTMsMTQuNTMsMy41MywzLjUzLDE0LjUzLTE0LjUzaDBjMy4xNSwyLjUxLDcsNC4xOCwxMS4yLDQuNjV2MjAuNTRoNC45OXYtMjAuNTRjNC4yLS40Nyw4LjA1LTIuMTQsMTEuMi00LjY1bDE0LjUzLDE0LjUzLDMuNTMtMy41My0xNC41My0xNC41M2MyLjUxLTMuMTUsNC4xNy03LDQuNjUtMTEuMjFoMjAuNTRaTTkyNC4zMSwzNjguNjdjLTEsMS4zNC0yLjE5LDIuNTMtMy41MywzLjUzLTIuMiwxLjY0LTQuODIsMi43Ni03LjY1LDMuMTgtLjgxLjEyLTEuNjUuMTgtMi40OS4xOHMtMS42OC0uMDYtMi40OS0uMThjLTIuODQtLjQyLTUuNDUtMS41NC03LjY1LTMuMTgtMS4zNC0xLTIuNTMtMi4xOC0zLjUzLTMuNTMtMS42NC0yLjItMi43Ni00LjgyLTMuMTgtNy42NS0uMTItLjgxLS4xOC0xLjY1LS4xOC0yLjQ5cy4wNi0xLjY4LjE4LTIuNDljLjQyLTIuODQsMS41NC01LjQ1LDMuMTgtNy42NSwxLTEuMzQsMi4xOC0yLjUzLDMuNTMtMy41MywyLjItMS42NCw0LjgyLTIuNzYsNy42NS0zLjE4LjgxLS4xMiwxLjY1LS4xOCwyLjQ5LS4xOHMxLjY4LjA2LDIuNDkuMThjMi44NC40Miw1LjQ1LDEuNTQsNy42NSwzLjE4LDEuMzQsMSwyLjUzLDIuMTgsMy41MywzLjUzLDEuNjQsMi4yLDIuNzYsNC44MiwzLjE4LDcuNjUuMTIuODEuMTgsMS42NS4xOCwyLjQ5cy0uMDYsMS42OC0uMTgsMi40OWMtLjQyLDIuODQtMS41NCw1LjQ1LTMuMTgsNy42NVoiLz4KPC9zdmc+" alt="McCracken Land Services"/>
+</div>
+<div class="doc-body">
+<p class="lead">This chart shows who inherits Oklahoma property when a person dies
+without a will. Everything on it comes from one statute, 84 O.S. &sect; 213. Read the box below first
+if the words are unfamiliar, then find the date of death, then work the table for that date.</p>
+<div class="primer">
+<p class="plbl">Plain words first</p>
+<dl>
+<dt>Intestate</dt><dd>Dying with no will, or with a will the court refuses to admit. The statute then decides who takes, and the family has no say in it. A will that exists but has never been probated is a separate problem, and the box below covers it.</dd>
+<dt>Probate</dt><dd>The court proceeding that proves a will and moves title under it, or that administers an estate where there is no will. In Oklahoma it is a district court proceeding under Title 58.</dd>
+<dt>Decedent</dt><dd>The person who died.</dd>
+<dt>Issue, meaning descendants</dt><dd>The statute’s word for descendants: children, grandchildren, great-grandchildren, on down. Not spouses, not brothers or sisters, not parents. The statute defines it that way itself at § 213(B)(4), so this chart says descendants everywhere except where it is naming a statutory paragraph.</dd>
+<dt>Kindred</dt><dd>Blood relatives. Marriage does not make someone kindred, which is why the surviving spouse is always handled separately from everyone else on this page.</dd>
+<dt>Collateral relatives</dt><dd>Relatives who are neither ancestors nor descendants. Brothers, sisters, aunts, uncles, nieces, nephews, cousins.</dd>
+<dt>Next of kin in equal degree</dt><dd>The nearest surviving blood relatives, measured by how many steps up and back down the family tree separate them from the person who died. Everyone standing the same number of steps away shares alike.</dd>
+<dt>By right of representation</dt><dd>A dead child's share drops to that child's own children, who split it among themselves. Three children, one of them dead leaving two kids: the two living children take a third each, and the two grandchildren split the last third, a sixth apiece.</dd>
+<dt>Coverture</dt><dd>The period of the marriage. Nothing more than that.</dd>
+<dt>Joint industry</dt><dd>Property the spouses acquired by their joint effort during the marriage. This is an Oklahoma idea and it is not community property. It turns on how the property was acquired, not on whose name is on the deed.</dd>
+<dt>Other property</dt><dd>Everything else the decedent owned. Property brought into the marriage, inherited, or received by gift.</dd>
+<dt>Undivided interest</dt><dd>A share of the whole tract rather than a fenced-off piece of it. Two owners of an undivided half each own half of every acre.</dd>
+<dt>Per capita</dt><dd>By the head. Each person counted takes the same size share, so the fraction depends on how many people there are.</dd>
+<dt>Escheat</dt><dd>The estate goes to the State when nobody qualifies to take it.</dd>
+</dl></div>
+<div class="trap trap-lead"><p class="tlbl">Before anything else: a will on file is not a probated will</p>
+<p>Executing a will and moving title are two different events, and the gap between them is where
+this chart gets misused. Oklahoma treats a will as wholly ineffectual to pass title to real property,
+including minerals and leasehold, until it has been admitted to probate, and a devisee has no rights
+to enforce under it in the meantime. Filing the will with the county clerk does nothing. A will
+probated in another state and never probated here does nothing either.</p>
+<p>That does not make the will void. It can still be offered for probate, and where an affidavit of
+death and heirship is used under 16 O.S. &sect; 67, a copy of the unprobated will has to be attached
+to it. What it means is that a dead record owner with a will in a drawer is a probate problem and
+not a chart problem. Running the tables below on that estate produces a set of fractions no examining
+attorney will accept, and the statute is unclear on its own terms whether title in that situation
+runs to the heirs or to the devisees. Send it to counsel.</p>
+<p class="tcite">Oklahoma Title Examination Standards, comment to 16 O.S. &sect; 67. Attachment
+requirement at &sect; 67(C).</p></div>
+<div class="trap trap-lead"><p class="tlbl">And a probated will cannot cut the spouse below the joint-industry half</p>
+<p>The box above is about a will that was never probated. This one is about a will that was. Even a
+properly probated will has a floor under it, and the floor is built out of the same joint-industry
+idea that runs the tables below.</p>
+<p><b>Deaths on or after July&nbsp;1,&nbsp;1985.</b> No spouse may devise away from the other so much
+of the estate that the survivor would receive less in value than an undivided one-half interest in the
+property acquired by the joint industry of the husband and wife during coverture. A will that gives the
+survivor less does not fail on its own. The survivor has to claim that half by electing to take it in
+place of everything the will left them, and the election has to be made affirmatively in writing and
+filed in the district court on or before the final date for hearing of the petition for final
+distribution. Miss that date and the will controls.</p>
+<p><b>Deaths before July&nbsp;1,&nbsp;1985.</b> The floor was measured differently. No spouse could be
+devised away from so much that the survivor received less in value than would have been obtained
+through succession by law, subject to a cap: as to property <i>not</i> acquired by the joint industry
+of the spouses during coverture, the testator was not required to leave more than one-half in value to
+the survivor. Same July&nbsp;1 dividing line as everything else on this page.</p>
+<p>Where this surfaces on a runsheet: a will devising everything to the children, a final decree that
+recites it, and nobody ever checked whether the widow elected. If she did, an undivided half of the
+joint-industry property never reached the children, and every conveyance out of them since is short by
+that half. The decree is where the answer is, not the will.</p>
+<p class="tcite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-44/" target="_blank" rel="noopener">84 O.S. &sect; 44(A)</a> for
+deaths before July 1, 1985; <a href="https://law.justia.com/codes/oklahoma/title-84/section-84-44/" target="_blank" rel="noopener">&sect; 44(B)(1),
+(2) and (3)</a> for deaths on or after. Both subsections let the homestead be devised by one spouse to
+the other. This is a testate rule, and it is on this page because the two boxes together fix the outer
+limits of what any will can do to a spouse.</p></div>
+<div class="gate">
+<p class="glbl">Start here: find the date of death</p>
+<p>Oklahoma changed its intestacy statute effective July 1, 1985, and both versions are still live
+because both still govern the deaths that happened under them. The trigger is the date of death.
+Not the date of the deed, not the date probate was opened, not the date the final decree was filed.
+A 1979 death probated in 1998 is still governed by the old rules.</p>
+<div class="gsplit">
+<div class="gbox"><p class="gk">Died on or after July&nbsp;1,&nbsp;1985</p><p class="gv">Use Sections 1 and 2. 84 O.S. &sect; 213(B).</p></div>
+<div class="gbox"><p class="gk">Died before July&nbsp;1,&nbsp;1985</p><p class="gv">Use Sections 3 and 4. 84 O.S. &sect; 213(A).</p></div>
+</div></div>
+<div class="legend"><span class="lk"><i style="background:#123a56"></i>Surviving spouse</span>
+<span class="lk"><i style="background:#c79a3b"></i>Children and their descendants</span>
+<span class="lk"><i style="background:#2f6f96"></i>Parents, siblings, other relatives</span>
+<span class="lk"><i style="background:#5b7f99"></i>The State, or no fixed fraction</span></div>
+<div class="sec-h"><p class="sh-t">Section 1. Deaths on or after July 1, 1985: the surviving spouse</p><p class="sh-s">What the spouse takes. Where the answer differs by property type, both are shown. 84 O.S. § 213(B)(1).</p></div>
+<div class="row"><div class="cond"><span class="tag tag-all">All property</span><p class="q">No children or other descendants, and no surviving parent, brother, or sister</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(1)(a)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">All</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div></div><p class="eg"><span class="eglbl">Example</span> Ray dies in 2019. No children, both parents dead, no brothers or sisters. His widow takes the entire mineral interest, joint industry or not.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-ji">Joint industry</span><p class="q">No children or other descendants, but a parent, brother, or sister survives</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(1)(b)(1)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">All</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div></div><p class="note">Property the couple acquired together during the marriage goes entirely to the survivor even though the decedent has a living parent or sibling.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-op">Other property</span><p class="q">No children or other descendants, but a parent, brother, or sister survives</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(1)(b)(2)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">⅓</div><div class="bar" style="flex:2;background:#2f6f96">⅔</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div><div class="cap" style="flex:2">Parents, then siblings</div></div><p class="note">The two thirds not going to the spouse passes under the order in Section 2: parents first, then siblings.</p><p class="eg"><span class="eglbl">Example</span> Dana dies in 2021 owning minerals she inherited from her father, so they are other property. Her husband survives, and so does her mother. Husband takes a third, mother takes two thirds.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-all">All property</span><p class="q">Children survive, and every one of them is also the surviving spouse’s child</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(1)(c)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">½</div><div class="bar" style="flex:1;background:#c79a3b">½</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div><div class="cap" style="flex:1">Children, by representation</div></div><p class="note">One clean rule for the whole estate here. It does not matter whether the property was joint industry or not.</p><p class="eg"><span class="eglbl">Example</span> Ann dies in 2015 leaving her husband and their two children. Husband takes an undivided half. Each child takes an undivided quarter.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-ji">Joint industry</span><p class="q">Children survive, and at least one of them is not the surviving spouse’s child</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(1)(d)(1)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">½</div><div class="bar" style="flex:1;background:#c79a3b">½</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div><div class="cap" style="flex:1">Children, by representation</div></div><p class="note">As to property the couple built together, the second marriage does not change the halves.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-op">Other property</span><p class="q">Children survive, and at least one of them is not the surviving spouse’s child</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(1)(d)(2)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">Equal</div><div class="bar" style="flex:1;background:#c79a3b">Equal</div><div class="bar" style="flex:1;background:#c79a3b">Equal</div></div><div class="caps"><div class="cap" style="flex:1">Spouse</div><div class="cap" style="flex:1">Each child</div><div class="cap" style="flex:1">Each child</div></div><p class="note">Per capita. The spouse counts as one more head alongside the children, so the fraction depends on how many children there are. Two children makes thirds, three children makes quarters.</p><p class="eg"><span class="eglbl">Example</span> Carl dies in 2020 owning minerals he inherited before the marriage. He leaves his second wife and three children, two from the first marriage. Wife and each child take an undivided quarter.</p></div></div>
+<div class="sec-h"><p class="sh-t">Section 2. Deaths on or after July 1, 1985: everyone else</p><p class="sh-s">The share that does not pass to a spouse, and the whole estate when there is no spouse, descends in this order. 84 O.S. § 213(B)(2) and (3).</p></div>
+<div class="row"><div class="cond"><p class="q">Children or their descendants survive</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(2)(a)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#c79a3b">All</div></div><div class="caps"><div class="cap" style="flex:1">Children and their descendants, by representation</div></div><p class="note">Equal undivided shares among the surviving children, with a deceased child’s share dropping to that child’s own children.</p></div></div>
+<div class="row"><div class="cond"><p class="q">No descendants; one or both parents survive</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(2)(b)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#2f6f96">½</div><div class="bar" style="flex:1;background:#2f6f96">½</div></div><div class="caps"><div class="cap" style="flex:1">Father</div><div class="cap" style="flex:1">Mother</div></div><p class="note">If only one parent survives, that parent takes the whole share.</p></div></div>
+<div class="row"><div class="cond"><p class="q">No descendants and no parent; brothers and sisters, or their children</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(2)(c)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#2f6f96">All</div></div><div class="caps"><div class="cap" style="flex:1">Brothers, sisters, nieces, and nephews, by representation</div></div><p class="note">The statute reaches these people as the descendants of the decedent’s parents. That is a roundabout way of naming brothers, sisters, nieces, and nephews.</p></div></div>
+<div class="row"><div class="cond"><p class="q">No descendants, parent, brother, sister, niece, or nephew; grandparents or their descendants</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(2)(d)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#2f6f96">½</div><div class="bar" style="flex:1;background:#2f6f96">½</div></div><div class="caps"><div class="cap" style="flex:1">Father’s side of the family</div><div class="cap" style="flex:1">Mother’s side of the family</div></div><p class="note">If only one side of the family has survivors, that side takes the entire estate rather than half.</p></div></div>
+<div class="row"><div class="cond"><p class="q">None of the above survive; nearest blood relatives</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(2)(e)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#2f6f96">All</div></div><div class="caps"><div class="cap" style="flex:1">Nearest surviving blood relatives</div></div><p class="note">The statute says next of kin in equal degree. Count the steps up the family tree to a common ancestor and back down again; whoever is fewest steps away takes, and everyone tied at that number shares alike.</p></div></div>
+<div class="row"><div class="cond"><p class="q">No spouse, descendants, or blood relatives at all</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(B)(3)</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#5b7f99">All</div></div><div class="caps"><div class="cap" style="flex:1">Escheats to the State for the support of the common schools</div></div></div></div>
+<div class="sec-h"><p class="sh-t">Section 3. Deaths before July 1, 1985: the surviving spouse</p><p class="sh-s">The older framework. Different fractions, and one rule with no modern counterpart. 84 O.S. § 213(A), First and Second.</p></div>
+<div class="row"><div class="cond"><span class="tag tag-all">All property</span><p class="q">Spouse and one child, or the descendants of one deceased child</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), First</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">½</div><div class="bar" style="flex:1;background:#c79a3b">½</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div><div class="cap" style="flex:1">The child, or that child’s descendants</div></div><p class="eg"><span class="eglbl">Example</span> Walter dies in 1974 leaving his wife and one son. Wife takes an undivided half, son takes an undivided half. Under the modern rule the answer happens to be the same, which is why this one rarely gets caught when it is applied to the wrong year.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-all">All property</span><p class="q">Spouse and two or more children, or one child plus the descendants of a deceased child</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), First</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">⅓</div><div class="bar" style="flex:2;background:#c79a3b">⅔</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div><div class="cap" style="flex:2">Children and their descendants, by representation</div></div><p class="note">A third to the spouse, not a half. This is the single most common place a modern rule gets applied to an old death.</p><p class="eg"><span class="eglbl">Example</span> Walter dies in 1974 leaving his wife and three children. Wife takes an undivided third. Each child takes an undivided two ninths.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-op">Other property</span><p class="q">Spouse, where the decedent had been married more than once</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), First, proviso</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">Equal</div><div class="bar" style="flex:1;background:#c79a3b">Equal</div><div class="bar" style="flex:1;background:#c79a3b">Equal</div></div><div class="caps"><div class="cap" style="flex:1">Spouse</div><div class="cap" style="flex:1">Each child</div><div class="cap" style="flex:1">Each child</div></div><p class="note">As to property not acquired during the marriage to the surviving spouse, that spouse takes only an equal part alongside each living child and the descendants of each deceased child. Property acquired during the marriage to that spouse still runs under the half or third rules above.</p><p class="eg"><span class="eglbl">Example</span> Edith dies in 1981. She had been married before. She leaves her second husband and two children from the first marriage, and the minerals came to her by inheritance. Husband and each child take an undivided third.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-ji">Joint industry</span><p class="q">Spouse survives and there are no descendants</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), Second, proviso</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">All</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse, then a split at the survivor’s death</div></div><p class="note">The survivor takes it. Then at the survivor’s own death, whatever of that property is left splits one half to the husband’s heirs and one half to the wife’s heirs, by right of representation. Two deaths and two families, out of a single statutory sentence.</p><p class="eg"><span class="eglbl">Example</span> Roy and Nell buy minerals during the marriage. Roy dies in 1968 with no children. Nell takes the whole interest. Nell dies in 1990 still holding it. Half goes to Roy’s heirs and half to Nell’s heirs, even though Roy died twenty-two years earlier.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-op">Other property</span><p class="q">Spouse survives, no descendants, and a parent or sibling survives</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), Second</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">½</div><div class="bar" style="flex:1;background:#2f6f96">½</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div><div class="cap" style="flex:1">Parents, then siblings</div></div><p class="note">The parents take equally. If no parent survives, that half goes in equal shares to the brothers and sisters and to the children of any deceased brother or sister, by right of representation.</p></div></div>
+<div class="row"><div class="cond"><span class="tag tag-all">All property</span><p class="q">Spouse survives, and there are no descendants, parent, brother, or sister</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), Fifth</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#123a56">All</div></div><div class="caps"><div class="cap" style="flex:1">Surviving spouse</div></div></div></div>
+<div class="sec-h"><p class="sh-t">Section 4. Deaths before July 1, 1985: everyone else</p><p class="sh-s">Where there is no surviving spouse, and the share that does not pass to one. 84 O.S. § 213(A), First through Ninth.</p></div>
+<div class="row"><div class="cond"><p class="q">No spouse, but descendants survive</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), First</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#c79a3b">All</div></div><div class="caps"><div class="cap" style="flex:1">Children and their descendants, by representation</div></div></div></div>
+<div class="row"><div class="cond"><p class="q">No spouse and no descendants; one or both parents survive</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), Second</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#2f6f96">½</div><div class="bar" style="flex:1;background:#2f6f96">½</div></div><div class="caps"><div class="cap" style="flex:1">Father</div><div class="cap" style="flex:1">Mother</div></div><p class="note">If only one parent survives, that parent takes the whole estate.</p></div></div>
+<div class="row"><div class="cond"><p class="q">No spouse, descendants, or parent; brothers and sisters, or their children</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), Third</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#2f6f96">All</div></div><div class="caps"><div class="cap" style="flex:1">Siblings, and children of a deceased sibling, by representation</div></div><p class="note">A decedent who was a minor and left no descendants goes instead to the parents equally if they were living together, and otherwise to the parent who had the care of the minor.</p></div></div>
+<div class="row"><div class="cond"><p class="q">No spouse, descendants, or father; no brother or sister living at the death</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), Fourth</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#2f6f96">All</div></div><div class="caps"><div class="cap" style="flex:1">Mother</div></div><p class="note">The mother takes to the exclusion of the children of deceased brothers and sisters. Nieces and nephews get nothing here, which is the opposite of what the surrounding paragraphs would lead you to expect.</p></div></div>
+<div class="row"><div class="cond"><p class="q">No spouse, descendants, parent, or sibling; nearest blood relatives</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), Sixth</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#2f6f96">All</div></div><div class="caps"><div class="cap" style="flex:1">Next of kin in equal degree</div></div><p class="note">The statute says next of kin in equal degree. Count the steps up the family tree to a common ancestor and back down again; whoever is fewest steps away takes. Where two side-branch relatives are tied but come down from different ancestors, the one claiming through the nearer ancestor is preferred.</p></div></div>
+<div class="row"><div class="cond"><p class="q">No spouse and no kindred</p><p class="cite"><a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S. § 213(A), Ninth</a></p></div><div class="res"><div class="bars"><div class="bar" style="flex:1;background:#5b7f99">All</div></div><div class="caps"><div class="cap" style="flex:1">Escheats to the State for the support of the common schools</div></div></div></div>
+<div class="why"><p class="wlbl">Ancestral property, and why two paragraphs of the old
+statute look like nothing else on this page</p>
+<p>Seventh and Eighth cover a second death rather than the first one. A child inherits from the
+decedent, then dies while still under age and never married. Whatever came to that child by
+inheritance from the decedent does not descend the ordinary way. It goes back across to the other
+children of the same parent, and to the children of any of those children who are also dead, by right of
+representation. If every other child of that parent is also dead, it goes to their children. Nothing in
+the post-1985 statute does this. When an old chain has a minor who died holding an inherited
+interest, check these two paragraphs before running the ordinary rules.</p>
+<p class="wcite">84 O.S. &sect; 213(A), Seventh and Eighth.</p></div>
+<div class="sec-h"><p class="sh-t">Three places this goes wrong in the field</p><p class="sh-s">Each of these has put an interest in the wrong name on a real runsheet.</p></div>
+<div class="trap"><p class="tlbl">One. The date of death, not the date of anything else</p>
+<p>Probate can open decades after a death, and the decree recites the distribution the court applied
+at that time. If the death was before July 1, 1985 and someone ran the modern rule, a surviving
+spouse who should have taken a third is showing a half, and every downstream conveyance carries the
+error. Get the death certificate date, or the date recited in the decree, before you touch the
+fractions.</p></div>
+<div class="trap"><p class="tlbl">Two. The pre-1985 joint-industry reversion is a second event</p>
+<p>Under Second, joint-industry property with no descendants goes wholly to the survivor, and then splits
+half to each spouse&rsquo;s heirs when the survivor dies. Chains routinely stop after the first death.
+If the surviving spouse has since died and nobody ran the reversion, half the interest is standing in
+the wrong family. Note also that the statute says &ldquo;the whole estate&rdquo; in that proviso, and
+where an old estate mixed joint-industry with other property and left no descendants, the reach of that
+sentence is a question for counsel rather than a chart. Note too that the reversion reaches only what is
+left: the statute splits the property &ldquo;at whose death, if any of the said property remain,&rdquo; so
+anything the survivor sold or devised away in the meantime is out of it.</p></div>
+<div class="trap"><p class="tlbl">Three. Characterize the property before you split it</p>
+<p>Four of the rules on this page give a different answer for joint-industry property than for other
+property. Joint industry turns on how the property was acquired and not on whose name is on the deed,
+so the deed alone will not tell you. Minerals bought with marital earnings are usually joint industry
+even where one spouse took title alone. Minerals inherited, gifted, or owned before the marriage
+usually are not. Where the record does not show it, that is a fact question, and guessing it is how a
+half becomes a third.</p></div>
+<div class="why"><p class="wlbl">Facts that change the answer and are not on this chart</p>
+<p>Status rules sit on top of the tables above and can move a share or remove a taker entirely.
+Watch for half brothers and half sisters, adopted children, children born after the decedent&rsquo;s death,
+children born outside the marriage, advancements made during the decedent&rsquo;s life, and heirs who
+predeceased. Restricted Indian interests follow their own descent rules and are outside 84 O.S.
+&sect; 213 altogether. Any of these turns a chart lookup into a question for the examining attorney.</p></div>
+<p class="src">Full statute text: <a href="https://law.justia.com/codes/oklahoma/title-84/section-84-213/" target="_blank" rel="noopener">84 O.S.
+&sect; 213</a>. The definition of &ldquo;by right of representation&rdquo; and of &ldquo;issue&rdquo;
+appears at &sect; 213(B)(4) and is written to apply to the section. This chart uses the plain word
+descendants wherever the statute says issue, because &sect; 213(B)(4) defines them as the same thing. &ldquo;Joint industry&rdquo; means
+property acquired by the joint effort of the spouses during the marriage; it is a rule of descent and
+not a property right during the marriage.</p>
+<div class="disc">This chart is prepared for landmen and title professionals as a working
+field tool. It is not legal advice and does not substitute for the advice of qualified Oklahoma oil
+and gas counsel. Distributions turn on facts such as the date of death, whether property was acquired
+by the joint industry of the spouses during coverture, prior marriages, predeceased heirs, and the
+status rules noted above, none of which appear on the face of a deed. Complex or disputed heirship
+should be referred to a licensed Oklahoma attorney. Citations are to 84 O.S. &sect; 213; verify
+against the current statute before relying on any figure here.</div>
+</div>
+</body></html>
