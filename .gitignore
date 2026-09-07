@@ -1,0 +1,9 @@
+# Working material kept in the repo folder but never published.
+# GitHub Pages serves every committed file, linked or not.
+NEW unfinished guides/
+_working/
+
+# OS noise
+Thumbs.db
+.DS_Store
+desktop.ini
