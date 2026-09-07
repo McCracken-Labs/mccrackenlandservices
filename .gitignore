@@ -10,3 +10,6 @@ desktop.ini
 
 # Wrangler local cache - not source, and it carries the Cloudflare account id
 labs/scissortail/worker/.wrangler/
+
+# Scratch images and working files dropped in the repo folder
+Claude outputs/
